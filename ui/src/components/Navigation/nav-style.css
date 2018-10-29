@@ -1,0 +1,99 @@
+/* NAVIGATION */
+nav {
+  background-image: linear-gradient(
+      rgba(203, 155, 242, 0.5), 
+      rgba(203, 155, 242, 0.5)
+    );
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  font-family: 'Roboto Condensed', sans-serif;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-right: 20px;
+}
+nav ul {
+  list-style: none;
+  text-align: right;
+}
+nav ul li {
+  display: inline-block;
+}
+nav ul li p {
+  font-size: 16px;
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+  color: #aaa;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin: 0 10px;
+  cursor: pointer;
+}
+nav ul li p,
+nav ul li p:after,
+nav ul li p:before {
+  transition: all .5s;
+}
+nav ul li p:hover {
+  color: #555;
+}
+
+
+/* stroke */
+nav.stroke ul li p,
+nav.fill ul li p {
+  position: relative;
+}
+nav.stroke ul li p:after,
+nav.fill ul li p:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background: white;
+  height: 1px;
+}
+nav.stroke ul li p:hover:after {
+  width: 100%;
+}
+
+nav.fill ul li p {
+  transition: all 2s;
+}
+
+nav.fill ul li p:after {
+  text-align: left;
+  content: '.';
+  margin: 0;
+  opacity: 0;
+}
+nav.fill ul li p:hover {
+  color: #fff;
+  z-index: 1;
+}
+nav.fill ul li p:hover:after {
+  z-index: -10;
+  animation: fill 1s forwards;
+  -webkit-animation: fill 1s forwards;
+  -moz-animation: fill 1s forwards;
+  opacity: 1;
+}
+
+
+.nav-link {
+  text-decoration: none;
+  color: white;
+}
+
+.nav-link:hover {
+  color: #44344f;
+}
+
+.dropdown-menu {
+  background-color: #564d80;
+}

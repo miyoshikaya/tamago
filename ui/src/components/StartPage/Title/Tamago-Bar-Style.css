@@ -1,0 +1,31 @@
+@import 'https://fonts.googleapis.com/css?family=Dosis|Roboto:300,400';
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: darkgray;
+    background-image: 
+  url("apple-blank-business-442574.jpg");
+  background-position: center top;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
+
+.wf-nicomoji { 
+	font-family: "Nico Moji"; 
+  cursor: default;
+  -webkit-user-select: none; /* Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none;
+}
+
+h1 {
+    margin-top: 10px;
+    color: white;
+    text-align: center;
+    font-size: 60px;
+    font-family: "Nico Moji";
+}

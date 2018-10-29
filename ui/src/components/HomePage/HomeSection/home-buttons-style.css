@@ -1,0 +1,40 @@
+body,
+html {
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/*--------------------------------------------------------------*/
+/*MAIN PAGE*/
+/*--------------------------------------------------------------*/
+.main-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	flex-wrap: wrap;
+	align-items: center;
+	align-content: center;
+}
+
+.jumbotron {
+	color: white;
+	background-color: transparent;
+	padding-top: 100px;
+}
+
+.display-4 {
+	font-family: 'Roboto Condensed', sans-serif;
+	font-size: 77px;
+	text-decoration: 
+}
+
+.lead {
+	font-family: 'Nunito', sans-serif;
+	font-size: 25px;
+}
+
+.reminder {
+	font-family: 'Nunito', sans-serif;
+	font-size: 37px;
+}
