@@ -15,9 +15,31 @@ class App extends Component {
   super()
     this.state={
       showMe:true,
-      route: 'signIn'
+      route: 'signIn',
+      isSignedIn: false,
+      user: {
+        id: '',
+        name: '',
+        email: '',
+        password: '',
+        entries: 0,
+        joined: ''
+      }
     }
   }
+
+loadUser = (data) => {
+  this.setState({
+    user: {
+      id: data.id,
+      name: data.name,
+      email: data.email,
+      password: data.password,
+      entries: data.entries,
+      joined: data.joined
+    }
+  })
+}
 
 operation()
 {
@@ -40,7 +62,7 @@ onRouteChange = (route) => {
               {
                 this.state.showMe === true ?
                 <SignIn onRouteChange={this.onRouteChange} />
-                :<SignUp  onRouteChange={this.onRouteChange} />
+                :<SignUp loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
               }
               <button type="button" className="block form-btn sx back" onClick={()=>this.operation()}>Log In/Register</button>
             </div>
