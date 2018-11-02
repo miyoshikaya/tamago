@@ -10,7 +10,7 @@ class SignIn extends React.Component {
 			signInPassword: ''
 		}
 	}
-
+	
 	onEmailChange = (event) => {
 		this.setState({signInEmail: event.target.value})
 	}
@@ -38,10 +38,16 @@ class SignIn extends React.Component {
 		})
 	}
 
+	onBackClick = (event) => {
+		event.currentTarget.parentElement.classList.add("inactive-dx");
+		event.currentTarget.parentElement.classList.remove("active-dx");
+		
+	}
+
 	render() {
 		return (
   		<div className="container">
-			<form className="signUp">
+			<form className="signIn">
 				<h3>Welcome<br />Back to<br />
 				Tamagochi !</h3><br />
 				<input
@@ -55,7 +61,7 @@ class SignIn extends React.Component {
 				placeholder="Insert password" 
 				required
 				onChange={this.onPasswordChange} />
-				<button className="form-btn sx back" type="button">Back</button>
+				<button onClick={this.onBackClick} className="form-btn sx back" type="button">Back</button>
 				<button onClick={this.onSubmitSignIn} className="form-btn dx" type="submit">Log In</button>
 			</form>
 		</div>

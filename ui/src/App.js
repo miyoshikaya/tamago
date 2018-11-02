@@ -28,29 +28,35 @@ class App extends Component {
     }
   }
 
-loadUser = (data) => {
-  this.setState({
-    user: {
-      id: data.id,
-      name: data.name,
-      email: data.email,
-      password: data.password,
-      entries: data.entries,
-      joined: data.joined
-    }
-  })
-}
+  loadUser = (data) => {
+    this.setState({
+      user: {
+        id: data.id,
+        name: data.name,
+        email: data.email,
+        password: data.password,
+        entries: data.entries,
+        joined: data.joined
+      }
+    })
+  }
 
-operation()
-{
-  this.setState({
-    showMe:!this.state.showMe
-  })
-}
+  operation()
+  {
+    this.setState({
+      showMe:!this.state.showMe
+    })
+  }
 
-onRouteChange = (route) => {
-  this.setState({route: route});
-}
+  onRouteChange = (route) => {
+    this.setState({route: route});
+  }
+
+  test = (data) => {
+    alert(data);
+  }
+
+
 
   render() {
     return (
@@ -59,13 +65,20 @@ onRouteChange = (route) => {
             this.state.route === 'signIn' ?
             <div>
               <TamagoBar />
+              <SignIn onRouteChange={this.onRouteChange}/>
+              <SignUp loadUser={this.loadUser} onRouteChange={this.onRouteChange} borys={this.test}/>
+              
               {
-                this.state.showMe === true ?
-                <SignIn onRouteChange={this.onRouteChange} />
-                :<SignUp loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+                /*this.state.showMe === true ?
+                <SignIn onRouteChange={this.onRouteChange}  />
+                :<SignUp loadUser={this.loadUser} onRouteChange={this.onRouteChange} />*/
               }
-              <button type="button" className="block form-btn sx back" onClick={()=>this.operation()}>Log In/Register</button>
             </div>
+
+            //<button type="button" className="block form-btn sx back" onClick={()=>this.operation()}>Log In/Register</button>
+            :
+            this.state.route==='signUp'?
+            <div> <SignUp loadUser={this.loadUser} onRouteChange={this.onRouteChange} /> </div>
             :
             this.state.route==='home'? 
             <div>

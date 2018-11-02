@@ -10,7 +10,10 @@ class SignUp extends React.Component {
 			email: '',
 			password: ''
 		}
+
+		this.myRef = React.createRef();
 	}
+
 
 	onNameChange = (event) => {
 		this.setState({name: event.target.value})
@@ -47,11 +50,19 @@ class SignUp extends React.Component {
 		})
 	}
 
+	onLoginClick = (event) => {
+		event.currentTarget.parentElement.classList.add("inactive-sx");
+		event.currentTarget.parentElement.classList.remove("active-sx");
+		this.props.borys('xd');
+		//wysłać do parenta -> przełącz na login
+		//event.currentTarget.parentElement.classList.add("active-dx");
+	}
+
 	render() {
 		//const { onRouteChange } = this.props;
 		return (
 		<div className="container">
-			<form className="signUp">
+			<form className="signUp" ref={this.myRef}>
 				<h3>Create Your Account</h3>
 				<p>Just enter your email address<br />
 				and your password for join.
@@ -71,7 +82,7 @@ class SignUp extends React.Component {
 				placeholder="Insert password" 
 				required 
 				onChange={this.onPasswordChange} />
-				<button className="form-btn sx log-in" type="button">Log In</button>
+				<button onClick={this.onLoginClick} className="form-btn sx log-in" type="button">Log In</button>
 				<button onClick={this.onSubmitRegister} className="form-btn dx" type="submit">Sign Up</button>
 			</form>
 		</div>
