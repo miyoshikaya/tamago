@@ -1,10 +1,13 @@
 import React from 'react';
+import './settings.css'
+import SettingsCard from './SettingsCard/SettingsCard.js';
 
 const Settings = ({ onRouteChange }) => {
 	return (
 		<div>
-			<h2>SETTINGS PAGE</h2>
+			<SettingsCard />
 		</div>
+
 	);
 }
 

@@ -1,0 +1,261 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,700);
+body {
+}
+#dribbleLink {
+  position:fixed;
+  top:10px;
+  left:10px;
+  color:#7C7C7C;
+  text-decoration:none;
+}
+.centered {
+  position:absolute;
+  top:52%;
+  left:50%;
+  transform:translate(-50%, -50%);
+}
+#mainWrapper {
+  width:60vw;
+  height:60vh;
+  background:white;
+  display:flex;
+  flex-wrap: nowrap;
+  align-items:stretch;
+  border-radius:2px;
+  overflow:hidden;
+  box-shadow:0 0 200px -50px rgba(0,0,0,0.5);
+  box-shadow: 5px 5px 8px #888888;
+}
+#mainWrapper .half {
+  width:50%;
+  display:flex;
+  flex-direction:column;
+}
+.half.purple {
+  background: rgb(203, 155, 242);
+}
+#title {
+  color:white;
+  flex-grow:0;
+  margin:5vmin;
+  font-weight:500;
+  font-size:2vmin;
+}
+#preview {
+  flex-grow:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  display:flex;
+  flex-direction:column;
+}
+#previewText {
+  color:white;
+  font-size:20vmin;
+  font-weight:300;
+}
+#previewTitle {
+  color:white;
+  font-size:2vmin;
+}
+#previewTitle span {
+  font-weight:bold;
+}
+#switchWrapper {
+  margin:5vmin;
+  display:flex;
+  justify-content:center;
+  flex-shrink:0;
+}
+#switchOuter {
+  display:block;
+  width:8vmin;
+  height:4vmin;
+  background:#a36dce;
+  border-radius:999px;
+  position:relative;
+}
+#switchInner {
+  width:3vmin;
+  height:3vmin;
+  background:#2B85FD;
+  border-radius:999px;
+  position:absolute;
+  top:0.5vmin;
+  left:4.5vmin;
+}
+#settingsWrapper {
+  padding:5vmin;
+  display:flex;
+  flex-direction:column;
+  height:60vh;
+  justify-content:space-between;
+  box-sizing:border-box;
+}
+.dropdownTitle {
+  font-size:2vmin;
+  color:#BECACD;
+  font-weight:400;
+  margin-bottom:1vmin;
+}
+.dropdownOption {
+  font-size:3vmin;
+  color:#3D3D3D;
+  /*border-bottom:1px solid #E9E9E9;*/
+  cursor:pointer;
+}
+.optionArrow {
+  border:0.9vmin solid transparent;
+  border-top-color:#C6CBD6;
+  width:0;
+  height:0;
+  float:right;
+  position:relative;
+  top:1.5vmin;
+  right:0.5vmin;
+}
+.settingTitle {
+  font-size:2vmin;
+  color:#727272;
+  font-weight:400;
+  margin-bottom:1vmin;
+}
+#colorsWrapper {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+.colorOption {
+  width:6vmin;
+  height:6vmin;
+  background:black;
+  flex-grow:0;
+  flex-shrink:0;
+  border-radius:999px;
+  margin-right:1vmin;
+  position:relative;
+  cursor:pointer;
+}
+.colorOption.blue {
+  background:#2B85FD;
+}
+.colorOption.orange {
+  background:#FEBA38;
+}
+.colorOption.green {
+  background:#C7DB18;
+}
+.colorOption.cyan {
+  background:#52CAC1;
+}
+.colorOption.plus {
+  background:#E7EAF3;
+}
+.colorOption.selected:before {
+  display:block;
+  content:' ';
+  background:white;
+  width:1vmin;
+  height:0.5vmin;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:rotate(45deg);
+  margin-left:-1vmin;
+}
+.colorOption.selected:after {
+  display:block;
+  content:' ';
+  background:white;
+  width:2vmin;
+  height:0.5vmin;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:rotate(-45deg);
+  margin-left:-0.7vmin;
+  margin-top:-0.2vmin;
+}
+.colorOption.plus:after {
+  display:block;
+  content:' ';
+  background:#C6CAD6;
+  width:0.4vmin;
+  height:2vmin;
+  border-radius:1px;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+}
+.colorOption.plus:before {
+  display:block;
+  content:' ';
+  background:#C6CAD6;
+  height:0.4vmin;
+  width:2vmin;
+  border-radius:1px;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+}
+
+#sizeSlider {
+  display:block;
+  width:100%;
+  height:1px;
+  background:#E9EBF3;
+  position:relative;
+}
+#sliderHandle {
+  display:block;
+  width:4vmin;
+  height:4vmin;
+  background:white;
+  box-shadow:0 0 6px -1px rgba(0,0,0,0.5);
+  border-radius:999px;
+  position:absolute;
+  top:-2vmin;
+  left:calc(60% - 2vmin);
+}
+#sliderHandle span {
+  color:#5C9EFB;
+  position:absolute;
+  top:-2.5vmin;
+  left:0.8vmin;
+  font-size:2vmin;
+}
+#sliderFront {
+  position:absolute;
+  top:-2px;
+  left:0;
+  width:60%;
+  height:4px;
+  background:#5C9EFB;
+}
+#sliderLabel1 {
+  font-size:1.5vmin;
+  color:#686868;
+  position:absolute;
+  bottom:-3vmin;
+  left:0;
+}
+#sliderLabel2 {
+  font-size:2.5vmin;
+  color:#686868;
+  position:absolute;
+  bottom:-3.5vmin;
+  right:0;
+}
+
+@media screen and (max-width:1230px) {
+  .colorOption {
+    width:3.3vmin;
+    height:3.3vmin;
+  }
+}
+
+.pwd {
+  width: 240px;
+}

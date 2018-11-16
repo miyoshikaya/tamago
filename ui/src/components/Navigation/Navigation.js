@@ -16,7 +16,7 @@ const Navigation = ({ onRouteChange }) => {
 			    	<p onClick={() => onRouteChange('progress')} className="nav-link">Progress</p>
 				  </li>
 				  <li className="nav-item">
-			    	<p onClick={() => onRouteChange('tests')} className="nav-link">Tests</p>
+			    	<p onClick={() => onRouteChange('tests')} className="nav-link">Study</p>
 				  </li>
 				  <li className="nav-item">
 			    	<p onClick={() => onRouteChange('settings')} className="nav-link">Settings</p>
