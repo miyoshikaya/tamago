@@ -1,0 +1,61 @@
+.card-container {
+  cursor: pointer;
+  height: 200px;
+  width: 400px;
+  perspective: 800px;
+  position: relative;
+  margin: auto;
+  transition: ease-in;
+}
+
+.card {
+  height: 200px;
+  width: 400px;
+  position: absolute;
+  border: 1px transparent;
+  transform-style: preserve-3d;
+  transition: all 0.4s ease-in-out;
+  box-shadow: 5px 5px 8px #888888;
+}
+
+.card:hover {
+  transform: rotateY(180deg);
+  transition: all 0.4s ease-in-out;
+}
+
+.card .front {
+  height: 200px;
+  width: 400px;
+  backface-visibility: hidden;
+  position: absolute;
+  overflow: hidden;
+  text-align: center;
+  background-color: #EEE5E9;
+}
+
+.card .back {
+  height: 200px;
+  width: 400px;
+  text-align: center;
+  transform: rotateY(180deg);
+  background-color: #46494C;
+}
+
+
+.eng{
+  color: #0A0908;
+  font-size: 2.3em;
+  padding-top: 17%;
+}
+
+.kan{
+  color: #DCDCDD;
+  font-size: 4.8em;
+  padding-top: 5%;
+}
+
+.rom{
+    color: rgb(203, 155, 242);
+    font-size: 1.8em;
+    padding-top: 0%;
+}

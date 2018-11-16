@@ -1,0 +1,124 @@
+{
+    "jpn-cards-animals": [
+        {
+            "id": 1,
+            "eng": "cat",
+            "kan": "猫",
+            "rom": "neko"
+        },
+        {
+            "id": 2,
+            "eng": "dog",
+            "kan": "犬",
+            "rom": "inu"
+        },
+        {
+            "id": 3,
+            "eng": "pig",
+            "kan": "豚",
+            "rom": "buta"
+        },
+        {
+            "id": 4,
+            "eng": "tiger",
+            "kan": "虎",
+            "rom": "tora"
+        },
+        {
+            "id": 5,
+            "eng": "eagle",
+            "kan": "鷲",
+            "rom": "washi"
+        },
+        {
+            "id": 6,
+            "eng": "shark",
+            "kan": "鮫",
+            "rom": "same"
+        },
+        {
+            "id": 7,
+            "eng": "sheep",
+            "kan": "羊",
+            "rom": "hitsuji"
+        },
+        {
+            "id": 8,
+            "eng": "sparrow",
+            "kan": "スズメ",
+            "rom": "suzume"
+        },
+        {
+            "id": 9,
+            "eng": "monkey",
+            "kan": "猿",
+            "rom": "saru"
+        },
+        {
+            "id": 10,
+            "eng": "elephant",
+            "kan": "象",
+            "rom": "zō"
+        },
+        {
+            "id": 11,
+            "eng": "giraffe",
+            "kan": "キリン",
+            "rom": "kirin"
+        },
+        {
+            "id": 12,
+            "eng": "bird",
+            "kan": "鳥",
+            "rom": "tori"
+        },
+        {
+            "id": 13,
+            "eng": "animal",
+            "kan": "動物",
+            "rom": "dōbutsu"
+        },
+        {
+            "id": 14,
+            "eng": "cow",
+            "kan": "牛",
+            "rom": "ushi"
+        },
+        {
+            "id": 15,
+            "eng": "hamster",
+            "kan": "ハムスター",
+            "rom": "hamustā"
+        },
+        {
+            "id": 16,
+            "eng": "fish",
+            "kan": "魚",
+            "rom": "sakana"
+        },
+        {
+            "id": 17,
+            "eng": "hourse",
+            "kan": "馬",
+            "rom": "uma"
+        },
+        {
+            "id": 18,
+            "eng": "lion",
+            "kan": "ライオン",
+            "rom": "raion"
+        },
+        {
+            "id": 19,
+            "eng": "panda",
+            "kan": "パンダ",
+            "rom": "panda"
+        },
+        {
+            "id": 20,
+            "eng": "fox",
+            "kan": "狐",
+            "rom": "kitsune"
+        }
+    ]
+}

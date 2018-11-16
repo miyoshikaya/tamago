@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import TamagoBar from './components/StartPage/Title/Tamago-Bar.js';
-import SignIn from './components/StartPage/SignIn/SignIn.js';
-import SignUp from './components/StartPage/SignIn/SignUp.js';
+import SignUp from './components/StartPage/SignForm/SignUp.js';
+import SignIn from './components/StartPage/SignForm/SignIn.js';
 import HomePage from './components/HomePage/HomePage.js';
 import Navigation from './components/Navigation/Navigation.js';
 import Pet from './components/HomePage/PetSection/Pet.js'
@@ -12,9 +12,8 @@ import Settings from './components/HomePage/SettingSection/Settings.js';
 
 class App extends Component {
   constructor(){
-  super()
+    super()
     this.state={
-      showMe:true,
       route: 'signIn',
       isSignedIn: false,
       user: {
@@ -41,32 +40,30 @@ class App extends Component {
     })
   }
 
-  operation()
-  {
-    this.setState({
-      showMe:!this.state.showMe
-    })
-  }
-
-  onRouteChange = (route) => {
+ onRouteChange = (route) => {
     this.setState({route: route});
   }
+  
 
   test = (data) => {
     alert(data);
+    //tutaj dodanie klasy active-dx i usunięcie inactive-dx to komponenta <SignIn />
   }
 
-
+backClick = (data) => {
+  alert(data);
+  //tutaj dodanie klasy active-sx oraz usunięcie klasy inactive-sx to komponenta <SignUp />
+}
 
   render() {
     return (
-        <div>
+        <div className="App">
           {
             this.state.route === 'signIn' ?
             <div>
               <TamagoBar />
-              <SignIn onRouteChange={this.onRouteChange}/>
-              <SignUp loadUser={this.loadUser} onRouteChange={this.onRouteChange} borys={this.test}/>
+              <SignUp loadUser={this.loadUser} onRouteChange={this.onRouteChange} loginClickChange={this.test} />
+              <SignIn onRouteChange={this.onRouteChange} backClickChange={this.backClick} />
               
               {
                 /*this.state.showMe === true ?
@@ -76,9 +73,7 @@ class App extends Component {
             </div>
 
             //<button type="button" className="block form-btn sx back" onClick={()=>this.operation()}>Log In/Register</button>
-            :
-            this.state.route==='signUp'?
-            <div> <SignUp loadUser={this.loadUser} onRouteChange={this.onRouteChange} /> </div>
+            
             :
             this.state.route==='home'? 
             <div>

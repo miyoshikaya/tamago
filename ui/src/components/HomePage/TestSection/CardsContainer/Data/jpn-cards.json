@@ -1,0 +1,168 @@
+{
+    "jpn-cards": [
+    {
+        "jpn-cards-animals": [
+            {
+                "id": 1,
+                "eng": "cat",
+                "kan": "猫",
+                "rom": "neko"
+            },
+            {
+                "id": 2,
+                "eng": "dog",
+                "kan": "犬",
+                "rom": "inu"
+            },
+            {
+                "id": 3,
+                "eng": "person",
+                "kan": "人",
+                "rom": "hito"
+            },
+            {
+                "id": 4,
+                "eng": "woman",
+                "kan": "女",
+                "rom": "onna"
+            },
+            {
+                "id": 5,
+                "eng": "man",
+                "kan": "男",
+                "rom": "otoko"
+            },
+            {
+                "id": 6,
+                "eng": "peach",
+                "kan": "もも",
+                "rom": "momo"
+            },
+            {
+                "id": 7,
+                "eng": "banan",
+                "kan": "バナナ",
+                "rom": "banana"
+            },
+            {
+                "id": 8,
+                "eng": "orange",
+                "kan": "オレンジ",
+                "rom": "orenji"
+            },
+            {
+                "id": 9,
+                "eng": "monkey",
+                "kan": "猿",
+                "rom": "saru"
+            },
+            {
+                "id": 10,
+                "eng": "elephant",
+                "kan": "象",
+                "rom": "zō"
+            },
+            {
+                "id": 11,
+                "eng": "giraffe",
+                "kan": "キリン",
+                "rom": "kirin"
+            },
+            {
+                "id": 12,
+                "eng": "bird",
+                "kan": "鳥",
+                "rom": "tori"
+            },
+            {
+                "id": 13,
+                "eng": "animal",
+                "kan": "動物",
+                "rom": "dōbutsu"
+            },
+            {
+                "id": 14,
+                "eng": "cow",
+                "kan": "牛",
+                "rom": "ushi"
+            },
+            {
+                "id": 15,
+                "eng": "hamster",
+                "kan": "ハムスター",
+                "rom": "hamustā"
+            },
+            {
+                "id": 16,
+                "eng": "fish",
+                "kan": "魚",
+                "rom": "sakana"
+            },
+            {
+                "id": 17,
+                "eng": "hourse",
+                "kan": "馬",
+                "rom": "uma"
+            },
+            {
+                "id": 18,
+                "eng": "lion",
+                "kan": "ライオン",
+                "rom": "raion"
+            },
+            {
+                "id": 19,
+                "eng": "panda",
+                "kan": "パンダ",
+                "rom": "panda"
+            },
+            {
+                "id": 20,
+                "eng": "fox",
+                "kan": "狐",
+                "rom": "kitsune"
+            }
+        ]
+    },
+    {
+        "jpn-cards-people": [
+            {
+                "id": 21,
+                "eng": "child",
+                "kan": "子",
+                "rom": "ko"
+            },
+            {
+                "id": 22,
+                "eng": "mother",
+                "kan": "母",
+                "rom": "haha"
+            },
+            {
+                "id": 23,
+                "eng": "person",
+                "kan": "人",
+                "rom": "hito"
+            },
+            {
+                "id": 24,
+                "eng": "woman",
+                "kan": "女",
+                "rom": "onna"
+            },
+            {
+                "id": 25,
+                "eng": "man",
+                "kan": "男",
+                "rom": "otoko"
+            },
+            {
+                "id": 26,
+                "eng": "father",
+                "kan": "父",
+                "rom": "chichi"
+            }
+        ]
+    }
+    ]
+}

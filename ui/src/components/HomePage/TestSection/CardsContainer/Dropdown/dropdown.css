@@ -1,0 +1,43 @@
+* {
+  color: white;
+  font-size: 18px;
+
+}
+
+.dropMenu {
+  width: 200px;
+  font-family: 'Roboto Condensed', sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 50px;
+}
+
+.drop-btn {
+  height: 30px;
+  text-align: center;
+  width: inherit;
+  margin-bottom: 2px;
+  cursor: pointer;
+  border-width: 0px;
+  background-color: rgb(203, 155, 242);
+  font-family: 'Roboto Condensed', sans-serif;
+  text-transform: uppercase;
+}
+
+.dropDown {
+  list-style: none;
+  border: 1px solid white;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(203, 155, 242);
+}
+
+li {
+  padding: 8px;
+  user-select: none;
+}
+
+.elem:hover {
+  background-color: #fff;
+  color: #222;
+  cursor: pointer;
+}
