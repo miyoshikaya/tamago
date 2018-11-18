@@ -16,9 +16,8 @@
   text-align: center;
   width: inherit;
   margin-bottom: 2px;
-  cursor: pointer;
   border-width: 0px;
-  background-color: rgb(203, 155, 242);
+  background-color: #9e6dc6;
   font-family: 'Roboto Condensed', sans-serif;
   text-transform: uppercase;
 }

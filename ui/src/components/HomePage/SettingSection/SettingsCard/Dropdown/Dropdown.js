@@ -1,14 +1,16 @@
 import React from 'react';
 import './dropdown.css';
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css' 
 
 class Dropdown extends React.Component {
-  constructor() {
+  constructor(props) {
     super();
     
     this.state = {
       showDrop: true,
       value: 'japanese ⮯',
-      category: 'japanese'
+      category: 'Japanese'
     }
     
     this.showDrop = this.showDrop.bind(this);
@@ -23,6 +25,8 @@ class Dropdown extends React.Component {
       document.addEventListener('click', this.showDrop);
     });
   }
+
+
   
   hideDrop(event) {
     this.setState({ showDrop: false }, () => {
@@ -31,9 +35,28 @@ class Dropdown extends React.Component {
   }
 
   handleChange = (language) => () => {
-    console.log(language);
-    var lanWithArrow = language + ' ⮯';
-    this.setState({ value: lanWithArrow, showDrop: true });
+    if(language === this.state.category){
+      alert("Your selected language is already " + language + ".");
+    } 
+    else {
+      confirmAlert({
+        title: 'Confirm to submit',
+        message: 'Are you sure to do change your studying language to ' + language + '?',
+        buttons: [
+          {
+            label: 'Yes',
+            onClick: () => {
+              var lanWithArrow = language + ' ⮯';
+              this.setState({ value: lanWithArrow, showDrop: true, category: language });
+              this.props.handleLanguageChange(language);
+            }
+          },
+          {
+            label: 'No'
+          }
+        ]
+      })
+    }
   }
 
   render () {

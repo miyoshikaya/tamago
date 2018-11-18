@@ -3,7 +3,6 @@ import './cardscontainer.css';
 import FlashCard from './FlashCard/FlashCard.js';
 import DrawButton from './DrawButton/DrawButton.js';
 import FlipButton from './FlipButton/FlipButton.js';
-import Dropdown from './Dropdown/Dropdown.js';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/database';
@@ -100,13 +99,6 @@ class CardsContainer extends Component {
   render() {
     return (
       <div className="card-container">
-        <div className="choiceCol">
-          <div className="choice-container">
-            <h2>Choose category: </h2>
-            <Dropdown />
-          </div>
-        </div>
-        <hr />
         <div className="cardCol">
           <div className="cardRow">
             <FlashCard	eng={this.state.currentCard.eng}

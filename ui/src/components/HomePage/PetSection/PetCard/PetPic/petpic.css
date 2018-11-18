@@ -1,0 +1,9 @@
+.pet-pic {
+	width: 200px;
+	height: 200px;
+	transition: all 200ms ease-in-out;
+}
+
+.pet-pic:hover {
+	transform: scale(1.05);
+}

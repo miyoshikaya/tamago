@@ -1,4 +1,71 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,700);
+
+.centered-study {
+  position:absolute;
+  top:54%;
+  left:50%;
+  transform:translate(-50%, -50%);
+}
+#mainWrap {
+  width:60vw;
+  height:65vh;
+  background:white;
+  display:flex;
+  flex-wrap: nowrap;
+  align-items:stretch;
+  border-radius:2px;
+  overflow:hidden;
+  box-shadow:0 0 200px -50px rgba(0,0,0,0.5);
+  box-shadow: 5px 5px 8px #888888;
+}
+#mainWrap .half {
+  width:60%;
+  display:flex;
+  flex-direction: column;
+}
+#mainWrap .purple {
+  width: 40%;
+  background:rgb(203, 155, 242);
+}
+
 hr {
+	border-width: 15px;
 	border-color: transparent;
-	border-width: 30px;
+}
+
+#lang-title {
+  flex-grow:0;
+  margin-top: 20px;
+  margin-bottom: 0px;
+  font-weight:500;
+  font-size:2vmin;
+}
+#preview-card {
+  flex-grow:1;
+  display:flex;
+  flex-direction:column;
+}
+#preview-Title {
+  color: #a3a3a3;
+  font-size:2vmin;
+}
+#preview-Title span {
+  color: #a3a3a3;
+  font-weight:bold;
+}
+
+#settingsWrapperCard {
+  padding:5vmin;
+  display:flex;
+  flex-direction:column;
+  height:60vh;
+  justify-content:space-between;
+  box-sizing:border-box;
+}
+
+@media screen and (max-width:1230px) {
+  .colorOption {
+    width:3.3vmin;
+    height:3.3vmin;
+  }
 }
