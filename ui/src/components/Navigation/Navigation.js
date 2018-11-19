@@ -7,16 +7,16 @@ const Navigation = ({ onRouteChange }) => {
 			<nav className="stroke">
 			    <ul>
 			      <li className="nav-item">
-			    	<p onClick={() => onRouteChange('home')} className="nav-link">Main Page</p>
-				  </li>
-				  <li className="nav-item">
 			    	<p onClick={() => onRouteChange('pet')} className="nav-link">Pet</p>
 				  </li>
 				  <li className="nav-item">
-			    	<p onClick={() => onRouteChange('progress')} className="nav-link">Progress</p>
+			    	<p onClick={() => onRouteChange('tests')} className="nav-link">Study</p>
 				  </li>
 				  <li className="nav-item">
-			    	<p onClick={() => onRouteChange('tests')} className="nav-link">Study</p>
+			    	<p onClick={() => onRouteChange('quiz')} className="nav-link">Quizzes</p>
+				  </li>
+				  <li className="nav-item">
+			    	<p onClick={() => onRouteChange('progress')} className="nav-link">Progress</p>
 				  </li>
 				  <li className="nav-item">
 			    	<p onClick={() => onRouteChange('settings')} className="nav-link">Settings</p>

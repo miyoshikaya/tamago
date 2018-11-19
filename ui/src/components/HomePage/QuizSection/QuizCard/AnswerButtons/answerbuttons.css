@@ -1,0 +1,24 @@
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.btn-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.btn-answer {
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  color: gray;
+  font-size: 50px;
+}
+
+.btn-answer:hover {
+  color: #8e44ad;
+}

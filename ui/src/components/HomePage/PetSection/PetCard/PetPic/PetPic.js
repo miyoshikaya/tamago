@@ -5,6 +5,9 @@ class PetPic extends React.Component {
   constructor(props) {
     super(props);
     
+    this.state = {
+      pet: ''
+    }
   }
  
  animate(){

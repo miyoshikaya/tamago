@@ -1,5 +1,4 @@
 import React from 'react';
-import './petcard.css';
 import CardTitle from './CardTitle/CardTitle.js';
 import PetPic from './PetPic/PetPic.js';
 import PlayButtons from './PlayButtons/PlayButtons.js'
@@ -8,6 +7,9 @@ class PetCard extends React.Component {
   constructor(props) {
     super(props);
     
+    this.state={
+      pet: ''
+    }
   }
  
   render () {

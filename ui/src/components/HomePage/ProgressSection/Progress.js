@@ -1,9 +1,10 @@
 import React from 'react';
+import ProgressCard from './ProgressCard/ProgressCard.js';
 
 const Progress = ({ onRouteChange }) => {
 	return (
 		<div>
-			<h2>PROGRESS PAGE</h2>
+			<ProgressCard />
 		</div>
 	);
 }

@@ -3,12 +3,12 @@ import './App.css';
 import TamagoBar from './components/StartPage/Title/Tamago-Bar.js';
 import SignUp from './components/StartPage/SignForm/SignUp.js';
 import SignIn from './components/StartPage/SignForm/SignIn.js';
-import HomePage from './components/HomePage/HomePage.js';
 import Navigation from './components/Navigation/Navigation.js';
 import Pet from './components/HomePage/PetSection/Pet.js'
 import Progress from './components/HomePage/ProgressSection/Progress.js';
 import Tests from './components/HomePage/TestSection/Tests.js';
 import Settings from './components/HomePage/SettingSection/Settings.js';
+import Quizzes from './components/HomePage/QuizSection/Quizzes.js';
 
 class App extends Component {
   constructor(){
@@ -78,13 +78,20 @@ backClick = (data) => {
             this.state.route==='home'? 
             <div>
               <Navigation onRouteChange={this.onRouteChange} />
-              <HomePage />
+              {/*<HomePage />*/}
+              <Pet />
             </div>
             :
             this.state.route==='pet'?
             <div>
               <Navigation onRouteChange={this.onRouteChange} />
               <Pet />
+            </div>
+            :
+            this.state.route==='quiz'?
+            <div>
+              <Navigation onRouteChange={this.onRouteChange} />
+              <Quizzes />
             </div>
             :
             this.state.route==='progress'?
