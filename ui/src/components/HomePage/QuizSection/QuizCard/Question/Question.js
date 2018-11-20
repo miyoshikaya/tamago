@@ -1,31 +1,15 @@
 import React from 'react';
-import './questions.css'
-import AnswerButtons from './AnswerButtons/AnswerButtons.js';
-import NextButton from './NextButton/NextButton.js';
+import PropTypes from 'prop-types';
+import './question.css';
 
-class Question extends React.Component {
-  constructor(props) {
-    super(props);
-    
-    this.state = {
-      answer: 'correct'
-    }
-  }
- 
-
-  render () {
+  function Question(props) {
     return (
-    	<div id="questionWrapper">
-        	<hr />
-        	<Question />
-            <h4>1. Question here lalal what is neko??</h4>
-            <AnswerButtons />
-            <div id="nextWrapper">
-              <NextButton />
-            </div>
-        </div>
+      <h4 className="question">{props.content}</h4>
     );
   }
-}
+
+  Question.propTypes = {
+    content: PropTypes.string.isRequired
+  };
 
 export default Question;

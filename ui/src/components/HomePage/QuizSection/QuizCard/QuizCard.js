@@ -1,16 +1,27 @@
 import React from 'react';
 import './quizcard.css';
 import QuizSettings from './QuizSettings/QuizSettings.js';
-import Question from './Question/Question.js';
+import Quiz from './Quiz.js';
 
 class QuizCard extends React.Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {
       category: 'animals',
-      words: 'learning'
-    }
+      words: 'learning',
+      counter: 0,
+      questionId: 1,
+      question: '',
+      answerOptions: [],
+      answer: '',
+      answersCount: {
+        nintendo: 0,
+        microsoft: 0,
+        sony: 0
+      },
+      result: ''
+    };
   }
 
   changeCategory = (cat) => {
@@ -27,7 +38,8 @@ class QuizCard extends React.Component {
           <QuizSettings />
         </div>
         <div className="other-half">
-          <Question />
+          <hr />
+          <Quiz />
         </div>
         
       </div>

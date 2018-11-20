@@ -22,3 +22,17 @@
 .btn-answer:hover {
   color: #8e44ad;
 }
+
+.correct-answer {
+  color: green;
+}
+.correct-answer:hover {
+  color: green;
+}
+
+.incorrect-answer {
+  color: red;
+}
+.incorrect-answer:hover {
+  color: red;
+}
