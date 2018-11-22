@@ -1,5 +1,7 @@
 import React from 'react';
 import './dropdown.css';
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css' 
 
 class Dropdown extends React.Component {
   constructor() {
@@ -29,11 +31,32 @@ class Dropdown extends React.Component {
     });
   }
 
+
   handleChange = (category) => () => {
-    console.log(category);
-    var catWithArrow = category + ' ⮯';
-    this.setState({ value: catWithArrow, showDrop: false });
+    if(category === this.state.category){
+      alert("Your selected category is already " + category + ".");
+    } 
+    else {
+      confirmAlert({
+        title: 'Confirm to submit',
+        message: 'Are you sure to do change your flashcards category to ' + category + '?',
+        buttons: [
+          {
+            label: 'Yes',
+            onClick: () => {
+              var catWithArrow = category + ' ⮯';
+              this.setState({ value: catWithArrow, showDrop: false, category: category });
+              this.props.handleCategoryChange(category);
+            }
+          },
+          {
+            label: 'No'
+          }
+        ]
+      })
+    }
   }
+
 
   render () {
     return (
@@ -43,11 +66,11 @@ class Dropdown extends React.Component {
       {
       this.state.showDrop ? (
         <ul className='dropDown'>
-          <li className="elem" onClick={this.handleChange("Animals")}>Animals</li>
-          <li className="elem" onClick={this.handleChange("People")}>People</li>
-          <li className="elem" onClick={this.handleChange("School")}>School</li>
-          <li className="elem" onClick={this.handleChange("House")}>House</li>
-          <li className="elem" onClick={this.handleChange("Birthday")}>Birthday</li>
+          <li className="elem" onClick={this.handleChange("animals")}>Animals</li>
+          <li className="elem" onClick={this.handleChange("people")}>People</li>
+          <li className="elem" onClick={this.handleChange("school")}>School</li>
+          <li className="elem" onClick={this.handleChange("house")}>House</li>
+          <li className="elem" onClick={this.handleChange("birthday")}>Birthday</li>
         </ul>
         ) : (
           null

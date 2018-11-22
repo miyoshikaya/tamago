@@ -13,7 +13,7 @@ class SettingsContainer extends React.Component {
       addClass3: false,
       language: 'Japanese',
       status: 'Learning',
-      category: 'animals'
+      category: ''
       };
   }
 
@@ -53,6 +53,12 @@ class SettingsContainer extends React.Component {
     }
   }
 
+changeCategory = (cat) => {
+  this.setState({ category: cat });
+  console.log(this.state.category);
+}
+
+
   render () {
     let boxClass = ["status-btn"];
     let boxClass2 = ["status-btn"];
@@ -89,7 +95,7 @@ class SettingsContainer extends React.Component {
               <div className="dropdown">
                 <div className="settings-dropdown-title">Choose category:</div>
                 <div className="categoryDropdownOption">
-                  <Dropdown />
+                  <Dropdown handleCategoryChange={this.changeCategory} />
                 </div>
               </div>
             </div>

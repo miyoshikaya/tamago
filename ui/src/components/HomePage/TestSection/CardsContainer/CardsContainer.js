@@ -17,12 +17,12 @@ class CardsContainer extends Component {
 
     if (!firebase.apps.length){
       this.app = firebase.initializeApp(DB_CONFIG);
-      this.database = this.app.database().ref().child('jpn-cards-animals');
+      this.database = this.app.database().ref().child("jpn-cards/0/jpn-cards-animals");
       this.updateCard = this.updateCard.bind(this);
     }
     else {
       this.app = firebase.app().firestore();
-      this.database = firebase.app().database().ref().child('jpn-cards-animals');
+      this.database = firebase.app().database().ref().child('jpn-cards/1/jpn-cards-people');
       this.updateCard = this.updateCard.bind(this);
     }
     
