@@ -13,49 +13,58 @@ class SettingsContainer extends React.Component {
       addClass3: false,
       language: 'Japanese',
       status: 'Learning',
-      category: ''
+      category: 'lala'
       };
   }
 
-  toggle1() {
+ async toggle1() {
     if (this.state.addClass === true) {
       //nic
     } else if(this.state.addClass === false){
-      this.setState({
+      await this.setState({
         addClass: true,
         addClass2: false,
-        addClass3: false
+        addClass3: false,
+        status: 'Learning'
       });
+
+      this.props.sendStatus(this.state.status);
     }
   }
   
-  toggle2() {
+  async toggle2() {
     if (this.state.addClass2 === true) {
       //nic
     } else if(this.state.addClass2 === false){
-      this.setState({
+      await this.setState({
         addClass: false,
         addClass2: true,
-        addClass3: false
+        addClass3: false,
+        status: 'Learnt'
       });
+
+      this.props.sendStatus(this.state.status);
     }
   }
 
-  toggle3() {
+  async toggle3() {
     if (this.state.addClass3 === true) {
       //nic
     } else if(this.state.addClass3 === false){
-      this.setState({
+     await this.setState({
         addClass: false,
         addClass2: false,
-        addClass3: true
+        addClass3: true,
+        status: 'Mastered'
       });
+
+    this.props.sendStatus(this.state.status);
     }
   }
 
-changeCategory = (cat) => {
-  this.setState({ category: cat });
-  console.log(this.state.category);
+changeCategory = async (cat) => {
+  await this.setState({ category: cat });
+  this.props.sendCategory(this.state.category);
 }
 
 
@@ -95,7 +104,7 @@ changeCategory = (cat) => {
               <div className="dropdown">
                 <div className="settings-dropdown-title">Choose category:</div>
                 <div className="categoryDropdownOption">
-                  <Dropdown handleCategoryChange={this.changeCategory} />
+                  <Dropdown handleCategoryChange={this.changeCategory}/>
                 </div>
               </div>
             </div>

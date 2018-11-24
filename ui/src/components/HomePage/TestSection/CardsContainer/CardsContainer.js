@@ -16,13 +16,47 @@ class CardsContainer extends Component {
     super(props);
 
     if (!firebase.apps.length){
+
       this.app = firebase.initializeApp(DB_CONFIG);
-      this.database = this.app.database().ref().child("jpn-cards/0/jpn-cards-animals");
+
+      switch(this.props.cardsCategory) {
+        case 'Animals':
+          console.log(this.props.cardsCategory);
+          this.database = this.app.database().ref().child("jpn-cards/0/jpn-cards-animals");
+          break;
+        case 'People':
+          console.log(this.props.cardsCategory);
+          this.database = this.app.database().ref().child("jpn-cards/1/jpn-cards-people");
+          break;
+        case 'Food':
+          console.log(this.props.cardsCategory);
+          this.database = this.app.database().ref().child("jpn-cards/2/jpn-cards-food");
+          break;
+        default:
+          console.log("null");
+          break;
+      }
       this.updateCard = this.updateCard.bind(this);
     }
     else {
       this.app = firebase.app().firestore();
-      this.database = firebase.app().database().ref().child('jpn-cards/1/jpn-cards-people');
+      switch(this.props.cardsCategory) {
+        case 'Animals':
+          console.log(this.props.cardsCategory);
+          this.database = firebase.app().database().ref().child("jpn-cards/0/jpn-cards-animals");
+          break;
+        case 'People':
+          console.log(this.props.cardsCategory);
+          this.database = firebase.app().database().ref().child("jpn-cards/1/jpn-cards-people");
+          break;
+        case 'Food':
+          console.log(this.props.cardsCategory);
+          this.database =  firebase.app().database().ref().child("jpn-cards/2/jpn-cards-food");
+          break;
+        default:
+          console.log("null");
+          break;
+        }
       this.updateCard = this.updateCard.bind(this);
     }
     
@@ -30,17 +64,16 @@ class CardsContainer extends Component {
     this.state = {
       cards: [],
       currentCard: {},
-      showDrop: false
+      category: ''
     }
     
-    this.showDrop = this.showDrop.bind(this);
-    this.hideDrop = this.hideDrop.bind(this);
+
   }
+
 
 
   componentWillMount(){
     const currentCards = this.state.cards;
-    
     if (firebase.apps.length){
       this.database.on('child_added', snap => {
         currentCards.push({
@@ -52,27 +85,14 @@ class CardsContainer extends Component {
 
         this.setState({
           cards: currentCards,
-          currentCard: this.getRandomCard(currentCards)
+          currentCard: this.getRandomCard(currentCards),
+          category: this.props.cardsCategory
         })
 
       })
     }
   }
 
-
-  showDrop(event) {
-    event.preventDefault();
-    
-    this.setState({ showDrop: true }, () => {
-      document.addEventListener('click', this.hideDrop);
-    });
-  }
-  
-  hideDrop(event) {
-    this.setState({ showDrop: false }, () => {
-      document.removeEventListener('click',     this.hideDrop);
-    });
-  }
 
   getRandomCard(currentCards){
     var randomIndex = Math.floor(Math.random() * currentCards.length);
@@ -84,12 +104,36 @@ class CardsContainer extends Component {
     return(card);
   }
 
-  updateCard(){
+  async updateCard(){
     const currentCards = this.state.cards;
-    this.setState({
+    await this.setState({
       cards: currentCards,
       currentCard: this.getRandomCard(currentCards)
     })
+    console.log(this.props.cardsCategory);
+
+    if (firebase.apps.length){
+      console.log("lala jestem tu");
+      switch(this.props.cardsCategory) {
+        case 'Animals':
+          console.log(this.props.cardsCategory);
+          this.database = firebase.app().database().ref().child("jpn-cards/0/jpn-cards-animals");
+          break;
+        case 'People':
+          console.log(this.props.cardsCategory);
+          this.database = firebase.app().database().ref().child("jpn-cards/1/jpn-cards-people");
+          break;
+        case 'Food':
+          console.log(this.props.cardsCategory);
+          this.database =  firebase.app().database().ref().child("jpn-cards/2/jpn-cards-food");
+          break;
+        default:
+          console.log("null");
+          break;
+        }
+        this.updateCard = this.updateCard.bind(this);
+    }
+
   }
 
   turnCard(){

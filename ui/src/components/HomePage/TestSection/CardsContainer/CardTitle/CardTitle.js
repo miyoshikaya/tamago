@@ -6,9 +6,7 @@ class CardTitle extends Component {
     super(props);
 
     this.state = {
-      language: 'Language',
-      category: 'Category',
-      status: 'Status'
+      lala: ''
     }
     
   }
@@ -16,9 +14,9 @@ class CardTitle extends Component {
   render() {
     return (
       <div id="preview-Title">
-        <span>{this.state.language}</span>{' ' + this.state.category}
+        <span>{this.props.language}</span>{' ' + this.props.category}
         <div id="preview-Title">
-          {this.state.status}
+          {this.props.status}
         </div>
       </div>
     );

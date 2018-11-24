@@ -4,8 +4,8 @@ import Dropdown from './Dropdown/Dropdown.js';
 
 
 class SettingsCard extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     
     this.state = {
       languageB: 'Jp',
@@ -14,11 +14,6 @@ class SettingsCard extends React.Component {
   }
 
   changeLanguage = (lang) => {
-    //-------------------------------------------------
-    //
-    //here send change of the language that is being taught
-    //
-    //-------------------------------------------------
     if(lang==='Japanese'){
       this.setState({
         languageB: 'Jp',

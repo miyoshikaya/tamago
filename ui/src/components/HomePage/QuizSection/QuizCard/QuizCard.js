@@ -1,7 +1,6 @@
 import React from 'react';
 import './quizcard.css';
 import QuizSettings from './QuizSettings/QuizSettings.js';
-import Quiz from './Quiz.js';
 
 class QuizCard extends React.Component {
   constructor(props) {
@@ -39,7 +38,7 @@ class QuizCard extends React.Component {
         </div>
         <div className="other-half">
           <hr />
-          <Quiz />
+          {/*<Quiz />*/}
         </div>
         
       </div>

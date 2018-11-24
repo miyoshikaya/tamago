@@ -20,6 +20,9 @@ class SignIn extends React.Component {
 	}
 
 	onSubmitSignIn = (event) => {
+		this.props.onRouteChange('home');
+		console.log("click");
+		/*
 		event.preventDefault();
 
 		fetch('http://localhost:3000/signin', {
@@ -36,7 +39,7 @@ class SignIn extends React.Component {
           this.props.loadUser(user);
           this.props.onRouteChange('home');
         }
-      })
+      })*/
 	}
 
 	onBackClick = (event) => {

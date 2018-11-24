@@ -3,10 +3,10 @@
     {
         "jpn-cards-animals": [
             {
-                "id": 1,
-                "eng": "cat",
-                "kan": "猫",
-                "rom": "neko"
+            "id": 1,
+            "eng": "cat",
+            "kan": "猫",
+            "rom": "neko"
             },
             {
                 "id": 2,
@@ -16,39 +16,39 @@
             },
             {
                 "id": 3,
-                "eng": "person",
-                "kan": "人",
-                "rom": "hito"
+                "eng": "pig",
+                "kan": "豚",
+                "rom": "buta"
             },
             {
                 "id": 4,
-                "eng": "woman",
-                "kan": "女",
-                "rom": "onna"
+                "eng": "tiger",
+                "kan": "虎",
+                "rom": "tora"
             },
             {
                 "id": 5,
-                "eng": "man",
-                "kan": "男",
-                "rom": "otoko"
+                "eng": "eagle",
+                "kan": "鷲",
+                "rom": "washi"
             },
             {
                 "id": 6,
-                "eng": "peach",
-                "kan": "もも",
-                "rom": "momo"
+                "eng": "shark",
+                "kan": "鮫",
+                "rom": "same"
             },
             {
                 "id": 7,
-                "eng": "banan",
-                "kan": "バナナ",
-                "rom": "banana"
+                "eng": "sheep",
+                "kan": "羊",
+                "rom": "hitsuji"
             },
             {
                 "id": 8,
-                "eng": "orange",
-                "kan": "オレンジ",
-                "rom": "orenji"
+                "eng": "sparrow",
+                "kan": "スズメ",
+                "rom": "suzume"
             },
             {
                 "id": 9,
@@ -100,7 +100,7 @@
             },
             {
                 "id": 17,
-                "eng": "hourse",
+                "eng": "horse",
                 "kan": "馬",
                 "rom": "uma"
             },
@@ -161,6 +161,70 @@
                 "eng": "father",
                 "kan": "父",
                 "rom": "chichi"
+            }
+        ]
+    },
+    {
+        "jpn-cards-food": [
+            {
+                "id": 41,
+                "eng": "peach",
+                "kan": "もも",
+                "rom": "momo"
+            },
+            {
+                "id": 42,
+                "eng": "banan",
+                "kan": "バナナ",
+                "rom": "banana"
+            },
+            {
+                "id": 43,
+                "eng": "orange",
+                "kan": "オレンジ",
+                "rom": "orenji"
+            },
+            {
+                "id:": 44,
+                "eng": "apple",
+                "kan": "林檎",
+                "rom": "ringo"
+            },
+            {
+                "id:": 45,
+                "eng": "milk",
+                "kan": "ミルク",
+                "rom": "miruku"
+            },
+            {
+                "id:": 46,
+                "eng": "bread",
+                "kan": "パン",
+                "rom": "pan"
+            },
+            {
+                "id:": 47,
+                "eng": "cheese",
+                "kan": "チーズ",
+                "rom": "chīzu"
+            },
+            {
+                "id:": 48,
+                "eng": "beef",
+                "kan": "牛肉",
+                "rom": "gyūniku"
+            },
+            {
+                "id:": 49,
+                "eng": "sushi",
+                "kan": "寿司",
+                "rom": "sushi"
+            },
+            {
+                "id:": 50,
+                "eng": "meal",
+                "kan": "食事",
+                "rom": "shokuji"
             }
         ]
     }

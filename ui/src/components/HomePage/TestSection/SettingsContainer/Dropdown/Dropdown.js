@@ -66,11 +66,11 @@ class Dropdown extends React.Component {
       {
       this.state.showDrop ? (
         <ul className='dropDown'>
-          <li className="elem" onClick={this.handleChange("animals")}>Animals</li>
-          <li className="elem" onClick={this.handleChange("people")}>People</li>
-          <li className="elem" onClick={this.handleChange("school")}>School</li>
-          <li className="elem" onClick={this.handleChange("house")}>House</li>
-          <li className="elem" onClick={this.handleChange("birthday")}>Birthday</li>
+          <li className="elem" onClick={this.handleChange("Animals")}>Animals</li>
+          <li className="elem" onClick={this.handleChange("People")}>People</li>
+          <li className="elem" onClick={this.handleChange("Food")}>Food</li>
+          <li className="elem" onClick={this.handleChange("School")}>School</li>
+          <li className="elem" onClick={this.handleChange("House")}>House</li>
         </ul>
         ) : (
           null
