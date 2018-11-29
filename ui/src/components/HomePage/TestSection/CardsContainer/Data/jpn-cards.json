@@ -3,10 +3,10 @@
     {
         "jpn-cards-animals": [
             {
-            "id": 1,
-            "eng": "cat",
-            "kan": "猫",
-            "rom": "neko"
+                "id": 1,
+                "eng": "cat",
+                "kan": "猫",
+                "rom": "neko"
             },
             {
                 "id": 2,
