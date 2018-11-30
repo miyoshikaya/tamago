@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, } from 'react-router-dom';
 import * as routes from './constants/routes.js';
 import './App.css';
@@ -6,6 +6,7 @@ import './App.css';
 import TamagoBar from './components/StartPage/Title/Tamago-Bar.js';
 import SignUp from './components/StartPage/SignForm/SignUp.js';
 import SignIn from './components/StartPage/SignForm/SignIn.js';
+import PwdReset from './components/StartPage/SignForm/PwdReset.js';
 import Navigation from './Navigation.js';
 
 
@@ -19,9 +20,17 @@ import Settings from './components/HomePage/SettingSection/Settings.js';
 const App = () => 
 <Router>
 	<div className="App">
-		<Route exact path={routes.LANDING} component={SignUp} /> 
 		<Route exact path={routes.LANDING} component={SignIn} />
 		<Route exact path={routes.LANDING} component={TamagoBar} />
+
+		<Route exact path={routes.SIGN_IN} component={SignIn} />
+		<Route exact path={routes.SIGN_IN} component={TamagoBar} />
+
+		<Route exact path={routes.SIGN_UP} component={SignUp} />
+		<Route exact path={routes.SIGN_UP} component={TamagoBar} />
+
+		<Route exact path={routes.PASSWORD_FORGET} component={TamagoBar} />
+		<Route exact path={routes.PASSWORD_FORGET} component={PwdReset} /> 
 
 		<Route exact path={routes.PET} component={Pet} /> 
 		<Route exact path={routes.PET} component={Navigation} />

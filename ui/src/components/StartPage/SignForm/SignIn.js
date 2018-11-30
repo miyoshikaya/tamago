@@ -1,76 +1,90 @@
 import React from 'react';
 import './login-style.css';
+import { Link, withRouter, } from 'react-router-dom';
+import { auth } from '../../../firebase';
+import * as routes from './constants/routes.js';
 
+const SignIn = ({ history }) =>
+	<div>
+		<SignInForm history={history} />
+	</div>
 
-class SignIn extends React.Component {
+const byPropKey = (propertyName, value) => () => ({ 
+	[propertyName]: value, 
+});
+
+const INITIAL_STATE = { 
+	email: '', 
+	password: '', 
+	error: null, 
+};
+
+class SignInForm extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			signInEmail: '',
-			signInPassword: ''
-		}
-	}
-	
-	onEmailChange = (event) => {
-		this.setState({signInEmail: event.target.value})
+		
+		this.state = { ...INITIAL_STATE };
 	}
 
-	onPasswordChange = (event) => {
-		this.setState({signInPassword: event.target.value})
-	}
+onSubmit = (event) => {
+	const { 
+		email, 
+		password, 
+	} = this.state;
 
-	onSubmitSignIn = (event) => {
-		this.props.onRouteChange('home');
-		console.log("click");
-		/*
-		event.preventDefault();
+	const { 
+		history, 
+	} = this.props;
 
-		fetch('http://localhost:3000/signin', {
-			method: 'post',
-			headers: {'Content-Type': 'application/json'},
-			body: JSON.stringify({
-				email: this.state.signInEmail,
-				password: this.state.signInPassword
-			})
-		})
-		.then(response => response.json())
-      	.then(user => {
-        if(user.id){
-          this.props.loadUser(user);
-          this.props.onRouteChange('home');
-        }
-      })*/
-	}
+	auth.doSignInWithEmailAndPassword(email, password) 
+		.then(() => { 
+			this.setState({ ...INITIAL_STATE }); 
+			history.push(routes.PET); }) 
+		.catch(error => { 
+			this.setState(byPropKey('error', error)); 
+		});
 
-	onBackClick = (event) => {
-		event.currentTarget.parentElement.classList.add("inactive-dx");
-		event.currentTarget.parentElement.classList.remove("active-dx");
-		//this.props.backClickChange('back');
-	}
+	event.preventDefault();
+}
+
 
 	render() {
+		const { 
+			email, 
+			password, 
+			error, 
+		} = this.state;
+
+		const isInvalid = password === '' || email === '';
+
 		return (
   		<div className="container">
-			<form className="signIn">
+			<form onSubmit={this.onSubmit} className="signUp">
 				<h3>Welcome<br />Back to<br />
 				Tamagochi !</h3><br />
 				<input
 				type="email" 
+				value={email} 
+				onChange={event => this.setState(byPropKey('email', event.target.value))} 
 				placeholder="Insert email" 
 				autoComplete='off' 
-				required
-				onChange={this.onEmailChange} />
+				required />
 				<input 
 				type="password" 
+				value={password} 
+				onChange={event => this.setState(byPropKey('password', event.target.value))}
 				placeholder="Insert password" 
-				required
-				onChange={this.onPasswordChange} />
-				<button onClick={this.onBackClick} className="form-btn sx back" type="button">Back</button>
-				<button onClick={this.onSubmitSignIn} className="form-btn dx" type="submit">Log In</button>
+				required />
+				<Link to={routes.PASSWORD_FORGET}><p className="p-button" unselectable="on">Forgot your password?</p></Link>
+				<Link to={routes.SIGN_UP}><button className="form-btn sx back" type="button">Sign Up</button></Link>
+				<button className="form-btn dx" type="submit" disabled={isInvalid}>Log In</button>
+
+				{ error && <p>{error.message}</p> } 
 			</form>
 		</div>
   		);
 	}
 }
 
-export default SignIn;
+export default withRouter(SignIn);
+export { SignInForm, };

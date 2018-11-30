@@ -1,92 +1,108 @@
 import React from 'react';
 import './login-style.css';
-import { Link } from 'react-router-dom';
+import { Link, withRouter, } from 'react-router-dom';
+import { auth } from '../../../firebase';
 import * as routes from './constants/routes.js';
  
-class SignUp extends React.Component {
+const SignUp = ({ history }) => 
+	<div className="container">
+		<SignUpForm  history={history} />
+	</div>
+
+const INITIAL_STATE = 
+{ 
+	email: '', 
+	passwordOne: '', 
+	passwordTwo: '', 
+	error: null, 
+};
+
+const byPropKey = (propertyName, value) => () => ({ 
+	[propertyName]: value, 
+});
+
+class SignUpForm extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			name: '',
-			email: '',
-			password: ''
-		}
+
+		this.state = { ...INITIAL_STATE };
 	}
 
+onSubmit = (event) => {
+	const {  
+		email, 
+		passwordOne, 
+	} = this.state;
 
-	onNameChange = (event) => {
-		this.setState({name: event.target.value})
-	}
+	const { 
+		history, 
+	} = this.props;
 
-	onEmailChange = (event) => {
-		this.setState({email: event.target.value})
-	}
-
-	onPasswordChange = (event) => {
-		this.setState({password: event.target.value})
-	}
-
-	onSubmitRegister = (event) => {
-		event.preventDefault();
-
-		fetch('http://localhost:3000/register', {
-			method: 'post',
-			headers: {'Content-Type': 'application/json'},
-			body: JSON.stringify({
-				name: this.state.name,
-				email: this.state.email,
-				password: this.state.password
-			})
+	auth.doCreateUserWithEmailAndPassword(email, passwordOne) 
+		.then(authUser => { 
+			this.setState({ ...INITIAL_STATE }); 
+			history.push(routes.PET);
 		})
-		.then(response => response.json())
-		//.then(response => response.text())
-		//.then(text => console.log(text)) 
-		.then(user => {
-			if(user){
-				this.props.loadUser(user);
-				this.props.onRouteChange('home');
-			}
-		})
-	}
+		.catch(error => { 
+			this.setState(byPropKey('error', error)); 
+		});
 
-	onLoginClick = (event) => {
-		event.currentTarget.parentElement.classList.add("inactive-sx");
-		event.currentTarget.parentElement.classList.remove("active-sx");
-		//this.props.loginClickChange('login');
-		//wysłać do parenta -> przełącz na login
-		//event.currentTarget.parentElement.classList.add("active-dx");
-	}
+	event.preventDefault();
+}
 
-	render() {
-		//const { onRouteChange } = this.props;
-		return (
-		<div className="container">
-			<form className="signUp">
-				<h3>Create Your Account</h3>
-				<p>Just enter your email address<br />
-				and your password for join.
-				</p>
-				<input type="text" 
-				placeholder="Insert name" 
-				required 
-				onChange={this.onNameChange} />
-				<input 
-				className="w100"
-				type="email"
-			    placeholder="Insert email" 
-				required autoComplete='off'
-				onChange={this.onEmailChange} />
-				<input 
-				type="password" 
-				placeholder="Insert password" 
-				required 
-				onChange={this.onPasswordChange} />
-				<button onClick={this.onLoginClick} className="form-btn sx log-in" type="button">Log In</button>
-				<Link to={routes.PET}><button className="form-btn dx" type="submit">Sign Up</button></Link>
-			</form>
-		</div>
+render() { 
+	const { 
+		email, passwordOne, 
+		passwordTwo, 
+		error, 
+	} = this.state;
+
+		const isInvalid = passwordOne !== passwordTwo || passwordOne === '' || email === '';
+
+	return ( 
+		<form className="signUp" onSubmit={this.onSubmit}>
+			<h3>Create Your Account</h3>
+			<p>Just enter your email address<br />
+			and your password for join.
+			</p>
+			<input 
+			className="w100"
+			type="email"
+			value={email}
+			onChange={event => this.setState(byPropKey('email', event.target.value))}
+		    placeholder="Insert email" 
+			required
+			autoComplete='off' />
+			<input 
+			type="password" 
+			value={passwordOne}
+			onChange={event => this.setState(byPropKey('passwordOne', event.target.value))}
+			placeholder="Insert password" 
+			required />
+			<input 
+			type="password" 
+			value={passwordTwo}
+			onChange={event => this.setState(byPropKey('passwordTwo', event.target.value))}
+			placeholder="Repeat password" 
+			required />
+			<Link to={routes.SIGN_IN}><button className="form-btn sx log-in" type="button">Log In</button></Link>
+			<button className="form-btn dx" type="submit" disabled={isInvalid}>Sign Up</button>
+
+			{ error && <p>{error.message}</p> } 
+		</form>
 		);
 	}
 }
 
-export default SignUp;
+const SignUpLink = () => 
+<p> Don't have an account? 
+	{' '} 
+	<Link to={routes.SIGN_UP}>Sign Up</Link>
+</p>
+
+export default withRouter(SignUp);
+
+export { 
+	SignUpForm,
+	SignUpLink, 
+};

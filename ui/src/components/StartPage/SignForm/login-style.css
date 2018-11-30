@@ -29,6 +29,10 @@ p {
     font-size: 12px;
     color: #512d66;
     margin-bottom: 40px;
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
 }
 
 p > span {
@@ -44,6 +48,10 @@ h3 {
     text-transform: uppercase;
     color: rgb(120, 85, 140);
     margin-bottom: 30px;
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
 }
 
 input,
@@ -137,10 +145,15 @@ input {
     width: 100%;
 }
 
+
+.p-button:hover {
+    color: #acacac;
+}
+
 .signIn{
-        z-index: 1;
-        transform: perspective(100px) translate3d(100px, 0px, -30px);
-        opacity: 0.5;
+    z-index: 1;
+    transform: perspective(100px) translate3d(100px, 0px, -30px);
+    opacity: 0.5;
 }
 
 .signUp {
