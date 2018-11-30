@@ -45,7 +45,7 @@ class SignIn extends React.Component {
 	onBackClick = (event) => {
 		event.currentTarget.parentElement.classList.add("inactive-dx");
 		event.currentTarget.parentElement.classList.remove("active-dx");
-		this.props.backClickChange('back');
+		//this.props.backClickChange('back');
 	}
 
 	render() {

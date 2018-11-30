@@ -1,6 +1,7 @@
 import React from 'react';
 import './login-style.css';
-
+import { Link } from 'react-router-dom';
+import * as routes from './constants/routes.js';
  
 class SignUp extends React.Component {
 	constructor(props) {
@@ -51,7 +52,7 @@ class SignUp extends React.Component {
 	onLoginClick = (event) => {
 		event.currentTarget.parentElement.classList.add("inactive-sx");
 		event.currentTarget.parentElement.classList.remove("active-sx");
-		this.props.loginClickChange('login');
+		//this.props.loginClickChange('login');
 		//wysłać do parenta -> przełącz na login
 		//event.currentTarget.parentElement.classList.add("active-dx");
 	}
@@ -81,7 +82,7 @@ class SignUp extends React.Component {
 				required 
 				onChange={this.onPasswordChange} />
 				<button onClick={this.onLoginClick} className="form-btn sx log-in" type="button">Log In</button>
-				<button onClick={this.onSubmitRegister} className="form-btn dx" type="submit">Sign Up</button>
+				<Link to={routes.PET}><button className="form-btn dx" type="submit">Sign Up</button></Link>
 			</form>
 		</div>
 		);
