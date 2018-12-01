@@ -1,11 +1,22 @@
 import React from 'react';
 import './nav-style.css';
 import { Link } from 'react-router-dom';
+import AuthUserContext from './AuthUserContext'; 
 import * as routes from './constants/routes.js';
 import SignOutButton from './components/SingOutButton/SignOutButton.js';
 
 const Navigation = () => {
 	return (
+		<AuthUserContext.Consumer> 
+		{authUser => authUser 
+			? <NavigationAuth /> 
+			: <NavigationNonAuth /> 
+		} 
+		</AuthUserContext.Consumer>
+	);
+}
+
+const NavigationAuth = () =>
 		<nav>
 			<nav className="stroke">
 			    <ul>
@@ -30,7 +41,9 @@ const Navigation = () => {
 			    </ul>
 			  </nav>
 		</nav>
-	);
-}
+
+	const NavigationNonAuth = () =>
+		<div></div>
+
 
 export default Navigation;

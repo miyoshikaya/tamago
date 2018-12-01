@@ -1,0 +1,24 @@
+#countersWrapperCard{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
+}
+
+.two-timers {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding: 20px;
+}
+
+.timer {
+	padding-right: 20px;
+	padding-left: 20px;
+	margin-left: 0px;
+}
+
+.countdown {
+	margin-left: -40px;
+	margin-top: -20px;
+}

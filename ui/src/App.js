@@ -20,6 +20,7 @@ import Settings from './components/HomePage/SettingSection/Settings.js';
 const App = () => 
 	<Router>
 		<div className="App">
+			<Navigation />
 			<Route exact path={routes.LANDING} component={SignIn} />
 			<Route exact path={routes.LANDING} component={TamagoBar} />
 
@@ -33,15 +34,15 @@ const App = () =>
 			<Route exact path={routes.PASSWORD_FORGET} component={PwdReset} /> 
 
 			<Route exact path={routes.PET} component={Pet} /> 
-			<Route exact path={routes.PET} component={Navigation} />
+			{/*<Route exact path={routes.PET} component={Navigation} />*/}
 			<Route exact path={routes.STUDY} component={Tests} />
-			<Route exact path={routes.STUDY} component={Navigation} />
+			{/*<Route exact path={routes.STUDY} component={Navigation} />*/}
 			<Route exact path={routes.QUIZ} component={Quizzes} />
-			<Route exact path={routes.QUIZ} component={Navigation} /> 
+			{/*<Route exact path={routes.QUIZ} component={Navigation} /> */}
 			<Route exact path={routes.PROGRESS} component={Progress} />
-			<Route exact path={routes.PROGRESS} component={Navigation} />
+			{/*<Route exact path={routes.PROGRESS} component={Navigation} />*/}
 			<Route exact path={routes.SETTINGS} component={Settings} /> 
-			<Route exact path={routes.SETTINGS} component={Navigation} />
+			{/*<Route exact path={routes.SETTINGS} component={Navigation} />*/}
 		</div> 
 	</Router>
 
