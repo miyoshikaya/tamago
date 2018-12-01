@@ -1,6 +1,7 @@
 import React from 'react';
 import './settingscard.css';
 import Dropdown from './Dropdown/Dropdown.js';
+import PwdChangeForm from './PwdChange.js';
 
 
 class SettingsCard extends React.Component {
@@ -49,22 +50,7 @@ class SettingsCard extends React.Component {
         </div>
         <div className="half">
           <div id="settingsWrapper">
-            <div className="dropdownWrapper">
-              <div className="dropdown">
-                <div className="dropdownTitle">Old password:</div>
-                <div className="dropdownOption">
-                  <input type="password" placeholder="Insert old password" required className="pwd" />
-                </div>
-              </div>
-            </div>
-            <div className="dropdownWrapper">
-              <div className="dropdown">
-                <div className="dropdownTitle">New password:</div>
-                <div className="dropdownOption">
-                  <input type="password" placeholder="Insert new password" required className="pwd" />
-                </div>
-              </div>
-            </div>
+              <PwdChangeForm />
             <div id="colorPicker">
               <div className="dropdownTitle">Language</div>
               <div id="colorsWrapper">

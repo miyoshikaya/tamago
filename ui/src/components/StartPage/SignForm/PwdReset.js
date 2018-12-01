@@ -57,7 +57,8 @@ onSubmit = (event) => {
 					type="email"
 				    placeholder="Insert email" 
 					required 
-					autoComplete='off' />
+					autoComplete='off'
+					className="pwd" />
 					<Link to={routes.SIGN_IN}><button className="form-btn sx back" type="button">Back</button></Link>
 					<button disabled={isInvalid} className="form-btn dx" type="submit">submit</button>
 

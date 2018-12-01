@@ -66,7 +66,7 @@ render() {
 			and your password for join.
 			</p>
 			<input 
-			className="w100"
+			className="pwd"
 			type="email"
 			value={email}
 			onChange={event => this.setState(byPropKey('email', event.target.value))}
@@ -84,7 +84,8 @@ render() {
 			value={passwordTwo}
 			onChange={event => this.setState(byPropKey('passwordTwo', event.target.value))}
 			placeholder="Repeat password" 
-			required />
+			required
+			className="pwd" />
 			<Link to={routes.SIGN_IN}><button className="form-btn sx log-in" type="button">Log In</button></Link>
 			<button className="form-btn dx" type="submit" disabled={isInvalid}>Sign Up</button>
 

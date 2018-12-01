@@ -68,7 +68,8 @@ onSubmit = (event) => {
 				onChange={event => this.setState(byPropKey('email', event.target.value))} 
 				placeholder="Insert email" 
 				autoComplete='off' 
-				required />
+				required
+				className="pwd" />
 				<input 
 				type="password" 
 				value={password} 
