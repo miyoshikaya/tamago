@@ -53,7 +53,6 @@ onSubmit = (event) => {
 					<input 
 					value={this.state.email}
 					onChange={event => this.setState(byPropKey('email', event.target.value))} 
-					className="w100"
 					type="email"
 				    placeholder="Insert email" 
 					required 
