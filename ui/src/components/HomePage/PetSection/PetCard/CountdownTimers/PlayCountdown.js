@@ -18,7 +18,7 @@ deadPet = () => {
       alive: false,
     },
   )
-  alert('Your pet is dead :(');
+  alert('Your pet is dead :( It dead because of loneliness');
 }
 
 restart = () => {
@@ -27,6 +27,10 @@ restart = () => {
       completions: this.state.completions + 1
     },
   )
+}
+
+componentWillMount(){
+
 }
 
 	render () {
