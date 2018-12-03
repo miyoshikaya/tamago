@@ -4,7 +4,8 @@ import PetPic from './PetPic/PetPic.js';
 import PlayButtons from './PlayButtons/PlayButtons.js';
 import ReactCountdownClock  from 'react-countdown-clock';
 import './petcard.css';
-import FoodCountdown from './CountdownTimers/FoodCountdown.js';
+import PlayCountdown from './CountdownTimers/PlayCountdown.js';
+import FoodCountdown from 'react-countdown-clock';
 
 class PetCard extends React.Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class PetCard extends React.Component {
       musicItems: 5,
       resetCountdown: false,
       countdownTime: 400,
-      countdownPlayPause: false,
+      restartPlay: false,
       timeStamp: Date(Date.now()),
     }
 
@@ -65,10 +66,10 @@ async getItemClick(itemType){
       if(this.state.playItems > 0){
         await this.setState({
           playItems: this.state.playItems - 1,
-          countdownPlayPause: true,
+          restartPlay: true,
         });
         //here countdown timer reset (SEND DATA TO COMPONENT) 
-        console.log(this.state.countdownPlayPause);
+        console.log(this.state.restartPlay);
       }
       else
         alert("You have 0 ⚾!");
@@ -120,20 +121,19 @@ async getItemClick(itemType){
             <div className="timer">
               <p>Time to next playtime:</p>
               <div className="countdown">
-                <FoodCountdown 
-                pause={this.state.countdownPlayPause}/>
+                <PlayCountdown 
+                restart={this.state.restartPlay} />
               </div>
             </div>
             <div className="timer">
               <p>Time to next feeding:</p>
               <div className="countdown">
-                <ReactCountdownClock 
+                <FoodCountdown 
                   seconds={300}
                   color="#ffc423"
                   alpha={0.9}
                   size={100}
-                  /*onComplete={myCallback}*/
-                  paused={this.state.countdownFoodPause} />
+                  /*onComplete={myCallback}*/ />
                 </div>
             </div>
           </div>
