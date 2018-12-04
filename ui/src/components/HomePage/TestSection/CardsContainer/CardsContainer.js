@@ -12,7 +12,7 @@ import { DB_CONFIG } from './Config/Firebase/db_config';
 
 class CardsContainer extends Component {
 
-	constructor(props){
+  constructor(props){
     super(props);
 
     if (!firebase.apps.length){
@@ -64,10 +64,11 @@ class CardsContainer extends Component {
     this.state = {
       cards: [],
       currentCard: {},
-      category: ''
+      category: '',
+      currentSide: 'front',
     }
     
-
+    this.turnCard = this.turnCard.bind(this);
   }
 
 
@@ -110,10 +111,8 @@ class CardsContainer extends Component {
       cards: currentCards,
       currentCard: this.getRandomCard(currentCards)
     })
-    console.log(this.props.cardsCategory);
 
     if (firebase.apps.length){
-      console.log("lala jestem tu");
       switch(this.props.cardsCategory) {
         case 'Animals':
           console.log(this.props.cardsCategory);
@@ -133,11 +132,21 @@ class CardsContainer extends Component {
         }
         this.updateCard = this.updateCard.bind(this);
     }
-
+    console.log(this.state.currentSide);
   }
 
-  turnCard(){
-
+  async turnCard(){
+    if(this.state.currentSide === 'front'){
+      await this.setState({
+        currentSide: 'back',
+      });
+    }
+    else {
+      await this.setState({
+        currentSide: 'front',
+      });
+    }
+    console.log(this.state.currentSide);
   }
 
   render() {
@@ -145,9 +154,10 @@ class CardsContainer extends Component {
       <div className="card-container">
         <div className="cardCol">
           <div className="cardRow">
-            <FlashCard	eng={this.state.currentCard.eng}
-              			kan={this.state.currentCard.kan}
-              			rom={this.state.currentCard.rom} />
+            <FlashCard  eng={this.state.currentCard.eng}
+                    kan={this.state.currentCard.kan}
+                    rom={this.state.currentCard.rom}
+                    side={this.state.currentSide} />
           </div>
           <div className="buttonRow">
             <DrawButton drawCard={this.updateCard}/>

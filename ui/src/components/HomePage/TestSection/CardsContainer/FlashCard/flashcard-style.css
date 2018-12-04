@@ -23,6 +23,11 @@
   transition: all 0.4s ease-in-out;
 }
 
+.back-class {
+  transform: rotateY(180deg);
+  transition: all 0.4s ease-in-out;
+}
+
 .card .front {
   height: 200px;
   width: 400px;

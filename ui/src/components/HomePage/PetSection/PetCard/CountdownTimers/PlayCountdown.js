@@ -18,7 +18,7 @@ deadPet = () => {
       alive: false,
     },
   )
-  alert('Your pet is dead :( It dead because of loneliness');
+  alert('Your pet is dead :( It died because of loneliness');
 }
 
 restart = () => {
@@ -38,7 +38,7 @@ componentWillMount(){
     	<div>
     		<ReactCountdownClock 
                   key={this.state.completions}
-                  seconds={10}
+                  seconds={500}
                   color="#ff3a51"
                   alpha={0.9}
                   size={100}
