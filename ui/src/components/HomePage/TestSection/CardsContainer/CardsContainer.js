@@ -108,7 +108,7 @@ class CardsContainer extends Component {
   async updateCard() {
     const currentCards = this.state.cards;
     const newCards = [];
-    if (this.state.category != this.props.category) {
+    if (this.state.category !== this.props.category) {
       await this.setState({
         cards: currentCards,
         currentCard: this.getRandomCard(currentCards)
@@ -120,7 +120,7 @@ class CardsContainer extends Component {
         case 'Animals':
           console.log(this.props.cardsCategory);
           this.database = firebase.app().database().ref().child("jpn-cards/0/jpn-cards-animals");
-          if (this.state.category != this.props.category) {
+          if (this.state.category !== this.props.category) {
             this.database.on('child_added', snap => {
               newCards.push({
                 id: snap.key,
@@ -142,7 +142,7 @@ class CardsContainer extends Component {
           console.log(this.props.cardsCategory);
           this.database = firebase.app().database().ref().child("jpn-cards/1/jpn-cards-people");
 
-          if (this.state.category != this.props.category) {
+          if (this.state.category !== this.props.category) {
             this.database.on('child_added', snap => {
               newCards.push({
                 id: snap.key,
@@ -163,7 +163,7 @@ class CardsContainer extends Component {
         case 'Food':
           console.log(this.props.cardsCategory);
           this.database = firebase.app().database().ref().child("jpn-cards/2/jpn-cards-food");
-          if (this.state.category != this.props.category) {
+          if (this.state.category !== this.props.category) {
             this.database.on('child_added', snap => {
               newCards.push({
                 id: snap.key,

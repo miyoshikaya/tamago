@@ -18,6 +18,7 @@ import Progress from './components/HomePage/ProgressSection/Progress.js';
 import Settings from './components/HomePage/SettingSection/Settings.js';
 
 const App = () => 
+
 	<Router>
 		<div className="App">
 			<Navigation />
@@ -45,5 +46,6 @@ const App = () =>
 			{/*<Route exact path={routes.SETTINGS} component={Navigation} />*/}
 		</div> 
 	</Router>
+
 
 export default withAuthentication(App);

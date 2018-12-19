@@ -10,7 +10,7 @@ class SettingsCard extends React.Component {
     
     this.state = {
       languageB: 'Jp',
-      languageS: 'Japanese'
+      languageS: 'Japanese',
     }
   }
 
@@ -31,6 +31,7 @@ class SettingsCard extends React.Component {
         languageS: lang
       });
     }
+    this.props.languageChange(lang);
   }
 
   render () {
@@ -44,7 +45,6 @@ class SettingsCard extends React.Component {
           </div>
           <div id="switchWrapper">
             <div id="switchOuter">
-              {/*<div id="switchInner"></div>*/}
             </div>
           </div>
         </div>
