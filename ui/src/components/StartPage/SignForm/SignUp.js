@@ -1,7 +1,7 @@
 import React from 'react';
 import './login-style.css';
 import { Link, withRouter, } from 'react-router-dom';
-import { auth } from '../../../firebase';
+import { auth, db } from '../../../firebase';
 import * as routes from './constants/routes.js';
  
 const SignUp = ({ history }) => 
@@ -40,8 +40,16 @@ onSubmit = (event) => {
 
 	auth.doCreateUserWithEmailAndPassword(email, passwordOne) 
 		.then(authUser => { 
-			this.setState({ ...INITIAL_STATE }); 
-			history.push(routes.PET);
+			// Create a user in your own accessible Firebase Database too 
+			db.doCreateUser(authUser.user.uid, email) 
+			.then(() => { 
+				this.setState(() => ({ ...INITIAL_STATE })); 
+				history.push(routes.PET); 
+			}) 
+			.catch(error => { 
+				this.setState(byPropKey('error', error)); 
+			});
+
 		})
 		.catch(error => { 
 			this.setState(byPropKey('error', error)); 
@@ -50,9 +58,11 @@ onSubmit = (event) => {
 	event.preventDefault();
 }
 
+
 render() { 
 	const { 
-		email, passwordOne, 
+		email, 
+		passwordOne, 
 		passwordTwo, 
 		error, 
 	} = this.state;
@@ -95,15 +105,9 @@ render() {
 	}
 }
 
-const SignUpLink = () => 
-<p> Don't have an account? 
-	{' '} 
-	<Link to={routes.SIGN_UP}>Sign Up</Link>
-</p>
 
 export default withRouter(SignUp);
 
 export { 
-	SignUpForm,
-	SignUpLink, 
+	SignUpForm, 
 };

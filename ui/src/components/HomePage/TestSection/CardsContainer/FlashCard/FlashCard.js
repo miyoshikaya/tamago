@@ -29,7 +29,7 @@ class FlashCard extends React.Component {
         <div className="card-container">
             <div className={frontClass.join(' ')}>
                 <div className="front">
-                    <div className="eng">{this.props.eng} {this.props.side}</div>
+                    <div className="eng">{this.props.eng} {/*this.props.side*/}</div>
                 </div>
                 <div className="front back">
                     <div className="kan">{this.props.kan}</div>

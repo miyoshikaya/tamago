@@ -1,15 +1,17 @@
-.category-choose {
+#category-choose {
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    position: absolute;
+    left: 3%;
+    top: 20%;
 }
 
 .begin-button {
     display: flex;
     justify-content: center;
     position: absolute;
-    left: 6%;
-    top: 60%;
+    left: 15%;
+    top: 80%;
 }
 
 .button{
@@ -72,7 +74,7 @@
 .button-4:before{
     content: "";
     position: absolute;
-    height: 150px;
+    height: 50px;
     background-color: white;
     width: 40px;
     left: -60px;

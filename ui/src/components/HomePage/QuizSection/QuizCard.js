@@ -17,9 +17,6 @@ class QuizCard extends Component {
       answersCount: {
         correct: 0,
         incorrect: 0,
-        Nintendo: 0,
-        Microsoft: 0,
-        Sony: 0
       },
       result: ''
     };
