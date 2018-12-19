@@ -10,9 +10,9 @@ class StudyCard extends React.Component {
     super(props);
 
     this.state = {
-      cardCategory: 'Animals',
+      cardCategory: 'People',
       cardLanguage: 'LANGUAGE',
-      cardStatus: 'Learning'  
+      cardStatus: 'Learning'
     };
 
     this.getCategory = this.getCategory.bind(this);
@@ -21,42 +21,42 @@ class StudyCard extends React.Component {
   }
 
 
-async getCategory(val){
+  async getCategory(val) {
     await this.setState({
       cardCategory: val
     })
-}
+  }
 
-async getLanguage(val){
-  await this.setState({
-    cardLanguage: val
-  })
-}
+  async getLanguage(val) {
+    await this.setState({
+      cardLanguage: val
+    })
+  }
 
-async getStatus(val){
-  await this.setState({
-    cardStatus: val
-  })
-}
+  async getStatus(val) {
+    await this.setState({
+      cardStatus: val
+    })
+  }
 
-  render () {
-    
+  render() {
+
     return (
       <div className="centered-study" id="mainWrap">
-      <div className="half">
-        <div id="lang-title">
-          <CardTitle category={this.state.cardCategory} language={this.state.cardLanguage} status={this.state.cardStatus} />
-          <hr className="hr-class" />
-          <CardsContainer cardsCategory={this.state.cardCategory} />
+        <div className="half">
+          <div id="lang-title">
+            <CardTitle category={this.state.cardCategory} language={this.state.cardLanguage} status={this.state.cardStatus} />
+            <hr className="hr-class" />
+            <CardsContainer cardsCategory={this.state.cardCategory} />
+          </div>
+
         </div>
-        
-      </div>
-      <div className="half purple">
-        <div id="settingsWrapperCard">
+        <div className="half purple">
+          <div id="settingsWrapperCard">
             <SettingsContainer sendCategory={this.getCategory} sendStatus={this.getStatus} />
+          </div>
         </div>
       </div>
-    </div>
     );
   }
 }
