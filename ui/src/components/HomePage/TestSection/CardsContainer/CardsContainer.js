@@ -22,15 +22,15 @@ class CardsContainer extends Component {
       switch (this.props.cardsCategory) {
         case 'Animals':
           console.log(this.props.cardsCategory);
-          this.database = this.app.database().ref().child("jpn-cards/0/jpn-cards-animals");
+          this.database = this.app.database().ref().child("flashcards/1/jpn-cards/0/jpn-cards-animals");
           break;
         case 'People':
           console.log(this.props.cardsCategory);
-          this.database = this.app.database().ref().child("jpn-cards/1/jpn-cards-people");
+          this.database = this.app.database().ref().child("flashcards/1/jpn-cards/1/jpn-cards-people");
           break;
         case 'Food':
           console.log(this.props.cardsCategory);
-          this.database = this.app.database().ref().child("jpn-cards/2/jpn-cards-food");
+          this.database = this.app.database().ref().child("flashcards/1/jpn-cards/2/jpn-cards-food");
           break;
         default:
           console.log("null");
@@ -43,15 +43,15 @@ class CardsContainer extends Component {
       switch (this.props.cardsCategory) {
         case 'Animals':
           console.log(this.props.cardsCategory);
-          this.database = firebase.app().database().ref().child("jpn-cards/0/jpn-cards-animals");
+          this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/0/jpn-cards-animals");
           break;
         case 'People':
           console.log(this.props.cardsCategory);
-          this.database = firebase.app().database().ref().child("jpn-cards/1/jpn-cards-people");
+          this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/1/jpn-cards-people");
           break;
         case 'Food':
           console.log(this.props.cardsCategory);
-          this.database = firebase.app().database().ref().child("jpn-cards/2/jpn-cards-food");
+          this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/2/jpn-cards-food");
           break;
         default:
           console.log("null");
@@ -119,8 +119,8 @@ class CardsContainer extends Component {
       switch (this.props.cardsCategory) {
         case 'Animals':
           console.log(this.props.cardsCategory);
-          this.database = firebase.app().database().ref().child("jpn-cards/0/jpn-cards-animals");
-          if (this.state.category != this.props.category) {
+          this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/0/jpn-cards-animals");
+          if (this.state.category !== this.props.category) {
             this.database.on('child_added', snap => {
               newCards.push({
                 id: snap.key,
@@ -140,7 +140,7 @@ class CardsContainer extends Component {
           break;
         case 'People':
           console.log(this.props.cardsCategory);
-          this.database = firebase.app().database().ref().child("jpn-cards/1/jpn-cards-people");
+          this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/1/jpn-cards-people");
 
           if (this.state.category != this.props.category) {
             this.database.on('child_added', snap => {
@@ -162,8 +162,8 @@ class CardsContainer extends Component {
           break;
         case 'Food':
           console.log(this.props.cardsCategory);
-          this.database = firebase.app().database().ref().child("jpn-cards/2/jpn-cards-food");
-          if (this.state.category != this.props.category) {
+          this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/2/jpn-cards-food");
+          if (this.state.category !== this.props.category) {
             this.database.on('child_added', snap => {
               newCards.push({
                 id: snap.key,
