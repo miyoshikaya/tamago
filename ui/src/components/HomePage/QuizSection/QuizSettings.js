@@ -1,6 +1,6 @@
 import React from 'react';
-import WordStatusCheckbox from './settings-components/WordStatusCheckbox.js';
 import './quizsettings.css';
+import Dropdown from './settings-components/Dropdown.js';
 
 class QuizSettings extends React.Component {
   constructor(props) {
@@ -21,7 +21,6 @@ class QuizSettings extends React.Component {
         this.setState({
           category: cat,
         });
-
         break;
       case 'People':
         this.setState({
@@ -46,7 +45,6 @@ class QuizSettings extends React.Component {
       default:
         break;
     }
-    this.props.sendCategory(this.state.category);
   }
 
   startQuiz() {
@@ -61,11 +59,10 @@ class QuizSettings extends React.Component {
         <div id="category-choose">
 
         </div>
-        <div id="title">Choose words' status!</div>
         <div id="category-choose">
           <Dropdown handleCategoryChange={this.changeCategory} />
           <div className="begin-button">
-            <button className="button button-4" onClick={this.lala}>Begin!</button>
+            <button className="button button-4" onClick={this.startQuiz}>Begin!</button>
           </div>
         </div>
       </div>
