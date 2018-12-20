@@ -33,11 +33,12 @@
   margin-bottom:1vmin;
 }
 .settings-dropdown-title {
-  
+  width: 230px;
   font-size:2vmin;
   color:white;
   font-weight:400;
   margin-bottom:1vmin;
+  margin-left: -15px;
 }
 .statusTitle {
   

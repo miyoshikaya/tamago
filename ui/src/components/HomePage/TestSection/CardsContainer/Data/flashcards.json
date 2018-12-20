@@ -2,21 +2,54 @@
 	"flashcards": [
 	{
 		"krn-cards": [
-			{
+		{
 	        "krn-cards-animals": [
 	            {
 	                "id": 1,
 	                "eng": "cat",
-	                "kan": "猫",
-	                "rom": "neko"
+	                "kan": "고양이",
+	                "rom": "goyang-i"
 	            },
 	            {
 	                "id": 2,
 	                "eng": "dog",
-	                "kan": "犬",
-	                "rom": "inu"
+	                "kan": "개",
+	                "rom": "gae"
 	            }
 	        ]
+		},
+		{
+	        "krn-cards-people": [
+	            {
+	                "id": 21,
+	                "eng": "person",
+	                "kan": "사람",
+	                "rom": "saram"
+	            },
+	            {
+	                "id": 22,
+	                "eng": "child",
+	                "kan": "아이",
+	                "rom": "ai"
+	            }
+	        ]
+		},
+		{
+	        "krn-cards-food": [
+	            {
+	                "id": 1,
+	                "eng": "kimchi",
+	                "kan": "김치",
+	                "rom": "gimchi"
+	            },
+	            {
+	                "id": 2,
+	                "eng": "juice",
+	                "kan": "주스",
+	                "rom": "juseu"
+	            }
+	        ]
+		}
 		]
 	},
 	{

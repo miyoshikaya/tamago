@@ -102,7 +102,7 @@ changeCategory = async (cat) => {
             <hr className="hr-class"/>
             <div className="categoryDropdownWrapper">
               <div className="dropdown">
-                <div className="settings-dropdown-title">Choose category:</div>
+                <div className="settings-dropdown-title">Choose category (and draw a new card):</div>
                 <div className="categoryDropdownOption">
                   <Dropdown handleCategoryChange={this.changeCategory}/>
                 </div>
