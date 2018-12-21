@@ -7,38 +7,13 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/database';
 
-import { DB_CONFIG } from './Config/Firebase/db_config';
-
 
 class CardsContainer extends Component {
 
   constructor(props) {
     super(props);
 
-    if (!firebase.apps.length) {
-
-      this.app = firebase.initializeApp(DB_CONFIG);
-
-      switch (this.props.cardsCategory) {
-        case 'Animals':
-          console.log(this.props.cardsCategory);
-          this.database = this.app.database().ref().child("flashcards/1/jpn-cards/0/jpn-cards-animals");
-          break;
-        case 'People':
-          console.log(this.props.cardsCategory);
-          this.database = this.app.database().ref().child("flashcards/1/jpn-cards/1/jpn-cards-people");
-          break;
-        case 'Food':
-          console.log(this.props.cardsCategory);
-          this.database = this.app.database().ref().child("flashcards/1/jpn-cards/2/jpn-cards-food");
-          break;
-        default:
-          console.log("null");
-          break;
-      }
-      this.updateCard = this.updateCard.bind(this);
-    }
-    else {
+    if (firebase.apps.length) {
       this.app = firebase.app().firestore();
       switch (this.props.cardsCategory) {
         case 'Animals':
@@ -89,8 +64,8 @@ class CardsContainer extends Component {
           currentCard: this.getRandomCard(currentCards),
           category: this.props.cardsCategory
         })
-
       })
+      console.log(this.state.currentCard.kan);
     }
   }
 
@@ -108,7 +83,7 @@ class CardsContainer extends Component {
   async updateCard() {
     const currentCards = this.state.cards;
     const newCards = [];
-    if (this.state.category != this.props.category) {
+    if (this.state.category !== this.props.category) {
       await this.setState({
         cards: currentCards,
         currentCard: this.getRandomCard(currentCards)
@@ -142,7 +117,7 @@ class CardsContainer extends Component {
           console.log(this.props.cardsCategory);
           this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/1/jpn-cards-people");
 
-          if (this.state.category != this.props.category) {
+          if (this.state.category !== this.props.category) {
             this.database.on('child_added', snap => {
               newCards.push({
                 id: snap.key,
