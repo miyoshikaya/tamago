@@ -45,7 +45,6 @@ class QuizCard extends Component {
 
     const questionList = this.state.questions;
 
-    this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/0/jpn-cards-animals");
     this.database.on('child_added', snap => {
       questionList.push({
         id: snap.key,
@@ -63,18 +62,20 @@ class QuizCard extends Component {
       })
       this.shuffleArray(this.state.questions);
 
-      // this.setState({
-      //   questions: questionList,
-      // })
+
+      if (questionList.length > 0) {
+        this.setState({
+          questions: questionList,
+        })
+      }
 
       const optionList = this.state.ansOpt;
 
       console.log(questionList.length);
       for (var index = 0; index < questionList.length; ++index) {
-        console.log(questionList.length);
         var randomIndex = Math.floor(Math.random() * questionList.length);
 
-        var options = [];
+        const options = [];
         options.push({
           type: "incorrect",
           content: questionList[randomIndex].kan,
@@ -91,7 +92,9 @@ class QuizCard extends Component {
           type: "incorrect",
           content: questionList[randomIndex].kan,
         })
-        var rightIndex = Math.floor(Math.random() * questionList.length);
+
+        var rightIndex = Math.floor(Math.random() * options.length);
+        console.log(rightIndex);
         options[rightIndex].type = "correct";
         options[rightIndex].content = questionList[index].kan;
 
@@ -100,14 +103,14 @@ class QuizCard extends Component {
           rightAnswer: rightIndex,
         })
       }
-      /*
-      this.setState({
+      if (questionList.length > 0) {
+        this.setState({
 
-        ansOpt: optionList,
-        currentAnswers: optionList[0].answers,
-        currQuestion: 'Which word means lel in Japanese?',
-      });
-      */
+          ansOpt: optionList,
+          currentAnswers: optionList[0].answers,
+          currQuestion: 'Which word means lel in Japanese?',
+        });
+      }
     }
   }
 
@@ -159,8 +162,8 @@ class QuizCard extends Component {
       counter: counter,
       questionId: questionId,
       question: quizQuestions[counter].question,
-      currQuestion: 'Which word means ' + this.questionList[counter].eng + ' in Japanese?',
-      currentAnswers: this.ansOpt[counter],
+      currQuestion: 'Which word means ' + this.state.questions[counter].eng + ' in Japanese?',
+      currentAnswers: this.state.ansOpt[counter].answers,
       answerOptions: quizQuestions[counter].answers,
       answer: ''
     });
@@ -191,19 +194,20 @@ class QuizCard extends Component {
   renderQuiz() {
     return (
       <div>
-      {console.log(this.props.category)}
-      <Quiz
-        answer={this.state.answer}
-        currentAnswers={this.state.currentAnswers}
-        answerOptions={this.state.answerOptions}
-        questionId={this.state.questionId}
-        question={this.state.question}
-        questionTotal={quizQuestions.length}
-        onAnswerSelected={this.handleAnswerSelected}
-        questions={this.state.questions}
-        ansOpt={this.state.ansOpt}
-        currQuestion={this.state.currQuestion}
-      />
+        {console.log(this.props.category)}
+        <Quiz
+          answer={this.state.answer}
+          currentAnswers={this.state.currentAnswers}
+          answerOptions={this.state.answerOptions}
+          questionId={this.state.questionId}
+          question={this.state.question}
+          questionTotal={quizQuestions.length}
+          onAnswerSelected={this.handleAnswerSelected}
+          questions={this.state.questions}
+          ansOpt={this.state.ansOpt}
+          currQuestion={this.state.currQuestion}
+          getQuestion={this.getQuestion}
+        />
       </div>
     );
   }

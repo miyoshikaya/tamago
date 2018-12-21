@@ -65,7 +65,6 @@ class CardsContainer extends Component {
           category: this.props.cardsCategory
         })
       })
-      console.log(this.state.currentCard.kan);
     }
   }
 
@@ -83,7 +82,7 @@ class CardsContainer extends Component {
   async updateCard() {
     const currentCards = this.state.cards;
     const newCards = [];
-    if (this.state.category !== this.props.category) {
+    if (this.state.category === this.props.category) {
       await this.setState({
         cards: currentCards,
         currentCard: this.getRandomCard(currentCards)
