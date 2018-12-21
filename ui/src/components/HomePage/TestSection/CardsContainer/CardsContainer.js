@@ -19,6 +19,7 @@ class CardsContainer extends Component {
 
       this.app = firebase.initializeApp(DB_CONFIG);
 
+
       if(this.state.language === 'Korean'){
 
         switch (this.props.cardsCategory) {
@@ -38,6 +39,23 @@ class CardsContainer extends Component {
             console.log("null");
             break;
         }
+
+      switch (this.props.cardsCategory) {
+        case 'Animals':
+          console.log(this.props.cardsCategory);
+          this.database = this.app.database().ref().child("flashcards/1/jpn-cards/0/jpn-cards-animals");
+          break;
+        case 'People':
+          console.log(this.props.cardsCategory);
+          this.database = this.app.database().ref().child("flashcards/1/jpn-cards/1/jpn-cards-people");
+          break;
+        case 'Food':
+          console.log(this.props.cardsCategory);
+          this.database = this.app.database().ref().child("flashcards/1/jpn-cards/2/jpn-cards-food");
+          break;
+        default:
+          console.log("null");
+          break;
       }
 
       this.updateCard = this.updateCard.bind(this);
@@ -47,6 +65,7 @@ class CardsContainer extends Component {
       switch (this.props.cardsCategory) {
         case 'Animals':
           console.log(this.props.cardsCategory);
+
           this.database = firebase.app().database().ref().child("flashcards/0/krn-cards/0/krn-cards-animals");
           break;
         case 'People':
@@ -56,7 +75,10 @@ class CardsContainer extends Component {
         case 'Food':
           console.log(this.props.cardsCategory);
           this.database = firebase.app().database().ref().child("flashcards/0/krn-cards/2/krn-cards-food");
+
+          this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/0/jpn-cards-animals");
           break;
+        
         default:
           console.log("null");
           break;
@@ -76,7 +98,7 @@ class CardsContainer extends Component {
     this.turnCard = this.turnCard.bind(this);
   }
 
-
+}
 
   componentWillMount() {
     const currentCards = this.state.cards;
@@ -124,7 +146,11 @@ class CardsContainer extends Component {
       switch (this.props.cardsCategory) {
         case 'Animals':
           console.log(this.props.cardsCategory);
+
           this.database = firebase.app().database().ref().child("flashcards/0/krn-cards/0/krn-cards-animals");
+
+          this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/0/jpn-cards-animals");
+
           if (this.state.category !== this.props.category) {
             this.database.on('child_added', snap => {
               newCards.push({
@@ -145,7 +171,11 @@ class CardsContainer extends Component {
           break;
         case 'People':
           console.log(this.props.cardsCategory);
+
           this.database = firebase.app().database().ref().child("flashcards/0/krn-cards/1/krn-cards-people");
+
+          this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/1/jpn-cards-people");
+
 
           if (this.state.category !== this.props.category) {
             this.database.on('child_added', snap => {
@@ -167,7 +197,11 @@ class CardsContainer extends Component {
           break;
         case 'Food':
           console.log(this.props.cardsCategory);
+
           this.database = firebase.app().database().ref().child("flashcards/0/krn-cards/2/krn-cards-food");
+
+          this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/2/jpn-cards-food");
+
           if (this.state.category !== this.props.category) {
             this.database.on('child_added', snap => {
               newCards.push({
