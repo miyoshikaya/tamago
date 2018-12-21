@@ -73,24 +73,35 @@ class QuizCard extends Component {
 
       console.log(questionList.length);
       for (var index = 0; index < questionList.length; ++index) {
-        var randomIndex = Math.floor(Math.random() * questionList.length);
+        var firstIndex = Math.floor(Math.random() * questionList.length);
 
+        while (firstIndex === index) {
+          firstIndex = Math.floor(Math.random() * questionList.length);
+        }
         const options = [];
         options.push({
           type: "incorrect",
-          content: questionList[randomIndex].kan,
+          content: questionList[firstIndex].kan,
         })
 
-        randomIndex = Math.floor(Math.random() * questionList.length);
+        var secondIndex = Math.floor(Math.random() * questionList.length);
+
+        while (secondIndex === index || secondIndex === firstIndex) {
+          secondIndex = Math.floor(Math.random() * questionList.length);
+        }
         options.push({
           type: "incorrect",
-          content: questionList[randomIndex].kan,
+          content: questionList[secondIndex].kan,
         })
 
-        randomIndex = Math.floor(Math.random() * questionList.length);
+        var thirdIndex = Math.floor(Math.random() * questionList.length);
+
+        while (thirdIndex === index || thirdIndex === firstIndex || thirdIndex === secondIndex) {
+          thirdIndex = Math.floor(Math.random() * questionList.length);
+        }
         options.push({
           type: "incorrect",
-          content: questionList[randomIndex].kan,
+          content: questionList[thirdIndex].kan,
         })
 
         var rightIndex = Math.floor(Math.random() * options.length);
@@ -108,7 +119,7 @@ class QuizCard extends Component {
 
           ansOpt: optionList,
           currentAnswers: optionList[0].answers,
-          currQuestion: 'Which word means lel in Japanese?',
+          currQuestion: 'Which word means ' + this.state.questions[0].eng + ' in Japanese ? ',
         });
       }
     }
