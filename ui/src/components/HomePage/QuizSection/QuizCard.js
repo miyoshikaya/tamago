@@ -114,7 +114,7 @@ class QuizCard extends Component {
   renderQuiz() {
     return (
       <div>
-      {console.log(this.props.category)}
+      {/*console.log(this.props.category)*/}
       <Quiz
         answer={this.state.answer}
         answerOptions={this.state.answerOptions}
