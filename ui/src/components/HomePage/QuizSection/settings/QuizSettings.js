@@ -48,8 +48,9 @@ class QuizSettings extends React.Component {
   }
 
   startQuiz () {
-    console.log(this.state.category);
+    //console.log(this.state.category);
     //pop the info to the quiz component -> to generate new quiz
+    this.props.changeCat(this.state.category);
   }
 
   render () {

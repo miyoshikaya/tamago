@@ -1,19 +1,14 @@
 import React from 'react';
-import QuizCard from './QuizCard.js';
-import QuizSettings from './QuizSettings.js';
+import QuizContainer from './QuizContainer.js';
 import './quizzes.css';
 
-const Quizzes = ({ onRouteChange }) => {
+
+
+const Quizzes = () => {
 	return (
-		<div className="centered" id="main-Container">
-	        <div className="half purple">
-	        	<QuizSettings />
-	        </div> 
-	        <div className="other-half">
-	        	<hr />
-	        	<QuizCard />
-	        </div>
-        </div>
+		<div>
+			<QuizContainer />
+		</div>	
 	);
 }
 

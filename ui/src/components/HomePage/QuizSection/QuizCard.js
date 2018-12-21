@@ -18,7 +18,8 @@ class QuizCard extends Component {
         correct: 0,
         incorrect: 0,
       },
-      result: ''
+      result: '',
+      category: 'animals',
     };
 
     this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
