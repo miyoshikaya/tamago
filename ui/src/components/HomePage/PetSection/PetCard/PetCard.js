@@ -112,7 +112,6 @@ async getItemClick(itemType){
     default:
       break;
   }
-
 }
 
 plox(){

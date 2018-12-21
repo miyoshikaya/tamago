@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './quizcard.css';
-import quizQuestions from './api/quizQuestions.js';
+//import quizQuestions from './api/quizQuestions.js';
 import Quiz from './components/Quiz.js';
 import Result from './components/Result.js';
 import firebase from 'firebase/app';
@@ -188,21 +188,20 @@ class QuizCard extends Component {
     var resultPercentage = answersCount.correct / questionsTotal;
     var resultString = resultPercentage * 100.0 + '%';
 
+    if(resultPercentage * 100.0 < 50){
+      resultString = resultString + '. Score 70% an above to get stuff for your pet.';
+    }
+
     return resultString;
   }
 
   setResults(result) {
     this.setState({
-      result: result
-    })
-    // if (result.length === 1) {
-    //   this.setState({ result: result[0] });
-    // } else {
-    //   this.setState({ result: '50% correct. Score 70% an above to get stuff for your pet' });
-    // }
-    this.setState({
+      result: result,
       quizDone: true,
-    })
+    });
+
+
     this.props.quizComplete(this.state.quizDone);
   }
 
