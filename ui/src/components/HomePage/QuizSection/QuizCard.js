@@ -25,6 +25,7 @@ class QuizCard extends Component {
       currentAnswers: [],
       currQuestion: 'Which word means lel in Japanese?',
       question: '',
+      questionTotal: 10,
       answerOptions: [],
       answer: '',
       answersCount: {
@@ -148,7 +149,7 @@ class QuizCard extends Component {
   handleAnswerSelected(event) {
     this.setUserAnswer(event.currentTarget.value);
 
-    if (this.state.questionId < quizQuestions.length) {
+    if (this.state.questionId < this.state.questionTotal) {
       setTimeout(() => this.setNextQuestion(), 300);
     } else {
       setTimeout(() => this.setResults(this.getResults()), 300);
@@ -172,10 +173,8 @@ class QuizCard extends Component {
     this.setState({
       counter: counter,
       questionId: questionId,
-      question: quizQuestions[counter].question,
       currQuestion: 'Which word means ' + this.state.questions[counter].eng + ' in Japanese?',
       currentAnswers: this.state.ansOpt[counter].answers,
-      answerOptions: quizQuestions[counter].answers,
       answer: ''
     });
   }
@@ -183,19 +182,24 @@ class QuizCard extends Component {
   getResults() {
     //tutaj zedytować tak, żeby dostać % poprawnych odpowiedzi
     const answersCount = this.state.answersCount;
-    const answersCountKeys = Object.keys(answersCount);
-    const answersCountValues = answersCountKeys.map(key => answersCount[key]);
-    const maxAnswerCount = Math.max.apply(null, answersCountValues);
+    const questionsTotal = this.state.questionTotal;
+    console.log(answersCount.correct);
+    console.log(answersCount.incorrect);
+    var resultPercentage = answersCount.correct / questionsTotal;
+    var resultString = resultPercentage * 100.0 + '%';
 
-    return answersCountKeys.filter(key => answersCount[key] === maxAnswerCount);
+    return resultString;
   }
 
   setResults(result) {
-    if (result.length === 1) {
-      this.setState({ result: result[0] });
-    } else {
-      this.setState({ result: '50% correct. Score 70% an above to get stuff for your pet' });
-    }
+    this.setState({
+      result: result
+    })
+    // if (result.length === 1) {
+    //   this.setState({ result: result[0] });
+    // } else {
+    //   this.setState({ result: '50% correct. Score 70% an above to get stuff for your pet' });
+    // }
     this.setState({
       quizDone: true,
     })
@@ -212,7 +216,7 @@ class QuizCard extends Component {
           answerOptions={this.state.answerOptions}
           questionId={this.state.questionId}
           question={this.state.question}
-          questionTotal={quizQuestions.length}
+          questionTotal={this.state.questionTotal}
           onAnswerSelected={this.handleAnswerSelected}
           questions={this.state.questions}
           ansOpt={this.state.ansOpt}
