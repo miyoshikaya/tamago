@@ -5,7 +5,8 @@ import PlayButtons from './PlayButtons/PlayButtons.js';
 import ReactCountdownClock  from 'react-countdown-clock';
 import './petcard.css';
 import PlayCountdown from './CountdownTimers/PlayCountdown.js';
-import FoodCountdown from 'react-countdown-clock';
+
+import FoodTimer from './CountdownTimers/FoodTimer.js';
 
 class PetCard extends React.Component {
   constructor(props) {
@@ -20,10 +21,12 @@ class PetCard extends React.Component {
       resetCountdown: false,
       countdownTime: 400,
       restartPlay: false,
+      restartFood: false,
       timeStamp: Date(Date.now()),
     }
 
     this.getItemClick = this.getItemClick.bind(this);  
+    this.plox = this.plox.bind(this);
   }
 
   componentWillMount(){
@@ -78,7 +81,8 @@ async getItemClick(itemType){
     case 'food':
       if(this.state.foodItems > 0){
         await this.setState({
-          foodItems: this.state.foodItems - 1,  
+          foodItems: this.state.foodItems - 1,
+          restartFood: true, 
         });
       }
       else
@@ -108,6 +112,13 @@ async getItemClick(itemType){
     default:
       break;
   }
+
+}
+
+plox(){
+  this.setState({
+    restartFood: false,
+  });
 }
 
 
@@ -119,6 +130,7 @@ async getItemClick(itemType){
         <div id="countersWrapperCard">
           <div className="two-timers">
             <div className="timer">
+
               <p>Time to next playtime:</p>
               <div className="countdown">
                 <PlayCountdown 
@@ -128,13 +140,8 @@ async getItemClick(itemType){
             <div className="timer">
               <p>Time to next feeding:</p>
               <div className="countdown">
-                <FoodCountdown 
-                  seconds={300}
-                  color="#ffc423"
-                  alpha={0.9}
-                  size={100}
-                  /*onComplete={myCallback}*/ />
-                </div>
+                <FoodTimer restart={this.state.restartFood} pls={this.plox}/>
+              </div>
             </div>
           </div>
           <div className="two-timers">

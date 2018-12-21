@@ -6,54 +6,13 @@ import Result from './components/Result.js';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/database';
-import { DB_CONFIG } from './Config/Firebase/db_config';
 
 class QuizCard extends Component {
   constructor(props) {
     super(props);
 
-    if (!firebase.apps.length) {
-
-      this.app = firebase.initializeApp(DB_CONFIG);
-
-      // switch (this.props.cardsCategory) {
-      //   case 'Animals':
-      //     console.log(this.props.cardsCategory);
-      //     this.database = this.app.database().ref().child("flashcards/1/jpn-cards/0/jpn-cards-animals");
-      //     break;
-      //   case 'People':
-      //     console.log(this.props.cardsCategory);
-      //     this.database = this.app.database().ref().child("flashcards/1/jpn-cards/1/jpn-cards-people");
-      //     break;
-      //   case 'Food':
-      //     console.log(this.props.cardsCategory);
-      //     this.database = this.app.database().ref().child("flashcards/1/jpn-cards/2/jpn-cards-food");
-      //     break;
-      //   default:
-      //     console.log("null");
-      //     break;
-      // }
-      this.database = this.app.database().ref().child("flashcards/1/jpn-cards/0/jpn-cards-animals");
-    }
-    else {
+    if (firebase.apps.length) {
       this.app = firebase.app().firestore();
-      // switch (this.props.cardsCategory) {
-      //   case 'Animals':
-      //     console.log(this.props.cardsCategory);
-      //     this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/0/jpn-cards-animals");
-      //     break;
-      //   case 'People':
-      //     console.log(this.props.cardsCategory);
-      //     this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/1/jpn-cards-people");
-      //     break;
-      //   case 'Food':
-      //     console.log(this.props.cardsCategory);
-      //     this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/2/jpn-cards-food");
-      //     break;
-      //   default:
-      //     console.log("null");
-      //     break;
-      // }
       this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/0/jpn-cards-animals");
     }
 
@@ -99,19 +58,10 @@ class QuizCard extends Component {
 
     if (firebase.apps.length) {
 
-
       this.setState({
         questions: questionList,
       })
       this.shuffleArray(this.state.questions);
-      // this.database.on('child_added', snap => {
-      //   questionList.push({
-      //     id: snap.key,
-      //     eng: snap.val().eng,
-      //     kan: snap.val().kan,
-      //     rom: snap.val().rom
-      //   })
-      // })
 
       // this.setState({
       //   questions: questionList,
@@ -150,12 +100,14 @@ class QuizCard extends Component {
           rightAnswer: rightIndex,
         })
       }
+      /*
       this.setState({
 
         ansOpt: optionList,
         currentAnswers: optionList[0].answers,
         currQuestion: 'Which word means lel in Japanese?',
       });
+      */
     }
   }
 
@@ -239,7 +191,7 @@ class QuizCard extends Component {
   renderQuiz() {
     return (
       <div>
-      {/*console.log(this.props.category)*/}
+      {console.log(this.props.category)}
       <Quiz
         answer={this.state.answer}
         currentAnswers={this.state.currentAnswers}
@@ -264,7 +216,6 @@ class QuizCard extends Component {
     return (
       <div>
         {this.state.result ? this.renderResult() : this.renderQuiz()}
-        }
       </div>
     );
   }
