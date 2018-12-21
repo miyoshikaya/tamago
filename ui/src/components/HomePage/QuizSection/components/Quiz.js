@@ -6,6 +6,10 @@ import QuestionCount from '../components/QuestionCount';
 import AnswerOption from '../components/AnswerOption';
 
 function Quiz(props) {
+  if (props.currentAnswers.length === 0) {
+    props.loadDatabase();
+  }
+
   function renderAnswerOptions(key) {
     return (
       <AnswerOption
@@ -46,7 +50,9 @@ Quiz.propTypes = {
   currQuestion: PropTypes.string.isRequired,
   questionId: PropTypes.number.isRequired,
   questionTotal: PropTypes.number.isRequired,
-  onAnswerSelected: PropTypes.func.isRequired
+  onAnswerSelected: PropTypes.func.isRequired,
+  loadDatabase: PropTypes.func.isRequired,
+
 };
 
 export default Quiz;

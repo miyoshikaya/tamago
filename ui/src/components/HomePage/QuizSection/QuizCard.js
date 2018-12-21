@@ -23,7 +23,7 @@ class QuizCard extends Component {
       questions: [],
       ansOpt: [],
       currentAnswers: [],
-      currQuestion: 'Which word means lel in Japanese?',
+      currQuestion: '',
       question: '',
       questionTotal: 10,
       answerOptions: [],
@@ -38,12 +38,10 @@ class QuizCard extends Component {
     };
 
     this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
+    this.loadDatabase = this.loadDatabase.bind(this);
   }
 
-
-
-  componentWillMount() {
-
+  loadDatabase() {
     const questionList = this.state.questions;
 
     this.database.on('child_added', snap => {
@@ -58,17 +56,12 @@ class QuizCard extends Component {
 
     if (firebase.apps.length) {
 
-      this.setState({
-        questions: questionList,
-      })
-      this.shuffleArray(this.state.questions);
-
-
       if (questionList.length > 0) {
         this.setState({
           questions: questionList,
         })
       }
+      this.shuffleArray(this.state.questions);
 
       const optionList = this.state.ansOpt;
 
@@ -124,6 +117,11 @@ class QuizCard extends Component {
         });
       }
     }
+  }
+
+  componentWillMount() {
+
+
   }
 
   shuffleArray(array) {
@@ -183,8 +181,6 @@ class QuizCard extends Component {
     //tutaj zedytować tak, żeby dostać % poprawnych odpowiedzi
     const answersCount = this.state.answersCount;
     const questionsTotal = this.state.questionTotal;
-    console.log(answersCount.correct);
-    console.log(answersCount.incorrect);
     var resultPercentage = answersCount.correct / questionsTotal;
     var resultString = resultPercentage * 100.0 + '%';
 
@@ -218,6 +214,7 @@ class QuizCard extends Component {
           question={this.state.question}
           questionTotal={this.state.questionTotal}
           onAnswerSelected={this.handleAnswerSelected}
+          loadDatabase={this.loadDatabase}
           questions={this.state.questions}
           ansOpt={this.state.ansOpt}
           currQuestion={this.state.currQuestion}
