@@ -1,23 +1,60 @@
 import React, { Component } from 'react';
 import QuizCard from './QuizCard.js';
 import QuizSettings from './settings/QuizSettings.js';
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css' 
 
 class QuizContainer extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-    	category: '',
+    	category: 'animals',
+    	quizComplete: false,
     }
 
     this.receiveCategory = this.receiveCategory.bind(this);
    }
 
 receiveCategory = (cat) => {
+	//check if the quiz is complete
+	if(!this.state.quizComplete){
+		confirmAlert({
+        title: 'Confirm to submit',
+        message: 'Are you sure you want to restart the quiz? You will lose all progress.',
+        buttons: [
+          {
+            label: 'Yes',
+            onClick: () => {
+            	this.setState({
+			   		category: cat,
+			   	});
+			   	console.log('new quiz starting');
+            }
+          },
+          {
+            label: 'No'
+            //nothing -> continue with the quiz
+          }
+        ]
+      })
+	}
+	else {
+		//wygenerowanie nowego quizu
+
+		this.setState({
+			quizComplete: false,
+		});
+		console.log('new quiz starting');
+	}
+	
+}
+
+getQuizComplete = (completion) => {
 	this.setState({
-   		category: cat,
-   	});
-   	console.log(this.state.category);
+		quizComplete: completion,
+	});
+	console.log(completion);
 }
 
 	render() {
@@ -28,7 +65,7 @@ receiveCategory = (cat) => {
 		        </div> 
 		        <div className="other-half">
 		        	<hr />
-		        	<QuizCard category={this.state.category} />
+		        	<QuizCard category={this.state.category} quizComplete={this.getQuizComplete} />
 		        </div>
 	        </div>
 	    );

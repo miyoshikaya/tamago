@@ -19,7 +19,8 @@ class QuizCard extends Component {
         incorrect: 0,
       },
       result: '',
-      category: 'animals',
+      category: this.props.category,
+      quizDone: false,
     };
 
     this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
@@ -104,10 +105,16 @@ class QuizCard extends Component {
     } else {
       this.setState({ result: '50% correct. Score 70% an above to get stuff for your pet' });
     }
+    this.setState({
+      quizDone: true,
+    })
+    this.props.quizComplete(this.state.quizDone);
   }
 
   renderQuiz() {
     return (
+      <div>
+      {console.log(this.props.category)}
       <Quiz
         answer={this.state.answer}
         answerOptions={this.state.answerOptions}
@@ -116,6 +123,7 @@ class QuizCard extends Component {
         questionTotal={quizQuestions.length}
         onAnswerSelected={this.handleAnswerSelected}
       />
+      </div>
     );
   }
 
@@ -127,6 +135,7 @@ class QuizCard extends Component {
     return (
       <div>
         {this.state.result ? this.renderResult() : this.renderQuiz()}
+        }
       </div>
     );
   }

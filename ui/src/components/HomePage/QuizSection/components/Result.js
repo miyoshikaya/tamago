@@ -13,7 +13,7 @@ function Result(props) {
       transitionAppear
       transitionAppearTimeout={500}
     >
-      <div class="quiz-result">
+      <div className="quiz-result">
         <h3>You got {props.quizResult}</h3>
       </div>
     </CSSTransitionGroup>
