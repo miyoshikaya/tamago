@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './quizcard.css';
-//import quizQuestions from './api/quizQuestions.js';
-import Quiz from './components/Quiz.js';
-import Result from './components/Result.js';
+import Quiz from './../components/Quiz.js';
+import Result from './../components/Result.js';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/database';

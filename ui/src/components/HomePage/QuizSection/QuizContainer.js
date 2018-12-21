@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import QuizCard from './QuizCard.js';
+//import QuizCard from './QuizCard.js';
+import QuizCard from './QuizCard/QuizCard.js';
 import QuizSettings from './settings/QuizSettings.js';
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css' 
