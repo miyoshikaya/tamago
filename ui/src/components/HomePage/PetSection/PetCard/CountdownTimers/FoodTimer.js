@@ -5,7 +5,7 @@ class FoodTimer extends React.Component {
     super(props);
     this.state = { 
       time: {}, 
-      seconds: 3599,
+      seconds: 5,
       restart: false,
       };
     this.timer = 0;
@@ -13,6 +13,7 @@ class FoodTimer extends React.Component {
     this.countDown = this.countDown.bind(this);
     this.restartTimer = this.restartTimer.bind(this);
   }
+
 
   secondsToTime(secs){
     let hours = Math.floor(secs / (60 * 60));
@@ -40,7 +41,7 @@ class FoodTimer extends React.Component {
   startTimer() {
     if (this.timer === 0 && this.state.seconds > 0) {
       this.setState({
-        seconds: 3599,
+        seconds: 5,
       });
       this.timer = setInterval(this.countDown, 1000);      
     }
@@ -71,11 +72,12 @@ class FoodTimer extends React.Component {
       // Check if we're at zero.
       if (seconds === 0) { 
         clearInterval(this.timer);
+        this.props.petDied('hunger');
         //PET DEAD
       }
     }
     else {
-      let seconds = 3599;
+      let seconds = 5;
       this.setState({
         restart: false,
         time: this.secondsToTime(seconds),

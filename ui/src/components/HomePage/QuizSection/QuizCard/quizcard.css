@@ -1,5 +1,4 @@
 
-
 /* Result Component */
 .result {
   margin-left: 70px;
@@ -34,6 +33,7 @@
 .answerOption {
   border-top: 1px solid #eee;
   color: #a3a3a3;
+  font-size: 5px;
 }
 
 .answerOption:hover {

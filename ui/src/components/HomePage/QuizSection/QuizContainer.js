@@ -10,16 +10,19 @@ class QuizContainer extends Component {
     super(props);
 
     this.state = {
-    	category: 'animals',
-    	quizComplete: false,
+    	category: 'People',
+    	quizCompleted: false,
+    	startNewQuiz: true,
     }
 
     this.receiveCategory = this.receiveCategory.bind(this);
    }
 
 receiveCategory = (cat) => {
+	console.log(cat);
+
 	//check if the quiz is complete
-	if(!this.state.quizComplete){
+	if(!this.state.quizCompleted){
 		confirmAlert({
         title: 'Confirm to submit',
         message: 'Are you sure you want to restart the quiz? You will lose all progress.',
@@ -29,6 +32,7 @@ receiveCategory = (cat) => {
             onClick: () => {
             	this.setState({
 			   		category: cat,
+			   		startNewQuiz: true,
 			   	});
 			   	console.log('new quiz starting');
             }
@@ -44,7 +48,8 @@ receiveCategory = (cat) => {
 		//wygenerowanie nowego quizu
 
 		this.setState({
-			quizComplete: false,
+			quizCompleted: false,
+			startNewQuiz: true,
 		});
 		console.log('new quiz starting');
 	}
@@ -53,7 +58,7 @@ receiveCategory = (cat) => {
 
 getQuizComplete = (completion) => {
 	this.setState({
-		quizComplete: completion,
+		quizCompleted: completion,
 	});
 	console.log(completion);
 }
@@ -66,7 +71,11 @@ getQuizComplete = (completion) => {
 		        </div> 
 		        <div className="other-half">
 		        	<hr />
-		        	<QuizCard category={this.state.category} quizComplete={this.getQuizComplete} />
+		        	<QuizCard 
+		        		category={this.state.category} 
+		        		quizComplete={this.getQuizComplete} 
+		        		completed={this.state.quizCompleted}
+		        		startNew={this.state.startNewQuiz} />
 		        </div>
 	        </div>
 	    );

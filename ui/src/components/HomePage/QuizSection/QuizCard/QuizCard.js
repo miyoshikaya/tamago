@@ -11,10 +11,8 @@ class QuizCard extends Component {
     super(props);
 
     if (firebase.apps.length) {
-      this.app = firebase.app().firestore();
-      this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/0/jpn-cards-animals");
+      this.app = firebase.app().firestore(); 
     }
-
 
     this.state = {
       counter: 0,
@@ -41,6 +39,22 @@ class QuizCard extends Component {
   }
 
   loadDatabase() {
+    console.log('quiz completion: ' + this.state.quizDone);
+
+    switch(this.props.category){
+      case 'Animals':
+        this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/0/jpn-cards-animals");
+        break;
+      case 'People':
+        this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/1/jpn-cards-people");
+        break;
+      case 'Food':
+        this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/2/jpn-cards-food");
+        break;
+      default:
+        break;
+    }
+
     const questionList = this.state.questions;
 
     this.database.on('child_added', snap => {
@@ -64,7 +78,6 @@ class QuizCard extends Component {
 
       const optionList = this.state.ansOpt;
 
-      console.log(questionList.length);
       for (var index = 0; index < questionList.length; ++index) {
         var firstIndex = Math.floor(Math.random() * questionList.length);
 
@@ -98,7 +111,7 @@ class QuizCard extends Component {
         })
 
         var rightIndex = Math.floor(Math.random() * options.length);
-        console.log(rightIndex);
+        //console.log(rightIndex);
         options[rightIndex].type = "correct";
         options[rightIndex].content = questionList[index].kan;
 
@@ -143,6 +156,16 @@ class QuizCard extends Component {
     return array;
   }
 
+setUserAnswer(answer) {
+    this.setState((state, props) => ({
+      answersCount: {
+        ...state.answersCount,
+        [answer]: state.answersCount[answer] + 1
+      },
+      answer: answer
+    }));
+  }
+
   handleAnswerSelected(event) {
     this.setUserAnswer(event.currentTarget.value);
 
@@ -152,16 +175,7 @@ class QuizCard extends Component {
       setTimeout(() => this.setResults(this.getResults()), 300);
     }
   }
-
-  setUserAnswer(answer) {
-    this.setState((state, props) => ({
-      answersCount: {
-        ...state.answersCount,
-        [answer]: state.answersCount[answer] + 1
-      },
-      answer: answer
-    }));
-  }
+ 
 
   setNextQuestion() {
     const counter = this.state.counter + 1;
@@ -177,7 +191,6 @@ class QuizCard extends Component {
   }
 
   getResults() {
-    //tutaj zedytować tak, żeby dostać % poprawnych odpowiedzi
     const answersCount = this.state.answersCount;
     const questionsTotal = this.state.questionTotal;
     var resultPercentage = answersCount.correct / questionsTotal;
@@ -186,7 +199,6 @@ class QuizCard extends Component {
     if(resultPercentage * 100.0 < 50){
       resultString = resultString + '. Score 70% an above to get stuff for your pet.';
     }
-
     return resultString;
   }
 
@@ -195,7 +207,7 @@ class QuizCard extends Component {
       result: result,
       quizDone: true,
     });
-
+    console.log('quiz completion: ' + this.state.quizDone);
 
     this.props.quizComplete(this.state.quizDone);
   }
@@ -203,7 +215,6 @@ class QuizCard extends Component {
   renderQuiz() {
     return (
       <div>
-        {console.log(this.props.category)}
         <Quiz
           answer={this.state.answer}
           currentAnswers={this.state.currentAnswers}
@@ -226,10 +237,18 @@ class QuizCard extends Component {
     return <Result quizResult={this.state.result} />;
   }
 
+  startNewQuiz() {
+    //(re-)starting new quiz
+  }
+
   render() {
     return (
       <div>
-        {this.state.result ? this.renderResult() : this.renderQuiz()}
+        {this.state.result ? this.renderResult() 
+          : <div>
+            {this.props.startNew ? this.renderQuiz() : null}
+          </div>
+        }
       </div>
     );
   }

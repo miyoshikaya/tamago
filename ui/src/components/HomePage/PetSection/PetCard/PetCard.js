@@ -23,6 +23,7 @@ class PetCard extends React.Component {
       restartPlay: false,
       restartFood: false,
       timeStamp: Date(Date.now()),
+      alive: true,
     }
 
     this.getItemClick = this.getItemClick.bind(this);  
@@ -62,64 +63,72 @@ class PetCard extends React.Component {
   }
 
 
-async getItemClick(itemType){
-  switch(itemType){
+  async getItemClick(itemType){
+    switch(itemType){
 
-    case 'play':
-      if(this.state.playItems > 0){
-        await this.setState({
-          playItems: this.state.playItems - 1,
-          restartPlay: true,
-        });
-        //here countdown timer reset (SEND DATA TO COMPONENT) 
-        console.log(this.state.restartPlay);
-      }
-      else
-        alert("You have 0 ⚾!");
-      break;
+      case 'play':
+        if(this.state.playItems > 0){
+          await this.setState({
+            playItems: this.state.playItems - 1,
+            restartPlay: true,
+          });
+          //here countdown timer reset (SEND DATA TO COMPONENT) 
+          console.log(this.state.restartPlay);
+        }
+        else
+          alert("You have 0 ⚾!");
+        break;
 
-    case 'food':
-      if(this.state.foodItems > 0){
-        await this.setState({
-          foodItems: this.state.foodItems - 1,
-          restartFood: true, 
-        });
-      }
-      else
-        alert("You have 0 🍌!");
-      break;
+      case 'food':
+        if(this.state.foodItems > 0){
+          await this.setState({
+            foodItems: this.state.foodItems - 1,
+            restartFood: true, 
+          });
+        }
+        else
+          alert("You have 0 🍌!");
+        break;
 
-    case 'wash':
-      if(this.state.washItems > 0){
-        await this.setState({
-          washItems: this.state.washItems - 1,  
-        });
-      }
-      else
-        alert("You have 0 💦!");
-      break;
+      case 'wash':
+        if(this.state.washItems > 0){
+          await this.setState({
+            washItems: this.state.washItems - 1,  
+          });
+        }
+        else
+          alert("You have 0 💦!");
+        break;
 
-    case 'music':
-      if(this.state.musicItems > 0){
-        await this.setState({
-          musicItems: this.state.musicItems - 1,  
-        });
-      }
-      else
-        alert("You have 0 🎹!");
-      break;
+      case 'music':
+        if(this.state.musicItems > 0){
+          await this.setState({
+            musicItems: this.state.musicItems - 1,  
+          });
+        }
+        else
+          alert("You have 0 🎹!");
+        break;
 
-    default:
-      break;
+      default:
+        break;
+    }
   }
-}
 
-plox(){
-  this.setState({
-    restartFood: false,
-  });
-}
+  plox(){
+    this.setState({
+      restartFood: false,
+    });
+  }
 
+  deadPet = (reason) => {
+    this.setState(
+      {
+        alive: false,
+      },
+    )
+    alert('Your pet is dead :( It died because of ' + reason + '.');
+  }
 
 
   render () {
@@ -139,7 +148,10 @@ plox(){
             <div className="timer">
               <p>Time to next feeding:</p>
               <div className="countdown">
-                <FoodTimer restart={this.state.restartFood} pls={this.plox}/>
+                <FoodTimer 
+                restart={this.state.restartFood} 
+                pls={this.plox}
+                petDied={this.deadPet} />
               </div>
             </div>
           </div>
@@ -177,7 +189,7 @@ plox(){
           wash={this.state.washItems}
           music={this.state.musicItems} />
           <hr />
-          <PetPic />
+          <PetPic alive={this.state.alive}/>
           <hr />
           <PlayButtons
           sendItemClick={this.getItemClick} />

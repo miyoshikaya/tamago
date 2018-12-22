@@ -6,7 +6,8 @@ class PetPic extends React.Component {
     super(props);
     
     this.state = {
-      pet: ''
+      pet: '',
+      alive: this.props.alive,
     }
   }
  
@@ -14,11 +15,29 @@ class PetPic extends React.Component {
   console.log("animation WOOP WOOP");
  }
 
-  render () {
-    return (
+ renderAlivePet(){
+  return (
     <div>
       <img className="pet-pic" src="https://image.flaticon.com/icons/svg/1089/1089427.svg" onClick={this.animate} alt="" />
     </div>
+  );
+ }
+
+ renderDeadPet(){
+  return (
+    <div>
+      <img className="pet-pic" src="https://image.flaticon.com/icons/svg/1089/1089376.svg" onClick={this.animate} alt="" />
+    </div>
+  );
+ }
+
+  render () {
+    return (
+    <div>
+        {this.props.alive ? this.renderAlivePet() 
+          : this.renderDeadPet()
+        }
+      </div>
     );
   }
 }
