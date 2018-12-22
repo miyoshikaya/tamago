@@ -248,6 +248,7 @@ class QuizCard extends Component {
   }
 
   setUserAnswer(answer) {
+    console.log(answer);
     this.setState((state, props) => ({
       answersCount: {
         ...state.answersCount,
