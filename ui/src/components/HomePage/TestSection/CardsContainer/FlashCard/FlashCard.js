@@ -1,7 +1,7 @@
 import React from 'react';
 import './flashcard-style.css';
 
-class FlashCard extends React.Component { 
+class FlashCard extends React.Component {
     constructor(props) {
         super(props);
 
@@ -10,34 +10,62 @@ class FlashCard extends React.Component {
         }
     }
 
-/*how to force re-render?*/
+    /*how to force re-render?*/
 
-    render(){
+    render() {
         let frontClass = ["card"];
         let backClass = ["card back-class"];
 
-        if(this.props.side === true) {
+        if (this.props.side === 'front') {
             console.log('FRONT');
             frontClass.push('active');
+            return (
+                <div className="card-container">
+                    <div className={frontClass.join(' ')}>
+                        <div className="front">
+                            <div className="eng">{this.props.eng} {/*this.props.side*/}</div>
+                        </div>
+                        <div className="back">
+                            <div className="kan">{this.props.kan}</div>
+                            <div className="rom">{this.props.rom}</div>
+                        </div>
+                    </div>
+                </div>
+            );
         }
-        if(this.props.side === false){
+        else {
             console.log('BACK');
             backClass.push('active');
+            return (
+                <div className="card-container">
+                    <div className={frontClass.join(' ')}>
+                        <div className="front">
+                            <div className="engtwo">{this.props.kan}</div>
+                            <div className="engthree">{this.props.rom}</div>
+                        </div>
+                        <div className="back">
+
+                            <div className="kantwo">{this.props.eng} {/*this.props.side*/}</div>
+                        </div>
+                    </div>
+                </div>
+            );
         }
 
-        return(
-        <div className="card-container">
-            <div className={frontClass.join(' ')}>
-                <div className="front">
-                    <div className="eng">{this.props.eng} {/*this.props.side*/}</div>
-                </div>
-                <div className="front back">
-                    <div className="kan">{this.props.kan}</div>
-                    <div className="rom">{this.props.rom}</div>
-                </div>
-            </div>
-        </div>
-        );
+        // return (
+
+        //     <div className="card-container">
+        //         <div className={frontClass.join(' ')}>
+        //             <div className="front">
+        //                 <div className="eng">{this.props.eng} {/*this.props.side*/}</div>
+        //             </div>
+        //             <div className="front back">
+        //                 <div className="kan">{this.props.kan}</div>
+        //                 <div className="rom">{this.props.rom}</div>
+        //             </div>
+        //         </div>
+        //     </div>
+        // );
     }
 }
 
