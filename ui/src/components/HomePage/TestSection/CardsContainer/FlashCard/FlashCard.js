@@ -38,14 +38,13 @@ class FlashCard extends React.Component {
             backClass.push('active');
             return (
                 <div className="card-container">
-                    <div className={frontClass.join(' ')}>
+                    <div className={backClass.join(' ')}>
                         <div className="front">
-                            <div className="engtwo">{this.props.kan}</div>
-                            <div className="engthree">{this.props.rom}</div>
+                            <div className="eng">{this.props.eng} {/*this.props.side*/}</div>
                         </div>
                         <div className="back">
-
-                            <div className="kantwo">{this.props.eng} {/*this.props.side*/}</div>
+                            <div className="kan">{this.props.kan}</div>
+                            <div className="rom">{this.props.rom}</div>
                         </div>
                     </div>
                 </div>
