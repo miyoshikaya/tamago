@@ -14,33 +14,32 @@ class QuizCard extends Component {
     if (firebase.apps.length) {
 
       this.app = firebase.app().firestore();
+
+      this.state = {
+        counter: 0,
+        questionId: 1,
+        questions: [],
+        ansOpt: [],
+        currentAnswers: [],
+        currQuestion: '',
+        question: '',
+        questionTotal: 10,
+        answerOptions: [],
+        answer: '',
+        answersCount: {
+          correct: 0,
+          incorrect: 0,
+        },
+        result: '',
+        category: '',
+        quizDone: false,
+        firstSetup: true,
+      };
+
+      this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
+      this.loadDatabase = this.loadDatabase.bind(this);
+      this.quizUndone = this.quizUndone.bind(this);
     }
-
-
-    this.state = {
-      counter: 0,
-      questionId: 1,
-      questions: [],
-      ansOpt: [],
-      currentAnswers: [],
-      currQuestion: '',
-      question: '',
-      questionTotal: 10,
-      answerOptions: [],
-      answer: '',
-      answersCount: {
-        correct: 0,
-        incorrect: 0,
-      },
-      result: '',
-      category: '',
-      quizDone: false,
-      firstSetup: true,
-    };
-
-    this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
-    this.loadDatabase = this.loadDatabase.bind(this);
-    this.quizUndone = this.quizUndone.bind(this);
   }
 
   async loadDatabase() {
@@ -117,6 +116,26 @@ class QuizCard extends Component {
         }
         const questionList = [];
 
+        this.setState({
+          counter: 0,
+          questionId: 1,
+          questions: [],
+          ansOpt: [],
+          currentAnswers: [],
+          currQuestion: '',
+          question: '',
+          questionTotal: 10,
+          answerOptions: [],
+          answer: '',
+          answersCount: {
+            correct: 0,
+            incorrect: 0,
+          },
+          result: '',
+          category: '',
+          quizDone: false,
+
+        })
         this.props.generatedQuiz();
         await this.database.on('child_added', snap => {
           questionList.push({
@@ -131,15 +150,8 @@ class QuizCard extends Component {
 
           this.shuffleArray(questionList);
           console.log(questionList[0].eng);
-          await this.setState({
+          this.setState({
             questions: questionList,
-            answersCount: {
-              correct: 0,
-              incorrect: 0,
-            },
-            result: '',
-            counter: 0,
-            questionId: 1,
 
           })
         }
@@ -189,7 +201,7 @@ class QuizCard extends Component {
         })
 
         var rightIndex = Math.floor(Math.random() * options.length);
-        console.log(rightIndex);
+        //console.log(rightIndex);
         options[rightIndex].type = "correct";
         options[rightIndex].content = questionList[index].kan;
 
@@ -235,6 +247,16 @@ class QuizCard extends Component {
     return array;
   }
 
+  setUserAnswer(answer) {
+    this.setState((state, props) => ({
+      answersCount: {
+        ...state.answersCount,
+        [answer]: state.answersCount[answer] + 1
+      },
+      answer: answer
+    }));
+  }
+
   handleAnswerSelected(event) {
     this.setUserAnswer(event.currentTarget.value);
 
@@ -245,15 +267,6 @@ class QuizCard extends Component {
     }
   }
 
-  setUserAnswer(answer) {
-    this.setState((state, props) => ({
-      answersCount: {
-        ...state.answersCount,
-        [answer]: state.answersCount[answer] + 1
-      },
-      answer: answer
-    }));
-  }
 
   setNextQuestion() {
     const counter = this.state.counter + 1;
@@ -269,7 +282,6 @@ class QuizCard extends Component {
   }
 
   getResults() {
-    //tutaj zedytować tak, żeby dostać % poprawnych odpowiedzi
     const answersCount = this.state.answersCount;
     const questionsTotal = this.state.questionTotal;
     var resultPercentage = answersCount.correct / questionsTotal;
@@ -278,7 +290,6 @@ class QuizCard extends Component {
     if (resultPercentage * 100.0 < 50) {
       resultString = resultString + '. Score 70% an above to get stuff for your pet.';
     }
-
     return resultString;
   }
 
@@ -293,7 +304,7 @@ class QuizCard extends Component {
       result: result,
       quizDone: true,
     });
-
+    console.log('quiz completion: ' + this.state.quizDone);
 
     this.props.quizComplete(this.state.quizDone);
     this.loadDatabase();
@@ -302,8 +313,6 @@ class QuizCard extends Component {
   renderQuiz() {
     return (
       <div>
-        {console.log(this.props.category)}
-        {console.log(this.props.generateNew)}
         <Quiz
           answer={this.state.answer}
           currentAnswers={this.state.currentAnswers}
@@ -319,7 +328,7 @@ class QuizCard extends Component {
           getQuestion={this.getQuestion}
           generateNew={this.props.generateNew}
         />
-      </div>
+      </div >
     );
   }
 
@@ -329,11 +338,15 @@ class QuizCard extends Component {
       quizUndone={this.quizUndone} />;
   }
 
+  startNewQuiz() {
+    //(re-)starting new quiz
+  }
+
   render() {
     return (
       <div>
         {this.state.quizDone ? this.renderResult() : this.renderQuiz()}
-      </div>
+      </div >
     );
   }
 }
