@@ -10,8 +10,6 @@ class FlashCard extends React.Component {
         }
     }
 
-    /*how to force re-render?*/
-
     render() {
         let frontClass = ["card"];
         let backClass = ["card back-class"];

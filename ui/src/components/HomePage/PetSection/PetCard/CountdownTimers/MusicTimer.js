@@ -1,7 +1,8 @@
 import React from 'react';
 import './countdowntimers.css';
 
-class FoodTimer extends React.Component {
+
+class MusicTimer extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
@@ -73,7 +74,7 @@ class FoodTimer extends React.Component {
       // Check if we're at zero.
       if (seconds === 0) { 
         clearInterval(this.timer);
-        this.props.petDied('hunger');
+        this.props.petDied('boredom');
         //PET DEAD
       }
     }
@@ -91,7 +92,7 @@ class FoodTimer extends React.Component {
     return(
       <div>
         {/*<button onClick={this.restartTimer}>Restart</button>*/}
-        <h3 className="timer food-timer">
+        <h3 className="timer music-timer">
           {this.state.time.m} : {this.state.time.s}
           {this.props.restart}
         </h3>
@@ -100,4 +101,4 @@ class FoodTimer extends React.Component {
   }
 }
 
-export default FoodTimer;
+export default MusicTimer;

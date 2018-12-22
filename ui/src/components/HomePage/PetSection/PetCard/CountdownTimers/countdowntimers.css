@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Staatliches');
+
+.timer {
+	font-family: 'Staatliches', cursive;
+	font-size: 40px;
+}
+
+.play-timer {
+	color: #ff4759;
+}
+
+.food-timer {
+	color: #ffea30;
+	
+}
+
+.wash-timer {
+	color: #4e8cce;
+}
+
+.music-timer {
+	color: #000;
+}

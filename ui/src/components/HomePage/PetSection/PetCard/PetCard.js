@@ -1,12 +1,14 @@
 import React from 'react';
+import './petcard.css';
+
 import PetItems from './PetItems/PetItems.js';
 import PetPic from './PetPic/PetPic.js';
 import PlayButtons from './PlayButtons/PlayButtons.js';
-import ReactCountdownClock  from 'react-countdown-clock';
-import './petcard.css';
-import PlayCountdown from './CountdownTimers/PlayCountdown.js';
 
+import PlayTimer from './CountdownTimers/PlayTimer.js';
 import FoodTimer from './CountdownTimers/FoodTimer.js';
+import WashTimer from './CountdownTimers/WashTimer.js';
+import MusicTimer from './CountdownTimers/MusicTimer.js';
 
 class PetCard extends React.Component {
   constructor(props) {
@@ -22,12 +24,17 @@ class PetCard extends React.Component {
       countdownTime: 400,
       restartPlay: false,
       restartFood: false,
+      restartWash: false,
+      restartMusic: false,
       timeStamp: Date(Date.now()),
       alive: true,
     }
 
     this.getItemClick = this.getItemClick.bind(this);  
-    this.plox = this.plox.bind(this);
+    this.restartPlayTimer = this.restartPlayTimer.bind(this);
+    this.restartFoodTimer = this.restartFoodTimer.bind(this);
+    this.restartWashTimer = this.restartWashTimer.bind(this);
+    this.restartMusicTimer = this.restartMusicTimer.bind(this);
   }
 
   componentWillMount(){
@@ -93,7 +100,8 @@ class PetCard extends React.Component {
       case 'wash':
         if(this.state.washItems > 0){
           await this.setState({
-            washItems: this.state.washItems - 1,  
+            washItems: this.state.washItems - 1, 
+            restartWash: true,
           });
         }
         else
@@ -104,6 +112,7 @@ class PetCard extends React.Component {
         if(this.state.musicItems > 0){
           await this.setState({
             musicItems: this.state.musicItems - 1,  
+            restartMusic: true,
           });
         }
         else
@@ -115,9 +124,24 @@ class PetCard extends React.Component {
     }
   }
 
-  plox(){
+  restartPlayTimer(){
+    this.setState({
+      restartPlay: false,
+    });
+  }
+  restartFoodTimer(){
     this.setState({
       restartFood: false,
+    });
+  }
+  restartWashTimer(){
+    this.setState({
+      restartWash: false,
+    });
+  }
+  restartMusicTimer(){
+    this.setState({
+      restartMusic: false,
     });
   }
 
@@ -138,11 +162,12 @@ class PetCard extends React.Component {
         <div id="countersWrapperCard">
           <div className="two-timers">
             <div className="timer">
-
               <p>Time to next playtime:</p>
               <div className="countdown">
-                <PlayCountdown 
-                restart={this.state.restartPlay} />
+                <PlayTimer
+                restart={this.state.restartPlay} 
+                pls={this.restartPlayTimer}
+                petDied={this.deadPet} />
               </div>
             </div>
             <div className="timer">
@@ -150,7 +175,7 @@ class PetCard extends React.Component {
               <div className="countdown">
                 <FoodTimer 
                 restart={this.state.restartFood} 
-                pls={this.plox}
+                pls={this.restartFoodTimer}
                 petDied={this.deadPet} />
               </div>
             </div>
@@ -159,23 +184,19 @@ class PetCard extends React.Component {
             <div className="timer">
               <p>Time to next washing:</p>
               <div className="countdown">
-                <ReactCountdownClock 
-                  seconds={300}
-                  color="#4e8cce"
-                  alpha={0.9}
-                  size={100}
-                  /*onComplete={myCallback}*/ />
-                </div>
+                <WashTimer 
+                restart={this.state.restartWash} 
+                pls={this.restartWashTimer}
+                petDied={this.deadPet} />
+              </div>
             </div>
             <div className="timer">
               <p>Time to next music:</p>
               <div className="countdown">
-                <ReactCountdownClock 
-                  seconds={300}
-                  color="#000"
-                  alpha={0.9}
-                  size={100}
-                  /*onComplete={myCallback}*/ />
+                <MusicTimer 
+                restart={this.state.restartMusic} 
+                pls={this.restartMusicTimer}
+                petDied={this.deadPet} />
                 </div>
             </div>
           </div>

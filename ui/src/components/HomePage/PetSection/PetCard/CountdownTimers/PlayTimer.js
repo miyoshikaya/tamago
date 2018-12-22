@@ -1,12 +1,12 @@
 import React from 'react';
 import './countdowntimers.css';
 
-class FoodTimer extends React.Component {
+class PlayTimer extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
       time: {}, 
-      seconds: 3599,
+      seconds: 15,
       restart: false,
       };
     this.timer = 0;
@@ -42,7 +42,7 @@ class FoodTimer extends React.Component {
   startTimer() {
     if (this.timer === 0 && this.state.seconds > 0) {
       this.setState({
-        seconds: 3599,
+        seconds: 15,
       });
       this.timer = setInterval(this.countDown, 1000);      
     }
@@ -66,6 +66,7 @@ class FoodTimer extends React.Component {
     if(!this.state.restart){
     // Remove one second, set state so a re-render happens.
       let seconds = this.state.seconds - 1;
+
       this.setState({
         time: this.secondsToTime(seconds),
         seconds: seconds,
@@ -73,12 +74,12 @@ class FoodTimer extends React.Component {
       // Check if we're at zero.
       if (seconds === 0) { 
         clearInterval(this.timer);
-        this.props.petDied('hunger');
+        this.props.petDied('loneliness');
         //PET DEAD
       }
     }
     else {
-      let seconds = 3599;
+      let seconds = 15;
       this.setState({
         restart: false,
         time: this.secondsToTime(seconds),
@@ -91,7 +92,7 @@ class FoodTimer extends React.Component {
     return(
       <div>
         {/*<button onClick={this.restartTimer}>Restart</button>*/}
-        <h3 className="timer food-timer">
+        <h3 className="timer play-timer">
           {this.state.time.m} : {this.state.time.s}
           {this.props.restart}
         </h3>
@@ -100,4 +101,4 @@ class FoodTimer extends React.Component {
   }
 }
 
-export default FoodTimer;
+export default PlayTimer;
