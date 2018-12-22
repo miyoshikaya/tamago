@@ -10,9 +10,10 @@ class QuizCard extends Component {
   constructor(props) {
     super(props);
 
+
     if (firebase.apps.length) {
+
       this.app = firebase.app().firestore();
-      this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/0/jpn-cards-animals");
     }
 
 
@@ -32,40 +33,130 @@ class QuizCard extends Component {
         incorrect: 0,
       },
       result: '',
-      category: this.props.category,
+      category: '',
       quizDone: false,
+      firstSetup: true,
     };
 
     this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
     this.loadDatabase = this.loadDatabase.bind(this);
+    this.quizUndone = this.quizUndone.bind(this);
   }
 
-  loadDatabase() {
-    const questionList = this.state.questions;
+  async loadDatabase() {
 
-    this.database.on('child_added', snap => {
-      questionList.push({
-        id: snap.key,
-        eng: snap.val().eng,
-        kan: snap.val().kan,
-        rom: snap.val().rom
+    if (this.state.firstSetup === true) {
+
+      await this.setState({
+        firstSetup: false
       })
-    })
+      this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/0/jpn-cards-animals");
+      const questionList = [];
 
+      this.props.generatedQuiz();
+      await this.database.on('child_added', snap => {
+        questionList.push({
+          id: snap.key,
+          eng: snap.val().eng,
+          kan: snap.val().kan,
+          rom: snap.val().rom
+        })
+      })
+      console.log(questionList.length);
+      this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/1/jpn-cards-people");
+
+      this.props.generatedQuiz();
+      await this.database.on('child_added', snap => {
+        questionList.push({
+          id: snap.key,
+          eng: snap.val().eng,
+          kan: snap.val().kan,
+          rom: snap.val().rom
+        })
+      })
+      console.log(questionList.length);
+      this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/2/jpn-cards-food");
+
+      this.props.generatedQuiz();
+      await this.database.on('child_added', snap => {
+        questionList.push({
+          id: snap.key,
+          eng: snap.val().eng,
+          kan: snap.val().kan,
+          rom: snap.val().rom
+        })
+      })
+      console.log(questionList.length);
+
+
+    }
+    else {
+
+      console.log(this.props.generateNew);
+      if (this.props.generateNew === true) {
+        this.app = firebase.app().firestore();
+
+        switch (this.props.category) {
+          case 'Animals':
+
+            console.log(this.props.category);
+            this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/0/jpn-cards-animals");
+            break;
+          case 'People':
+
+            console.log(this.props.category);
+            this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/1/jpn-cards-people");
+            break;
+          case 'Food':
+
+            console.log(this.props.category);
+            this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/2/jpn-cards-food");
+            break;
+          default:
+            break;
+        }
+        const questionList = [];
+
+        this.props.generatedQuiz();
+        await this.database.on('child_added', snap => {
+          questionList.push({
+            id: snap.key,
+            eng: snap.val().eng,
+            kan: snap.val().kan,
+            rom: snap.val().rom
+          })
+        })
+        console.log(questionList.length);
+        if (questionList.length > 0) {
+
+          this.shuffleArray(questionList);
+          console.log(questionList[0].eng);
+          await this.setState({
+            questions: questionList,
+            answersCount: {
+              correct: 0,
+              incorrect: 0,
+            },
+            result: '',
+            counter: 0,
+            questionId: 1,
+
+          })
+        }
+        this.fillQuestions();
+      }
+    }
+  }
+
+  fillQuestions() {
 
     if (firebase.apps.length) {
 
-      if (questionList.length > 0) {
-        this.setState({
-          questions: questionList,
-        })
-      }
-      this.shuffleArray(this.state.questions);
+      const questionList = this.state.questions;
+      const optionList = [];
 
-      const optionList = this.state.ansOpt;
-
-      console.log(questionList.length);
       for (var index = 0; index < questionList.length; ++index) {
+
         var firstIndex = Math.floor(Math.random() * questionList.length);
 
         while (firstIndex === index) {
@@ -113,6 +204,7 @@ class QuizCard extends Component {
           ansOpt: optionList,
           currentAnswers: optionList[0].answers,
           currQuestion: 'Which word means ' + this.state.questions[0].eng + ' in Japanese ? ',
+
         });
       }
     }
@@ -183,11 +275,17 @@ class QuizCard extends Component {
     var resultPercentage = answersCount.correct / questionsTotal;
     var resultString = resultPercentage * 100.0 + '%';
 
-    if(resultPercentage * 100.0 < 50){
+    if (resultPercentage * 100.0 < 50) {
       resultString = resultString + '. Score 70% an above to get stuff for your pet.';
     }
 
     return resultString;
+  }
+
+  quizUndone() {
+    this.setState({
+      quizDone: false,
+    });
   }
 
   setResults(result) {
@@ -198,12 +296,14 @@ class QuizCard extends Component {
 
 
     this.props.quizComplete(this.state.quizDone);
+    this.loadDatabase();
   }
 
   renderQuiz() {
     return (
       <div>
         {console.log(this.props.category)}
+        {console.log(this.props.generateNew)}
         <Quiz
           answer={this.state.answer}
           currentAnswers={this.state.currentAnswers}
@@ -217,19 +317,22 @@ class QuizCard extends Component {
           ansOpt={this.state.ansOpt}
           currQuestion={this.state.currQuestion}
           getQuestion={this.getQuestion}
+          generateNew={this.props.generateNew}
         />
       </div>
     );
   }
 
   renderResult() {
-    return <Result quizResult={this.state.result} />;
+    return <Result quizResult={this.state.result}
+      generateNew={this.props.generateNew}
+      quizUndone={this.quizUndone} />;
   }
 
   render() {
     return (
       <div>
-        {this.state.result ? this.renderResult() : this.renderQuiz()}
+        {this.state.quizDone ? this.renderResult() : this.renderQuiz()}
       </div>
     );
   }

@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import { CSSTransitionGroup } from 'react-transition-group';
 
 function Result(props) {
+
+  if (props.generateNew === true) {
+    props.quizUndone();
+  }
   return (
     <CSSTransitionGroup
       className="container result"

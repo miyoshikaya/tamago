@@ -6,10 +6,8 @@ import QuestionCount from '../components/QuestionCount';
 import AnswerOption from '../components/AnswerOption';
 
 function Quiz(props) {
-  if (props.currentAnswers.length === 0) {
-    props.loadDatabase();
-  }
-
+  console.log(props.generateNew)
+  props.loadDatabase();
   function renderAnswerOptions(key) {
     return (
       <AnswerOption
