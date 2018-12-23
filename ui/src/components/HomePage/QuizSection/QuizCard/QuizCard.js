@@ -301,25 +301,103 @@ class QuizCard extends Component {
       const min = 1;
       const max = 4;
       const itemType = Math.floor(min + Math.random() * (max - min));
-      console.log(itemType);
 
       switch(itemType){
         case 1:
-          resultString = resultString + 'you got 1 ⚾!';
+          if(resultPercentage > 0.49 && resultPercentage < 0.71){
+            resultString = resultString + '! You receive 1 ⚾!';
+            this.setState({
+              playItems: 1,
+            });
+          }
+          if(resultPercentage > 0.7 && resultPercentage < 0.91){
+            resultString = resultString + '! You receive 2 ⚾!';
+            this.setState({
+              playItems: 2,
+            });
+          }
+          if(resultPercentage > 0.9){
+            resultString = resultString + '! You receive 3 ⚾!';
+            this.setState({
+              playItems: 3,
+            });
+          }
           break;
         case 2:
-          resultString = resultString + 'you got 1 🍌!';
+          if(resultPercentage > 0.49 && resultPercentage < 0.71){
+            resultString = resultString + '! You receive 1 🍌!';
+            this.setState({
+              foodItems: 1,
+            });
+          }
+          if(resultPercentage > 0.7 && resultPercentage < 0.91){
+            resultString = resultString + '! You receive 2 🍌!';
+            this.setState({
+              foodItems: 2,
+            });
+          }
+          if(resultPercentage > 0.9){
+            resultString = resultString + '! You receive 3 🍌!';
+            this.setState({
+              foodItems: 3,
+            });
+          }
           break;
         case 3:
-          resultString = resultString + 'you got 1 💦!';
+          if(resultPercentage > 0.49 && resultPercentage < 0.71){
+            resultString = resultString + '! You receive 1 💦!';
+            this.setState({
+              washItems: 1,
+            });
+          }
+          if(resultPercentage > 0.7 && resultPercentage < 0.91){
+            resultString = resultString + '! You receive 2 💦!';
+            this.setState({
+              washItems: 2,
+            });
+          }
+          if(resultPercentage > 0.9){
+            resultString = resultString + '! You receive 3 💦!';
+            this.setState({
+              washItems: 3,
+            });
+          }
           break;
         case 4:
-          resultString = resultString + 'you got 1 🎹!';
+          if(resultPercentage > 0.49 && resultPercentage < 0.71){
+            resultString = resultString + '! You receive 1 🎹!';
+            this.setState({
+              musicItems: 1,
+            });
+          }
+          if(resultPercentage > 0.7 && resultPercentage < 0.91){
+            resultString = resultString + '! You receive 2 🎹!';
+            this.setState({
+              musicItems: 2,
+            });
+          }
+          if(resultPercentage > 0.9){
+            resultString = resultString + '! You receive 3 🎹!';
+            this.setState({
+              musicItems: 3,
+            });
+          }
           break;
         default:
           break;
       }
     }
+    console.log(
+      'play items: ' + this.state.playItems + ',' +
+      'food items: ' + this.state.foodItems + ',' +
+      'wash items: ' + this.state.washItems + ',' +
+      'music items: ' + this.state.musicItems + '.'
+    );
+
+            //tutaj dodanie do aktualnej liczby itemków do bazy danych
+            //
+            //
+
     return resultString;
   }
 
