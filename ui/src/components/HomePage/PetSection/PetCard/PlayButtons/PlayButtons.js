@@ -36,14 +36,14 @@ class PlayButtons extends React.Component {
         <button className="status-btn" title='Play' onClick={this.togglePlay.bind(this)}>
           <span role="img" aria-labelledby="ball">⚾</span>
         </button>
-        <button className="status-btn" title='Feed'>
-          <span role="img" aria-labelledby="banana" onClick={this.toggleFood.bind(this)}>🍌</span>
+        <button className="status-btn" title='Feed' onClick={this.toggleFood.bind(this)}>
+          <span role="img" aria-labelledby="banana">🍌</span>
         </button>
-        <button className="status-btn" title='Wash'>
-          <span role="img" aria-labelledby="water" onClick={this.toggleWash.bind(this)}>💦</span>
+        <button className="status-btn" title='Wash' onClick={this.toggleWash.bind(this)}>
+          <span role="img" aria-labelledby="water">💦</span>
         </button>
-        <button className="status-btn" title='Play music'>
-          <span role="img" aria-labelledby="piano" onClick={this.toggleMusic.bind(this)}>🎹</span>
+        <button className="status-btn" title='Play music' onClick={this.toggleMusic.bind(this)}>
+          <span role="img" aria-labelledby="piano">🎹</span>
         </button>
       </div>
     );
