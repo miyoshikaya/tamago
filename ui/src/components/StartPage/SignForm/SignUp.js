@@ -67,7 +67,7 @@ render() {
 		error, 
 	} = this.state;
 
-		const isInvalid = passwordOne !== passwordTwo || passwordOne === '' || email === '';
+	const isInvalid = passwordOne !== passwordTwo || passwordOne === '' || email === '';
 
 	return ( 
 		<form className="signUp" onSubmit={this.onSubmit}>

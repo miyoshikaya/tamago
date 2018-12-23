@@ -90,13 +90,13 @@ class QuizCard extends Component {
           rom: snap.val().rom
         })
       })
-      console.log(questionList.length);
+      //console.log(questionList.length);
 
 
     }
     else {
 
-      console.log(this.props.generateNew);
+      //console.log(this.props.generateNew);
       if (this.props.generateNew === true) {
         this.app = firebase.app().firestore();
 

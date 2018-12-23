@@ -6,7 +6,7 @@ import QuestionCount from '../components/QuestionCount';
 import AnswerOption from '../components/AnswerOption';
 
 function Quiz(props) {
-  console.log(props.generateNew)
+  //console.log(props.generateNew)
   props.loadDatabase();
   function renderAnswerOptions(key) {
     return (
