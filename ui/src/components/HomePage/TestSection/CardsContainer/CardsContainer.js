@@ -18,15 +18,15 @@ class CardsContainer extends Component {
       switch (this.props.cardsCategory) {
         case 'Animals':
           console.log(this.props.cardsCategory);
-          this.database = firebase.app().database().ref().child("flashcards/0/krn-cards/0/krn-cards-animals");
+          this.database = firebase.app().database().ref().child("db/0/flashcards/0/krn-cards/0/krn-cards-animals");
           break;
         case 'People':
           console.log(this.props.cardsCategory);
-          this.database = firebase.app().database().ref().child("flashcards/0/krn-cards/1/krn-cards-people");
+          this.database = firebase.app().database().ref().child("db/0/flashcards/0/krn-cards/1/krn-cards-people");
           break;
         case 'Food':
           console.log(this.props.cardsCategory);
-          this.database = firebase.app().database().ref().child("flashcards/0/krn-cards/2/krn-cards-food");
+          this.database = firebase.app().database().ref().child("db/0/flashcards/0/krn-cards/2/krn-cards-food");
           break;
         default:
           console.log("null");
@@ -93,7 +93,7 @@ class CardsContainer extends Component {
       switch (this.props.cardsCategory) {
         case 'Animals':
           console.log(this.props.cardsCategory);
-          this.database = firebase.app().database().ref().child("flashcards/0/krn-cards/0/krn-cards-animals");
+          this.database = firebase.app().database().ref().child("db/0/flashcards/0/krn-cards/0/krn-cards-animals");
           if (this.state.category !== this.props.category) {
             this.database.on('child_added', snap => {
               newCards.push({
@@ -114,7 +114,7 @@ class CardsContainer extends Component {
           break;
         case 'People':
           console.log(this.props.cardsCategory);
-          this.database = firebase.app().database().ref().child("flashcards/0/krn-cards/1/krn-cards-people");
+          this.database = firebase.app().database().ref().child("db/0/flashcards/0/krn-cards/1/krn-cards-people");
 
           if (this.state.category !== this.props.category) {
             this.database.on('child_added', snap => {
@@ -136,7 +136,7 @@ class CardsContainer extends Component {
           break;
         case 'Food':
           console.log(this.props.cardsCategory);
-          this.database = firebase.app().database().ref().child("flashcards/0/krn-cards/2/krn-cards-food");
+          this.database = firebase.app().database().ref().child("db/0/flashcards/0/krn-cards/2/krn-cards-food");
           if (this.state.category !== this.props.category) {
             this.database.on('child_added', snap => {
               newCards.push({

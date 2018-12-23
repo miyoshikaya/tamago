@@ -17,6 +17,114 @@
                         "eng": "dog",
                         "kan": "개",
                         "rom": "gae"
+                    },
+                    {
+                        "id": 3,
+                        "eng": "pig",
+                        "kan": "돼지",
+                        "rom": "dwaeji"
+                    },
+                    {
+                        "id": 4,
+                        "eng": "tiger",
+                        "kan": "호랑이",
+                        "rom": "holang-i"
+                    },
+                    {
+                        "id": 5,
+                        "eng": "eagle",
+                        "kan": "독수리",
+                        "rom": "dogsuli"
+                    },
+                    {
+                        "id": 6,
+                        "eng": "shark",
+                        "kan": "상어",
+                        "rom": "sang-eo"
+                    },
+                    {
+                        "id": 7,
+                        "eng": "sheep",
+                        "kan": "양",
+                        "rom": "yang"
+                    },
+                    {
+                        "id": 8,
+                        "eng": "sparrow",
+                        "kan": "참새",
+                        "rom": "chamsae"
+                    },
+                    {
+                        "id": 9,
+                        "eng": "monkey",
+                        "kan": "원숭이",
+                        "rom": "wonsung-i"
+                    },
+                    {
+                        "id": 10,
+                        "eng": "elephant",
+                        "kan": "코끼리",
+                        "rom": "kokkili"
+                    },
+                    {
+                        "id": 11,
+                        "eng": "giraffe",
+                        "kan": "기린",
+                        "rom": "gilin"
+                    },
+                    {
+                        "id": 12,
+                        "eng": "bird",
+                        "kan": "새",
+                        "rom": "sae"
+                    },
+                    {
+                        "id": 13,
+                        "eng": "animal",
+                        "kan": "동물",
+                        "rom": "dongmul"
+                    },
+                    {
+                        "id": 14,
+                        "eng": "cow",
+                        "kan": "소",
+                        "rom": "so"
+                    },
+                    {
+                        "id": 15,
+                        "eng": "hamster",
+                        "kan": "햄스터",
+                        "rom": "haemseuteo"
+                    },
+                    {
+                        "id": 16,
+                        "eng": "fish",
+                        "kan": "물고기",
+                        "rom": "mulgogi"
+                    },
+                    {
+                        "id": 17,
+                        "eng": "horse",
+                        "kan": "말",
+                        "rom": "mal"
+                    },
+                    {
+                        "id": 18,
+                        "eng": "lion",
+                        "kan": "사자",
+                        "rom": "saja"
+                    },
+                    {
+                        "id": 19,
+                        "eng": "panda",
+                        "kan": "팬더",
+                        "rom": "paendeo"
+                    },
+                    {
+                        "id": 20,
+                        "eng": "fox",
+                        "kan": "여우",
+                        "rom": "yeou"
                     }
                 ]
             },
