@@ -141,6 +141,54 @@
                         "eng": "child",
                         "kan": "아이",
                         "rom": "ai"
+                    },
+                    {
+                        "id": 23,
+                        "eng": "daughter",
+                        "kan": "딸",
+                        "rom": "ttal"
+                    },
+                    {
+                        "id": 24,
+                        "eng": "woman",
+                        "kan": "여자",
+                        "rom": "yeoja"
+                    },
+                    {
+                        "id": 25,
+                        "eng": "man",
+                        "kan": "남자",
+                        "rom": "namja"
+                    },
+                    {
+                        "id": 26,
+                        "eng": "father",
+                        "kan": "아버지",
+                        "rom": "abeoji"
+                    },
+                    {
+                        "id": 27,
+                        "eng": "mother",
+                        "kan": "어머니",
+                        "rom": "eomeoni"
+                    },
+                    {
+                        "id": 28,
+                        "eng": "mother",
+                        "kan": "母",
+                        "rom": "haha"
+                    },
+                    {
+                        "id": 29,
+                        "eng": "mother",
+                        "kan": "母",
+                        "rom": "haha"
+                    },
+                    {
+                        "id": 30,
+                        "eng": "son",
+                        "kan": "아들",
+                        "rom": "adeul"
                     }
                 ]
             },
