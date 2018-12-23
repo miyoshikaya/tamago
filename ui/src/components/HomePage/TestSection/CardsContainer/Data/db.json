@@ -174,21 +174,81 @@
                     },
                     {
                         "id": 28,
-                        "eng": "mother",
-                        "kan": "母",
-                        "rom": "haha"
+                        "eng": "aunt",
+                        "kan": "이모",
+                        "rom": "imo"
                     },
                     {
                         "id": 29,
-                        "eng": "mother",
-                        "kan": "母",
-                        "rom": "haha"
+                        "eng": "uncle",
+                        "kan": "삼촌",
+                        "rom": "samchon"
                     },
                     {
                         "id": 30,
                         "eng": "son",
                         "kan": "아들",
                         "rom": "adeul"
+                    },
+                    {
+                        "id": 31,
+                        "eng": "friend",
+                        "kan": "친구",
+                        "rom": "chingu"
+                    },
+                    {
+                        "id": 32,
+                        "eng": "children",
+                        "kan": "어린이",
+                        "rom": "eolin-i"
+                    },
+                    {
+                        "id": 33,
+                        "eng": "siblings",
+                        "kan": "동기",
+                        "rom": "dong-gi"
+                    },
+                    {
+                        "id": 34,
+                        "eng": "student",
+                        "kan": "학생",
+                        "rom": "hagsaeng"
+                    },
+                    {
+                        "id": 35,
+                        "eng": "people",
+                        "kan": "사람들",
+                        "rom": "salamdeul"
+                    },
+                    {
+                        "id": 36,
+                        "eng": "worker",
+                        "kan": "노동자",
+                        "rom": "nodongja"
+                    },
+                    {
+                        "id": 37,
+                        "eng": "youtuber",
+                        "kan": "너는",
+                        "rom": "neoneun"
+                    },
+                    {
+                        "id": 38,
+                        "eng": "aunt",
+                        "kan": "이모",
+                        "rom": "imo"
+                    },
+                    {
+                        "id": 39,
+                        "eng": "uncle",
+                        "kan": "삼촌",
+                        "rom": "samchon"
+                    },
+                    {
+                        "id": 40,
+                        "eng": "hairdresser",
+                        "kan": "미용사",
+                        "rom": "miyongsa"
                     }
                 ]
             },
