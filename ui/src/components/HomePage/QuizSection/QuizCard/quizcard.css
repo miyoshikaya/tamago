@@ -1,9 +1,10 @@
 
 /* Result Component */
 .result {
-  margin-left: 70px;
+  display: flex;
+  justify-content: center;
   margin-top: 60px;
-  padding: 1.5rem 2.5rem;
+  padding: 1.5rem 5.5rem;
   color: #a3a3a3;
 }
 

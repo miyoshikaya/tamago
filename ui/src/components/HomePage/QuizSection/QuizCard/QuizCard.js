@@ -34,6 +34,11 @@ class QuizCard extends Component {
         category: '',
         quizDone: false,
         firstSetup: true,
+
+        foodItems: 0,
+        playItems: 0,
+        washItems: 0,
+        musicItems: 0,
       };
 
       this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
@@ -61,7 +66,7 @@ class QuizCard extends Component {
           rom: snap.val().rom
         })
       })
-      console.log(questionList.length);
+      //console.log(questionList.length);
       this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/1/jpn-cards-people");
 
       this.props.generatedQuiz();
@@ -73,7 +78,7 @@ class QuizCard extends Component {
           rom: snap.val().rom
         })
       })
-      console.log(questionList.length);
+      //console.log(questionList.length);
       this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/2/jpn-cards-food");
 
       this.props.generatedQuiz();
@@ -291,6 +296,30 @@ class QuizCard extends Component {
     if (resultPercentage * 100.0 < 50) {
       resultString = resultString + '. Score 70% an above to get stuff for your pet.';
     }
+    else {
+      //losowanie itemków
+      const min = 1;
+      const max = 4;
+      const itemType = Math.floor(min + Math.random() * (max - min));
+      console.log(itemType);
+
+      switch(itemType){
+        case 1:
+          resultString = resultString + 'you got 1 ⚾!';
+          break;
+        case 2:
+          resultString = resultString + 'you got 1 🍌!';
+          break;
+        case 3:
+          resultString = resultString + 'you got 1 💦!';
+          break;
+        case 4:
+          resultString = resultString + 'you got 1 🎹!';
+          break;
+        default:
+          break;
+      }
+    }
     return resultString;
   }
 
@@ -305,7 +334,6 @@ class QuizCard extends Component {
       result: result,
       quizDone: true,
     });
-    console.log('quiz completion: ' + this.state.quizDone);
 
     this.props.quizComplete(this.state.quizDone);
     this.loadDatabase();
