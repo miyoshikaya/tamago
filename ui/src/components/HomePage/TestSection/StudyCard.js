@@ -3,7 +3,11 @@ import './tests-style.css';
 import CardsContainer from './CardsContainer/CardsContainer.js';
 import SettingsContainer from './SettingsContainer/SettingsContainer.js';
 import CardTitle from './CardsContainer/CardTitle/CardTitle.js';
+import { firebase } from '../../../firebase';
+import * as routes from '../../../constants/routes';
 
+
+const authCondition = (authUser) => !!authUser;
 
 class StudyCard extends React.Component {
   constructor(props) {
@@ -41,6 +45,11 @@ class StudyCard extends React.Component {
 
   render() {
 
+    firebase.auth.onAuthStateChanged(authUser => {
+      if (!authCondition(authUser)) {
+        window.location = routes.SIGN_IN;
+      }
+    });
     return (
       <div className="centered-study" id="mainWrap">
         <div className="half">
