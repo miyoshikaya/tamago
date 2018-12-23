@@ -40,16 +40,14 @@ onSubmit = (event) => {
 
 	auth.doCreateUserWithEmailAndPassword(email, passwordOne) 
 		.then(authUser => { 
-			// Create a user in your own accessible Firebase Database too 
 			db.doCreateUser(authUser.user.uid, email) 
-			.then(() => { 
-				this.setState(() => ({ ...INITIAL_STATE })); 
-				history.push(routes.PET); 
-			}) 
-			.catch(error => { 
-				this.setState(byPropKey('error', error)); 
-			});
-
+				.then(() => { 
+					this.setState(() => ({ ...INITIAL_STATE })); 
+					history.push(routes.PET); 
+				}) 
+				.catch(error => { 
+					this.setState(byPropKey('error', error)); 
+				});
 		})
 		.catch(error => { 
 			this.setState(byPropKey('error', error)); 
@@ -67,7 +65,7 @@ render() {
 		error, 
 	} = this.state;
 
-		const isInvalid = passwordOne !== passwordTwo || passwordOne === '' || email === '';
+	const isInvalid = passwordOne !== passwordTwo || passwordOne === '' || email === '';
 
 	return ( 
 		<form className="signUp" onSubmit={this.onSubmit}>

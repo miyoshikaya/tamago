@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import AuthUserContext from './AuthUserContext'; 
 import * as routes from './constants/routes.js';
 import SignOutButton from './components/SingOutButton/SignOutButton.js';
+import TamagoBar from './components/StartPage/Title/Tamago-Bar.js';
 
 const Navigation = () => {
 	return (
@@ -43,7 +44,7 @@ const NavigationAuth = () =>
 		</nav>
 
 	const NavigationNonAuth = () =>
-		<div></div>
+		<div><TamagoBar /></div>
 
 
 export default Navigation;
