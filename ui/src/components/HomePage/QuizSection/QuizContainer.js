@@ -12,7 +12,7 @@ class QuizContainer extends Component {
 		this.state = {
 			category: 'Animals',
 			quizComplete: false,
-			generateNew: true,
+			generateNew: false,
 		}
 
 		this.receiveCategory = this.receiveCategory.bind(this);

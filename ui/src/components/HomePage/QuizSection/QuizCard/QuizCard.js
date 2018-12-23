@@ -116,6 +116,7 @@ class QuizCard extends Component {
         }
         const questionList = [];
 
+        console.log('1');
         this.setState({
           counter: 0,
           questionId: 1,
@@ -136,6 +137,7 @@ class QuizCard extends Component {
           quizDone: false,
 
         })
+        console.log('2');
         this.props.generatedQuiz();
         await this.database.on('child_added', snap => {
           questionList.push({
@@ -145,6 +147,7 @@ class QuizCard extends Component {
             rom: snap.val().rom
           })
         })
+        console.log('3');
         console.log(questionList.length);
         if (questionList.length > 0) {
 
@@ -326,7 +329,6 @@ class QuizCard extends Component {
           questions={this.state.questions}
           ansOpt={this.state.ansOpt}
           currQuestion={this.state.currQuestion}
-          getQuestion={this.getQuestion}
           generateNew={this.props.generateNew}
         />
       </div >

@@ -5,19 +5,22 @@ import './countdowntimers.css';
 class MusicTimer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
-      time: {}, 
+    this.state = {
+      time: {},
       seconds: 3599,
       restart: false,
-      };
+    };
     this.timer = 0;
     this.startTimer = this.startTimer.bind(this);
     this.countDown = this.countDown.bind(this);
     this.restartTimer = this.restartTimer.bind(this);
   }
 
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
 
-  secondsToTime(secs){
+  secondsToTime(secs) {
     let hours = Math.floor(secs / (60 * 60));
 
     let divisor_for_minutes = secs % (60 * 60);
@@ -45,11 +48,11 @@ class MusicTimer extends React.Component {
       this.setState({
         seconds: 3599,
       });
-      this.timer = setInterval(this.countDown, 1000);      
+      this.timer = setInterval(this.countDown, 1000);
     }
   }
 
-  restartTimer(){
+  restartTimer() {
     this.setState({
       restart: true,
     });
@@ -57,27 +60,27 @@ class MusicTimer extends React.Component {
 
 
   countDown() {
-    if(this.props.restart){
+    if (this.props.restart) {
       this.restartTimer();
       //boom info back, zeby zmienic restart na false <---
       this.props.pls();
     }
 
-    if(!this.props.alive){
+    if (!this.props.alive) {
       console.log('pet died babe');
       clearInterval(this.timer);
       //this.props.petDied('hunger');
     }
 
-    if(!this.state.restart){
-    // Remove one second, set state so a re-render happens.
+    if (!this.state.restart) {
+      // Remove one second, set state so a re-render happens.
       let seconds = this.state.seconds - 1;
       this.setState({
         time: this.secondsToTime(seconds),
         seconds: seconds,
       });
       // Check if we're at zero.
-      if (seconds === 0) { 
+      if (seconds === 0) {
         clearInterval(this.timer);
         this.props.petDied('boredom');
         //PET DEAD
@@ -93,41 +96,41 @@ class MusicTimer extends React.Component {
     }
   }
 
-renderMinutesWithZero(){
-  return(
-    <div>
-      <h3 className="timer wash-timer">
-        0{this.state.time.m}:{this.state.time.s}
-        {this.props.restart}
-      </h3>
-    </div>
-  );
-}
+  renderMinutesWithZero() {
+    return (
+      <div>
+        <h3 className="timer wash-timer">
+          0{this.state.time.m}:{this.state.time.s}
+          {this.props.restart}
+        </h3>
+      </div>
+    );
+  }
 
-renderSecondsWithZero(){
-  return(
-    <div>
-      <h3 className="timer music-timer">
-        {this.state.time.m}:0{this.state.time.s}
-        {this.props.restart}
-      </h3>
-    </div>
-  );
-}
+  renderSecondsWithZero() {
+    return (
+      <div>
+        <h3 className="timer music-timer">
+          {this.state.time.m}:0{this.state.time.s}
+          {this.props.restart}
+        </h3>
+      </div>
+    );
+  }
 
-renderBothWithZero(){
-  return(
-    <div>
-      <h3 className="timer music-timer">
-        0{this.state.time.m}:0{this.state.time.s}
-        {this.props.restart}
-      </h3>
-    </div>
-  );
-}
+  renderBothWithZero() {
+    return (
+      <div>
+        <h3 className="timer music-timer">
+          0{this.state.time.m}:0{this.state.time.s}
+          {this.props.restart}
+        </h3>
+      </div>
+    );
+  }
 
-renderNormalTimer(){
-  return(
+  renderNormalTimer() {
+    return (
       <div>
         {/*<button onClick={this.restartTimer}>Restart</button>*/}
         <h3 className="timer music-timer">
@@ -136,31 +139,31 @@ renderNormalTimer(){
         </h3>
       </div>
     );
-}
+  }
 
-renderOtherTimer(){
-  return(
-    <div>
+  renderOtherTimer() {
+    return (
+      <div>
         {
           (this.state.time.m < 10 && this.state.time.s > 9) ?
             this.renderMinutesWithZero()
             : this.renderOtherOtherTimer()
         }
       </div>
-  );
-}
+    );
+  }
 
-renderOtherOtherTimer(){
-  return(
-    <div>
+  renderOtherOtherTimer() {
+    return (
+      <div>
         {
           (this.state.time.m > 9 && this.state.time.s < 10) ?
             this.renderSecondsWithZero()
             : this.renderNormalTimer()
         }
       </div>
-  );
-}
+    );
+  }
 
   render() {
     return (
