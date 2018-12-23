@@ -5,6 +5,13 @@ import QuizSettings from './settings/QuizSettings.js';
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'
 
+import { firebase } from '../../../firebase';
+import * as routes from '../../../constants/routes';
+
+
+const authCondition = (authUser) => !!authUser;
+
+
 class QuizContainer extends Component {
 	constructor(props) {
 		super(props);
@@ -70,6 +77,11 @@ class QuizContainer extends Component {
 	}
 
 	render() {
+		firebase.auth.onAuthStateChanged(authUser => {
+			if (!authCondition(authUser)) {
+				window.location = routes.SIGN_IN;
+			}
+		});
 		return (
 			<div className="centered" id="main-Container">
 				<div className="half purple">
