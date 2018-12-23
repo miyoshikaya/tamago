@@ -4,13 +4,11 @@ import * as routes from './constants/routes.js';
 import './App.css';
 import withAuthentication from './withAuthentication.js';
 
-import TamagoBar from './components/StartPage/Title/Tamago-Bar.js';
 import SignUp from './components/StartPage/SignForm/SignUp.js';
 import SignIn from './components/StartPage/SignForm/SignIn.js';
 import Logout from './components/StartPage/SignForm/Logout.js';
 import PwdReset from './components/StartPage/SignForm/PwdReset.js';
 import Navigation from './Navigation.js';
-
 
 import Pet from './components/HomePage/PetSection/Pet.js'
 import Tests from './components/HomePage/TestSection/Tests.js';

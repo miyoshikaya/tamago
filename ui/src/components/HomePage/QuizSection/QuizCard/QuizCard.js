@@ -54,7 +54,7 @@ class QuizCard extends Component {
       this.setState({
         firstSetup: false
       })
-      this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/0/jpn-cards-animals");
+      this.database = firebase.app().database().ref().child("db/0/flashcards/1/jpn-cards/0/jpn-cards-animals");
       const questionList = [];
 
       this.props.generatedQuiz();
@@ -67,7 +67,7 @@ class QuizCard extends Component {
         })
       })
       //console.log(questionList.length);
-      this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/1/jpn-cards-people");
+      this.database = firebase.app().database().ref().child("db/0/flashcards/1/jpn-cards/1/jpn-cards-people");
 
       this.props.generatedQuiz();
       await this.database.on('child_added', snap => {
@@ -79,7 +79,7 @@ class QuizCard extends Component {
         })
       })
       //console.log(questionList.length);
-      this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/2/jpn-cards-food");
+      this.database = firebase.app().database().ref().child("db/0/flashcards/1/jpn-cards/2/jpn-cards-food");
 
       this.props.generatedQuiz();
       await this.database.on('child_added', snap => {
@@ -104,17 +104,17 @@ class QuizCard extends Component {
           case 'Animals':
 
             console.log(this.props.category);
-            this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/0/jpn-cards-animals");
+            this.database = firebase.app().database().ref().child("db/0/flashcards/1/jpn-cards/0/jpn-cards-animals");
             break;
           case 'People':
 
             console.log(this.props.category);
-            this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/1/jpn-cards-people");
+            this.database = firebase.app().database().ref().child("db/0/flashcards/1/jpn-cards/1/jpn-cards-people");
             break;
           case 'Food':
 
             console.log(this.props.category);
-            this.database = firebase.app().database().ref().child("flashcards/1/jpn-cards/2/jpn-cards-food");
+            this.database = firebase.app().database().ref().child("db/0/flashcards/1/jpn-cards/2/jpn-cards-food");
             break;
           default:
             break;

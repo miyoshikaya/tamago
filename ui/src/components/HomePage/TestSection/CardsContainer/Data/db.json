@@ -17,6 +17,114 @@
                         "eng": "dog",
                         "kan": "개",
                         "rom": "gae"
+                    },
+                    {
+                        "id": 3,
+                        "eng": "pig",
+                        "kan": "돼지",
+                        "rom": "dwaeji"
+                    },
+                    {
+                        "id": 4,
+                        "eng": "tiger",
+                        "kan": "호랑이",
+                        "rom": "holang-i"
+                    },
+                    {
+                        "id": 5,
+                        "eng": "eagle",
+                        "kan": "독수리",
+                        "rom": "dogsuli"
+                    },
+                    {
+                        "id": 6,
+                        "eng": "shark",
+                        "kan": "상어",
+                        "rom": "sang-eo"
+                    },
+                    {
+                        "id": 7,
+                        "eng": "sheep",
+                        "kan": "양",
+                        "rom": "yang"
+                    },
+                    {
+                        "id": 8,
+                        "eng": "sparrow",
+                        "kan": "참새",
+                        "rom": "chamsae"
+                    },
+                    {
+                        "id": 9,
+                        "eng": "monkey",
+                        "kan": "원숭이",
+                        "rom": "wonsung-i"
+                    },
+                    {
+                        "id": 10,
+                        "eng": "elephant",
+                        "kan": "코끼리",
+                        "rom": "kokkili"
+                    },
+                    {
+                        "id": 11,
+                        "eng": "giraffe",
+                        "kan": "기린",
+                        "rom": "gilin"
+                    },
+                    {
+                        "id": 12,
+                        "eng": "bird",
+                        "kan": "새",
+                        "rom": "sae"
+                    },
+                    {
+                        "id": 13,
+                        "eng": "animal",
+                        "kan": "동물",
+                        "rom": "dongmul"
+                    },
+                    {
+                        "id": 14,
+                        "eng": "cow",
+                        "kan": "소",
+                        "rom": "so"
+                    },
+                    {
+                        "id": 15,
+                        "eng": "hamster",
+                        "kan": "햄스터",
+                        "rom": "haemseuteo"
+                    },
+                    {
+                        "id": 16,
+                        "eng": "fish",
+                        "kan": "물고기",
+                        "rom": "mulgogi"
+                    },
+                    {
+                        "id": 17,
+                        "eng": "horse",
+                        "kan": "말",
+                        "rom": "mal"
+                    },
+                    {
+                        "id": 18,
+                        "eng": "lion",
+                        "kan": "사자",
+                        "rom": "saja"
+                    },
+                    {
+                        "id": 19,
+                        "eng": "panda",
+                        "kan": "팬더",
+                        "rom": "paendeo"
+                    },
+                    {
+                        "id": 20,
+                        "eng": "fox",
+                        "kan": "여우",
+                        "rom": "yeou"
                     }
                 ]
             },
@@ -33,6 +141,114 @@
                         "eng": "child",
                         "kan": "아이",
                         "rom": "ai"
+                    },
+                    {
+                        "id": 23,
+                        "eng": "daughter",
+                        "kan": "딸",
+                        "rom": "ttal"
+                    },
+                    {
+                        "id": 24,
+                        "eng": "woman",
+                        "kan": "여자",
+                        "rom": "yeoja"
+                    },
+                    {
+                        "id": 25,
+                        "eng": "man",
+                        "kan": "남자",
+                        "rom": "namja"
+                    },
+                    {
+                        "id": 26,
+                        "eng": "father",
+                        "kan": "아버지",
+                        "rom": "abeoji"
+                    },
+                    {
+                        "id": 27,
+                        "eng": "mother",
+                        "kan": "어머니",
+                        "rom": "eomeoni"
+                    },
+                    {
+                        "id": 28,
+                        "eng": "aunt",
+                        "kan": "이모",
+                        "rom": "imo"
+                    },
+                    {
+                        "id": 29,
+                        "eng": "uncle",
+                        "kan": "삼촌",
+                        "rom": "samchon"
+                    },
+                    {
+                        "id": 30,
+                        "eng": "son",
+                        "kan": "아들",
+                        "rom": "adeul"
+                    },
+                    {
+                        "id": 31,
+                        "eng": "friend",
+                        "kan": "친구",
+                        "rom": "chingu"
+                    },
+                    {
+                        "id": 32,
+                        "eng": "children",
+                        "kan": "어린이",
+                        "rom": "eolin-i"
+                    },
+                    {
+                        "id": 33,
+                        "eng": "siblings",
+                        "kan": "동기",
+                        "rom": "dong-gi"
+                    },
+                    {
+                        "id": 34,
+                        "eng": "student",
+                        "kan": "학생",
+                        "rom": "hagsaeng"
+                    },
+                    {
+                        "id": 35,
+                        "eng": "people",
+                        "kan": "사람들",
+                        "rom": "salamdeul"
+                    },
+                    {
+                        "id": 36,
+                        "eng": "worker",
+                        "kan": "노동자",
+                        "rom": "nodongja"
+                    },
+                    {
+                        "id": 37,
+                        "eng": "youtuber",
+                        "kan": "너는",
+                        "rom": "neoneun"
+                    },
+                    {
+                        "id": 38,
+                        "eng": "aunt",
+                        "kan": "이모",
+                        "rom": "imo"
+                    },
+                    {
+                        "id": 39,
+                        "eng": "uncle",
+                        "kan": "삼촌",
+                        "rom": "samchon"
+                    },
+                    {
+                        "id": 40,
+                        "eng": "hairdresser",
+                        "kan": "미용사",
+                        "rom": "miyongsa"
                     }
                 ]
             },
