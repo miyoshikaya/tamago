@@ -23,15 +23,11 @@ const App = () =>
 		<div className="App">
 			<Navigation />
 			<Route exact path={routes.LANDING} component={SignIn} />
-			<Route exact path={routes.LANDING} component={TamagoBar} />
 
 			<Route exact path={routes.SIGN_IN} component={SignIn} />
-			<Route exact path={routes.SIGN_IN} component={TamagoBar} />
 
 			<Route exact path={routes.SIGN_UP} component={SignUp} />
-			<Route exact path={routes.SIGN_UP} component={TamagoBar} />
 
-			<Route exact path={routes.PASSWORD_FORGET} component={TamagoBar} />
 			<Route exact path={routes.PASSWORD_FORGET} component={PwdReset} /> 
 
 			<Route exact path={routes.PET} component={Pet} /> 
