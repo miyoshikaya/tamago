@@ -2,11 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function QuestionCount(props) {
-  return (
-    <div className="questionCount">
-      Question {props.counter} of {props.total}
-    </div>
-  );
+  if (props.currQuestion !== '') {
+    return (
+      <div className="questionCount">
+        Question {props.counter} of {props.total}
+      </div>
+    );
+  }
+  else {
+    return (
+      <div className="questionCount">
+
+      </div>);
+  }
 }
 
 QuestionCount.propTypes = {
