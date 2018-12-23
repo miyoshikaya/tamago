@@ -7,6 +7,7 @@ import withAuthentication from './withAuthentication.js';
 import TamagoBar from './components/StartPage/Title/Tamago-Bar.js';
 import SignUp from './components/StartPage/SignForm/SignUp.js';
 import SignIn from './components/StartPage/SignForm/SignIn.js';
+import Logout from './components/StartPage/SignForm/Logout.js';
 import PwdReset from './components/StartPage/SignForm/PwdReset.js';
 import Navigation from './Navigation.js';
 
@@ -17,7 +18,7 @@ import Quizzes from './components/HomePage/QuizSection/Quizzes.js';
 import Progress from './components/HomePage/ProgressSection/Progress.js';
 import Settings from './components/HomePage/SettingSection/Settings.js';
 
-const App = () => 
+const App = () =>
 
 	<Router>
 		<div className="App">
@@ -27,10 +28,11 @@ const App = () =>
 			<Route exact path={routes.SIGN_IN} component={SignIn} />
 
 			<Route exact path={routes.SIGN_UP} component={SignUp} />
+			<Route exact path={routes.LANDINGLOGOUT} component={Logout} />
 
-			<Route exact path={routes.PASSWORD_FORGET} component={PwdReset} /> 
+			<Route exact path={routes.PASSWORD_FORGET} component={PwdReset} />
 
-			<Route exact path={routes.PET} component={Pet} /> 
+			<Route exact path={routes.PET} component={Pet} />
 			{/*<Route exact path={routes.PET} component={Navigation} />*/}
 			<Route exact path={routes.STUDY} component={Tests} />
 			{/*<Route exact path={routes.STUDY} component={Navigation} />*/}
@@ -38,9 +40,9 @@ const App = () =>
 			{/*<Route exact path={routes.QUIZ} component={Navigation} /> */}
 			<Route exact path={routes.PROGRESS} component={Progress} />
 			{/*<Route exact path={routes.PROGRESS} component={Navigation} />*/}
-			<Route exact path={routes.SETTINGS} component={Settings} /> 
+			<Route exact path={routes.SETTINGS} component={Settings} />
 			{/*<Route exact path={routes.SETTINGS} component={Navigation} />*/}
-		</div> 
+		</div>
 	</Router>
 
 
