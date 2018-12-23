@@ -48,21 +48,6 @@ class FlashCard extends React.Component {
                 </div>
             );
         }
-
-        // return (
-
-        //     <div className="card-container">
-        //         <div className={frontClass.join(' ')}>
-        //             <div className="front">
-        //                 <div className="eng">{this.props.eng} {/*this.props.side*/}</div>
-        //             </div>
-        //             <div className="front back">
-        //                 <div className="kan">{this.props.kan}</div>
-        //                 <div className="rom">{this.props.rom}</div>
-        //             </div>
-        //         </div>
-        //     </div>
-        // );
     }
 }
 

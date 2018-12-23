@@ -339,15 +339,11 @@ class QuizCard extends Component {
       quizUndone={this.quizUndone} />;
   }
 
-  startNewQuiz() {
-    //(re-)starting new quiz
-  }
-
   render() {
     return (
       <div>
         {this.state.quizDone ? this.renderResult() : this.renderQuiz()}
-      </div >
+      </div>
     );
   }
 }

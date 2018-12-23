@@ -167,7 +167,8 @@ class PetCard extends React.Component {
                 <PlayTimer
                 restart={this.state.restartPlay} 
                 pls={this.restartPlayTimer}
-                petDied={this.deadPet} />
+                petDied={this.deadPet}
+                alive={this.state.alive} />
               </div>
             </div>
             <div className="timer">
@@ -176,7 +177,8 @@ class PetCard extends React.Component {
                 <FoodTimer 
                 restart={this.state.restartFood} 
                 pls={this.restartFoodTimer}
-                petDied={this.deadPet} />
+                petDied={this.deadPet}
+                alive={this.state.alive} />
               </div>
             </div>
           </div>
@@ -187,7 +189,8 @@ class PetCard extends React.Component {
                 <WashTimer 
                 restart={this.state.restartWash} 
                 pls={this.restartWashTimer}
-                petDied={this.deadPet} />
+                petDied={this.deadPet}
+                alive={this.state.alive} />
               </div>
             </div>
             <div className="timer">
@@ -196,8 +199,9 @@ class PetCard extends React.Component {
                 <MusicTimer 
                 restart={this.state.restartMusic} 
                 pls={this.restartMusicTimer}
-                petDied={this.deadPet} />
-                </div>
+                petDied={this.deadPet}
+                alive={this.state.alive} />
+              </div>
             </div>
           </div>
         </div>

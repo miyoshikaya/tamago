@@ -6,7 +6,7 @@ class PlayTimer extends React.Component {
     super(props);
     this.state = { 
       time: {}, 
-      seconds: 15,
+      seconds: 3599,
       restart: false,
       };
     this.timer = 0;
@@ -42,7 +42,7 @@ class PlayTimer extends React.Component {
   startTimer() {
     if (this.timer === 0 && this.state.seconds > 0) {
       this.setState({
-        seconds: 15,
+        seconds: 3599,
       });
       this.timer = setInterval(this.countDown, 1000);      
     }
@@ -62,6 +62,11 @@ class PlayTimer extends React.Component {
       this.props.pls();
     }
 
+    if(!this.props.alive){
+      console.log('pet died babe');
+      clearInterval(this.timer);
+      //this.props.petDied('hunger');
+    }
 
     if(!this.state.restart){
     // Remove one second, set state so a re-render happens.
@@ -79,7 +84,7 @@ class PlayTimer extends React.Component {
       }
     }
     else {
-      let seconds = 15;
+      let seconds = 3599;
       this.setState({
         restart: false,
         time: this.secondsToTime(seconds),
@@ -88,16 +93,86 @@ class PlayTimer extends React.Component {
     }
   }
 
-  render() {
-    return(
+renderMinutesWithZero(){
+  return(
+    <div>
+      <h3 className="timer play-timer">
+        0{this.state.time.m}:{this.state.time.s}
+        {this.props.restart}
+      </h3>
+    </div>
+  );
+}
+
+renderSecondsWithZero(){
+  return(
+    <div>
+      <h3 className="timer play-timer">
+        {this.state.time.m}:0{this.state.time.s}
+        {this.props.restart}
+      </h3>
+    </div>
+  );
+}
+
+renderBothWithZero(){
+  return(
+    <div>
+      <h3 className="timer play-timer">
+        0{this.state.time.m}:0{this.state.time.s}
+        {this.props.restart}
+      </h3>
+    </div>
+  );
+}
+
+renderNormalTimer(){
+  return(
       <div>
         {/*<button onClick={this.restartTimer}>Restart</button>*/}
         <h3 className="timer play-timer">
-          {this.state.time.m} : {this.state.time.s}
+          {this.state.time.m}:{this.state.time.s}
           {this.props.restart}
         </h3>
       </div>
     );
+}
+
+renderOtherTimer(){
+  return(
+    <div>
+        {
+          (this.state.time.m < 10 && this.state.time.s > 9) ?
+            this.renderMinutesWithZero()
+            : this.renderOtherOtherTimer()
+        }
+      </div>
+  );
+}
+
+renderOtherOtherTimer(){
+  return(
+    <div>
+        {
+          (this.state.time.m > 9 && this.state.time.s < 10) ?
+            this.renderSecondsWithZero()
+            : this.renderNormalTimer()
+        }
+      </div>
+  );
+}
+
+  render() {
+    return (
+      <div>
+        {
+          (this.state.time.m < 10 && this.state.time.s < 10) ?
+            this.renderBothWithZero()
+            : this.renderOtherTimer()
+        }
+      </div>
+    );
+
   }
 }
 
