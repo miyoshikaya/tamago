@@ -1,3 +1,7 @@
+#hr-flashcard {
+  height: 50px;
+}
+
 .card-container {
   cursor: pointer;
   height: 200px;

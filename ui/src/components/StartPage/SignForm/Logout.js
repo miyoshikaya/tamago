@@ -1,10 +1,10 @@
-import React from 'react';
+//import React from 'react';
 import './login-style.css';
 import { auth } from '../../../firebase';
 import * as routes from '../../../constants/routes';
 
 
-const authCondition = (authUser) => !!authUser;
+//const authCondition = (authUser) => !!authUser;
 
 
 const Logout = () => {

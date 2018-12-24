@@ -3,7 +3,7 @@ import './nav-style.css';
 import { Link } from 'react-router-dom';
 import AuthUserContext from './AuthUserContext';
 import * as routes from './constants/routes.js';
-import SignOutButton from './components/SingOutButton/SignOutButton.js';
+//import SignOutButton from './components/SingOutButton/SignOutButton.js';
 import TamagoBar from './components/StartPage/Title/Tamago-Bar.js';
 
 const Navigation = () => {

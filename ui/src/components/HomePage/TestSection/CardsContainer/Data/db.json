@@ -234,15 +234,15 @@
                     },
                     {
                         "id": 38,
-                        "eng": "aunt",
-                        "kan": "이모",
-                        "rom": "imo"
+                        "eng": "boy",
+                        "kan": "소년",
+                        "rom": "sonyeon"
                     },
                     {
                         "id": 39,
-                        "eng": "uncle",
-                        "kan": "삼촌",
-                        "rom": "samchon"
+                        "eng": "girl",
+                        "kan": "소녀",
+                        "rom": "sonyeo"
                     },
                     {
                         "id": 40,
@@ -265,6 +265,362 @@
                         "eng": "juice",
                         "kan": "주스",
                         "rom": "juseu"
+                    },
+                    {
+                        "id": 3,
+                        "eng": "orange",
+                        "kan": "오렌지",
+                        "rom": "olenji"
+                    },
+                    {
+                        "id:": 4,
+                        "eng": "apple",
+                        "kan": "사과",
+                        "rom": "sagwa"
+                    },
+                    {
+                        "id:": 5,
+                        "eng": "milk",
+                        "kan": "우유",
+                        "rom": "uyu"
+                    },
+                    {
+                        "id:": 6,
+                        "eng": "bread",
+                        "kan": "빵",
+                        "rom": "ppang"
+                    },
+                    {
+                        "id:": 7,
+                        "eng": "cheese",
+                        "kan": "치즈",
+                        "rom": "chijeu"
+                    },
+                    {
+                        "id:": 8,
+                        "eng": "beef",
+                        "kan": "소고기",
+                        "rom": "sogogi"
+                    },
+                    {
+                        "id:": 9,
+                        "eng": "sushi",
+                        "kan": "회",
+                        "rom": "hoe"
+                    },
+                    {
+                        "id:": 10,
+                        "eng": "meal",
+                        "kan": "식사",
+                        "rom": "sigsa"
+                    },
+                    {
+                        "id": 11,
+                        "eng": "meat",
+                        "kan": "고기",
+                        "rom": "gogi"
+                    },
+                    {
+                        "id": 12,
+                        "eng": "chicken",
+                        "kan": "치킨",
+                        "rom": "chikin"
+                    },
+                    {
+                        "id": 13,
+                        "eng": "egg",
+                        "kan": "卵",
+                        "rom": "tamago"
+                    },
+                    {
+                        "id:": 14,
+                        "eng": "breakfast",
+                        "kan": "아침 식사",
+                        "rom": "achim sigsa"
+                    },
+                    {
+                        "id:": 15,
+                        "eng": "dinner",
+                        "kan": "공식 만찬",
+                        "rom": "gongsig manchan"
+                    },
+                    {
+                        "id:": 16,
+                        "eng": "tofu",
+                        "kan": "두부",
+                        "rom": "dobu"
+                    },
+                    {
+                        "id:": 17,
+                        "eng": "rice",
+                        "kan": "쌀",
+                        "rom": "ssal"
+                    },
+                    {
+                        "id:": 18,
+                        "eng": "pork",
+                        "kan": "돼지 고기",
+                        "rom": "dwaeji gogi"
+                    },
+                    {
+                        "id:": 19,
+                        "eng": "tea",
+                        "kan": "차",
+                        "rom": "cha"
+                    },
+                    {
+                        "id:": 20,
+                        "eng": "coffee",
+                        "kan": "커피",
+                        "rom": "keopi"
+                    }
+                ]
+            },
+            {
+                "krn-cards-school": [
+                    {
+                        "id": 1,
+                        "eng": "teacher",
+                        "kan": "선생",
+                        "rom": "seonsaeng"
+                    },
+                    {
+                        "id": 2,
+                        "eng": "student",
+                        "kan": "학생",
+                        "rom": "hagsaeng"
+                    },
+                    {
+                        "id": 3,
+                        "eng": "university",
+                        "kan": "대학",
+                        "rom": "daehag"
+                    },
+                    {
+                        "id:": 4,
+                        "eng": "school",
+                        "kan": "학교",
+                        "rom": "haggyo"
+                    },
+                    {
+                        "id:": 5,
+                        "eng": "notebook",
+                        "kan": "수첩",
+                        "rom": "sucheob"
+                    },
+                    {
+                        "id:": 6,
+                        "eng": "pen",
+                        "kan": "펜",
+                        "rom": "pen"
+                    },
+                    {
+                        "id:": 7,
+                        "eng": "pencil",
+                        "kan": "연필",
+                        "rom": "yeonpil"
+                    },
+                    {
+                        "id:": 8,
+                        "eng": "desk",
+                        "kan": "책상",
+                        "rom": "chaegsang"
+                    },
+                    {
+                        "id:": 9,
+                        "eng": "book",
+                        "kan": "책",
+                        "rom": "chaeg"
+                    },
+                    {
+                        "id:": 10,
+                        "eng": "classroom",
+                        "kan": "교실",
+                        "rom": "gyosil"
+                    },
+                    {
+                        "id": 11,
+                        "eng": "pencil case",
+                        "kan": "필통",
+                        "rom": "piltong"
+                    },
+                    {
+                        "id": 12,
+                        "eng": "blackboard",
+                        "kan": "칠판",
+                        "rom": "chilpan"
+                    },
+                    {
+                        "id": 13,
+                        "eng": "chalk",
+                        "kan": "분필",
+                        "rom": "bunpil"
+                    },
+                    {
+                        "id:": 14,
+                        "eng": "high school",
+                        "kan": "고등학교",
+                        "rom": "godeunghaggyo"
+                    },
+                    {
+                        "id:": 15,
+                        "eng": "test",
+                        "kan": "테스트",
+                        "rom": "teseuteu"
+                    },
+                    {
+                        "id:": 16,
+                        "eng": "exam",
+                        "kan": "시험",
+                        "rom": "siheom"
+                    },
+                    {
+                        "id:": 17,
+                        "eng": "Maths",
+                        "kan": "수학",
+                        "rom": "suhag"
+                    },
+                    {
+                        "id:": 18,
+                        "eng": "Physical Education",
+                        "kan": "체육",
+                        "rom": "cheyug"
+                    },
+                    {
+                        "id:": 19,
+                        "eng": "History",
+                        "kan": "역사",
+                        "rom": "yeogsa"
+                    },
+                    {
+                        "id:": 20,
+                        "eng": "English",
+                        "kan": "영어",
+                        "rom": "yeong-eo"
+                    }
+                ]
+            },
+            {
+                "krn-cards-house": [
+                    {
+                        "id": 1,
+                        "eng": "house",
+                        "kan": "집",
+                        "rom": "jib"
+                    },
+                    {
+                        "id": 2,
+                        "eng": "room",
+                        "kan": "방",
+                        "rom": "bang"
+                    },
+                    {
+                        "id": 3,
+                        "eng": "kitchen",
+                        "kan": "부엌",
+                        "rom": "bueok"
+                    },
+                    {
+                        "id:": 4,
+                        "eng": "bathroom",
+                        "kan": "화장실",
+                        "rom": "hwajangsil"
+                    },
+                    {
+                        "id:": 5,
+                        "eng": "bed",
+                        "kan": "침대",
+                        "rom": "chimdae"
+                    },
+                    {
+                        "id:": 6,
+                        "eng": "living room",
+                        "kan": "거실",
+                        "rom": "geosil"
+                    },
+                    {
+                        "id:": 7,
+                        "eng": "window",
+                        "kan": "창문",
+                        "rom": "changmun"
+                    },
+                    {
+                        "id:": 8,
+                        "eng": "door",
+                        "kan": "문",
+                        "rom": "mun"
+                    },
+                    {
+                        "id:": 9,
+                        "eng": "bedroom",
+                        "kan": "침실",
+                        "rom": "chimsil"
+                    },
+                    {
+                        "id:": 10,
+                        "eng": "toilet",
+                        "kan": "화장실",
+                        "rom": "hwajangsil"
+                    },
+                    {
+                        "id": 11,
+                        "eng": "towel",
+                        "kan": "수건",
+                        "rom": "sugeon"
+                    },
+                    {
+                        "id": 12,
+                        "eng": "soap",
+                        "kan": "비누",
+                        "rom": "binu"
+                    },
+                    {
+                        "id": 13,
+                        "eng": "plate",
+                        "kan": "플레이트",
+                        "rom": "peulleiteu"
+                    },
+                    {
+                        "id:": 14,
+                        "eng": "spoon",
+                        "kan": "숟가락",
+                        "rom": "sudgalag"
+                    },
+                    {
+                        "id:": 15,
+                        "eng": "fork",
+                        "kan": "포크",
+                        "rom": "pokeu"
+                    },
+                    {
+                        "id:": 16,
+                        "eng": "knife",
+                        "kan": "칼",
+                        "rom": "kal"
+                    },
+                    {
+                        "id:": 17,
+                        "eng": "chair",
+                        "kan": "의자",
+                        "rom": "uija"
+                    },
+                    {
+                        "id:": 18,
+                        "eng": "sofa",
+                        "kan": "ソ소파ファー",
+                        "rom": "sopa"
+                    },
+                    {
+                        "id:": 19,
+                        "eng": "television",
+                        "kan": "텔레비전",
+                        "rom": "tellebijeon"
+                    },
+                    {
+                        "id:": 20,
+                        "eng": "furniture",
+                        "kan": "가구",
+                        "rom": "gagu"
                     }
                 ]
             }
@@ -399,104 +755,1120 @@
             {
                 "jpn-cards-people": [
                     {
-                        "id": 21,
+                        "id": 1,
                         "eng": "child",
                         "kan": "子",
                         "rom": "ko"
                     },
                     {
-                        "id": 22,
+                        "id": 2,
                         "eng": "mother",
                         "kan": "母",
                         "rom": "haha"
                     },
                     {
-                        "id": 23,
+                        "id": 3,
                         "eng": "person",
                         "kan": "人",
                         "rom": "hito"
                     },
                     {
-                        "id": 24,
+                        "id": 4,
                         "eng": "woman",
                         "kan": "女",
                         "rom": "onna"
                     },
                     {
-                        "id": 25,
+                        "id": 5,
                         "eng": "man",
                         "kan": "男",
                         "rom": "otoko"
                     },
                     {
-                        "id": 26,
+                        "id": 6,
                         "eng": "father",
                         "kan": "父",
                         "rom": "chichi"
+                    },
+                    {
+                        "id": 7,
+                        "eng": "wife",
+                        "kan": "妻",
+                        "rom": "tsuma"
+                    },
+                    {
+                        "id": 8,
+                        "eng": "boy",
+                        "kan": "男の子",
+                        "rom": "otoko no ko"
+                    },
+                    {
+                        "id": 9,
+                        "eng": "girl",
+                        "kan": "女の子",
+                        "rom": "onna no ko"
+                    },
+                    {
+                        "id": 10,
+                        "eng": "son",
+                        "kan": "息子",
+                        "rom": "musuko"
+                    },
+                    {
+                        "id": 11,
+                        "eng": "friend",
+                        "kan": "友達",
+                        "rom": "tomodachi"
+                    },
+                    {
+                        "id": 12,
+                        "eng": "children",
+                        "kan": "子供",
+                        "rom": "kodomo"
+                    },
+                    {
+                        "id": 13,
+                        "eng": "siblings",
+                        "kan": "きょうだい",
+                        "rom": "kyōdai"
+                    },
+                    {
+                        "id": 14,
+                        "eng": "student",
+                        "kan": "学生",
+                        "rom": "gakusei"
+                    },
+                    {
+                        "id": 15,
+                        "eng": "people",
+                        "kan": "人たち",
+                        "rom": "hitotachi"
+                    },
+                    {
+                        "id": 16,
+                        "eng": "worker",
+                        "kan": "労動者",
+                        "rom": "rōdō-sha"
+                    },
+                    {
+                        "id": 17,
+                        "eng": "human",
+                        "kan": "人間",
+                        "rom": "ningen"
+                    },
+                    {
+                        "id": 18,
+                        "eng": "aunt",
+                        "kan": "叔母",
+                        "rom": "oba"
+                    },
+                    {
+                        "id": 19,
+                        "eng": "uncle",
+                        "kan": "叔父",
+                        "rom": "oji"
+                    },
+                    {
+                        "id": 20,
+                        "eng": "daughter",
+                        "kan": "娘",
+                        "rom": "musume"
                     }
                 ]
             },
             {
                 "jpn-cards-food": [
                     {
-                        "id": 41,
+                        "id": 1,
                         "eng": "peach",
                         "kan": "もも",
                         "rom": "momo"
                     },
                     {
-                        "id": 42,
+                        "id": 2,
                         "eng": "banan",
                         "kan": "バナナ",
                         "rom": "banana"
                     },
                     {
-                        "id": 43,
+                        "id": 3,
                         "eng": "orange",
                         "kan": "オレンジ",
                         "rom": "orenji"
                     },
                     {
-                        "id:": 44,
+                        "id:": 4,
                         "eng": "apple",
                         "kan": "林檎",
                         "rom": "ringo"
                     },
                     {
-                        "id:": 45,
+                        "id:": 5,
                         "eng": "milk",
                         "kan": "ミルク",
                         "rom": "miruku"
                     },
                     {
-                        "id:": 46,
+                        "id:": 6,
                         "eng": "bread",
                         "kan": "パン",
                         "rom": "pan"
                     },
                     {
-                        "id:": 47,
+                        "id:": 7,
                         "eng": "cheese",
                         "kan": "チーズ",
                         "rom": "chīzu"
                     },
                     {
-                        "id:": 48,
+                        "id:": 8,
                         "eng": "beef",
                         "kan": "牛肉",
                         "rom": "gyūniku"
                     },
                     {
-                        "id:": 49,
+                        "id:": 9,
                         "eng": "sushi",
                         "kan": "寿司",
                         "rom": "sushi"
                     },
                     {
-                        "id:": 50,
+                        "id:": 10,
                         "eng": "meal",
                         "kan": "食事",
                         "rom": "shokuji"
+                    },
+                    {
+                        "id": 11,
+                        "eng": "meat",
+                        "kan": "お肉",
+                        "rom": "oniku"
+                    },
+                    {
+                        "id": 12,
+                        "eng": "chicken",
+                        "kan": "チキン",
+                        "rom": "chikin"
+                    },
+                    {
+                        "id": 13,
+                        "eng": "egg",
+                        "kan": "卵",
+                        "rom": "tamago"
+                    },
+                    {
+                        "id:": 14,
+                        "eng": "breakfast",
+                        "kan": "朝ごはん",
+                        "rom": "asagohan"
+                    },
+                    {
+                        "id:": 15,
+                        "eng": "dinner",
+                        "kan": "夕食",
+                        "rom": "yūshoku"
+                    },
+                    {
+                        "id:": 16,
+                        "eng": "tofu",
+                        "kan": "豆腐",
+                        "rom": "tōfu"
+                    },
+                    {
+                        "id:": 17,
+                        "eng": "rice",
+                        "kan": "ご飯",
+                        "rom": "gohan"
+                    },
+                    {
+                        "id:": 18,
+                        "eng": "pork",
+                        "kan": "豚肉",
+                        "rom": "butaniku"
+                    },
+                    {
+                        "id:": 19,
+                        "eng": "tea",
+                        "kan": "お茶",
+                        "rom": "ocha"
+                    },
+                    {
+                        "id:": 20,
+                        "eng": "coffee",
+                        "kan": "コーヒー",
+                        "rom": "kōhī"
+                    }
+                ]
+            },
+            {
+                "jpn-cards-school": [
+                    {
+                        "id": 1,
+                        "eng": "teacher",
+                        "kan": "先生",
+                        "rom": "sensei"
+                    },
+                    {
+                        "id": 2,
+                        "eng": "student",
+                        "kan": "学生",
+                        "rom": "gakusei"
+                    },
+                    {
+                        "id": 3,
+                        "eng": "university",
+                        "kan": "大学",
+                        "rom": "daigaku"
+                    },
+                    {
+                        "id:": 4,
+                        "eng": "school",
+                        "kan": "学校",
+                        "rom": "gakkō"
+                    },
+                    {
+                        "id:": 5,
+                        "eng": "notebook",
+                        "kan": "ノート",
+                        "rom": "nōto"
+                    },
+                    {
+                        "id:": 6,
+                        "eng": "pen",
+                        "kan": "ペン",
+                        "rom": "pen"
+                    },
+                    {
+                        "id:": 7,
+                        "eng": "pencil",
+                        "kan": "鉛筆",
+                        "rom": "enpitsu"
+                    },
+                    {
+                        "id:": 8,
+                        "eng": "desk",
+                        "kan": "机",
+                        "rom": "tsukue"
+                    },
+                    {
+                        "id:": 9,
+                        "eng": "book",
+                        "kan": "本",
+                        "rom": "hon"
+                    },
+                    {
+                        "id:": 10,
+                        "eng": "classroom",
+                        "kan": "教室",
+                        "rom": "kyōshitsu"
+                    },
+                    {
+                        "id": 11,
+                        "eng": "pencil case",
+                        "kan": "筆入れ",
+                        "rom": "fudu-ire"
+                    },
+                    {
+                        "id": 12,
+                        "eng": "blackboard",
+                        "kan": "黒板",
+                        "rom": "kokuban"
+                    },
+                    {
+                        "id": 13,
+                        "eng": "chalk",
+                        "kan": "チョーク",
+                        "rom": "chōku"
+                    },
+                    {
+                        "id:": 14,
+                        "eng": "high school",
+                        "kan": "高校",
+                        "rom": "kōkō"
+                    },
+                    {
+                        "id:": 15,
+                        "eng": "test",
+                        "kan": "テスト",
+                        "rom": "tesuto"
+                    },
+                    {
+                        "id:": 16,
+                        "eng": "exam",
+                        "kan": "試験",
+                        "rom": "shiken"
+                    },
+                    {
+                        "id:": 17,
+                        "eng": "Maths",
+                        "kan": "数学",
+                        "rom": "sūgaku"
+                    },
+                    {
+                        "id:": 18,
+                        "eng": "Physical Education",
+                        "kan": "体育",
+                        "rom": "taiiku"
+                    },
+                    {
+                        "id:": 19,
+                        "eng": "History",
+                        "kan": "歴史",
+                        "rom": "rekishi"
+                    },
+                    {
+                        "id:": 20,
+                        "eng": "English",
+                        "kan": "英語",
+                        "rom": "eigo"
+                    }
+                ]
+            },
+            {
+                "jpn-cards-house": [
+                    {
+                        "id": 1,
+                        "eng": "house",
+                        "kan": "家",
+                        "rom": "ie"
+                    },
+                    {
+                        "id": 2,
+                        "eng": "room",
+                        "kan": "部屋",
+                        "rom": "heya"
+                    },
+                    {
+                        "id": 3,
+                        "eng": "kitchen",
+                        "kan": "キッチン",
+                        "rom": "kitchin"
+                    },
+                    {
+                        "id:": 4,
+                        "eng": "bathroom",
+                        "kan": "浴室",
+                        "rom": "yokushitsu"
+                    },
+                    {
+                        "id:": 5,
+                        "eng": "bed",
+                        "kan": "ベッド",
+                        "rom": "beddo"
+                    },
+                    {
+                        "id:": 6,
+                        "eng": "living room",
+                        "kan": "居間",
+                        "rom": "ima"
+                    },
+                    {
+                        "id:": 7,
+                        "eng": "window",
+                        "kan": "窓",
+                        "rom": "mado"
+                    },
+                    {
+                        "id:": 8,
+                        "eng": "door",
+                        "kan": "ドア",
+                        "rom": "doa"
+                    },
+                    {
+                        "id:": 9,
+                        "eng": "bedroom",
+                        "kan": "寝室",
+                        "rom": "shinshitsu"
+                    },
+                    {
+                        "id:": 10,
+                        "eng": "toilet",
+                        "kan": "トイレ",
+                        "rom": "toire"
+                    },
+                    {
+                        "id": 11,
+                        "eng": "towel",
+                        "kan": "タオル",
+                        "rom": "taoru"
+                    },
+                    {
+                        "id": 12,
+                        "eng": "soap",
+                        "kan": "石鹸",
+                        "rom": "sekken"
+                    },
+                    {
+                        "id": 13,
+                        "eng": "plate",
+                        "kan": "卵",
+                        "rom": "tamago"
+                    },
+                    {
+                        "id:": 14,
+                        "eng": "spoon",
+                        "kan": "スプーン",
+                        "rom": "supūn"
+                    },
+                    {
+                        "id:": 15,
+                        "eng": "fork",
+                        "kan": "フォーク",
+                        "rom": "fōku"
+                    },
+                    {
+                        "id:": 16,
+                        "eng": "knife",
+                        "kan": "ナイフ",
+                        "rom": "naifu"
+                    },
+                    {
+                        "id:": 17,
+                        "eng": "chair",
+                        "kan": "椅子",
+                        "rom": "isu"
+                    },
+                    {
+                        "id:": 18,
+                        "eng": "sofa",
+                        "kan": "ソファー",
+                        "rom": "sofā"
+                    },
+                    {
+                        "id:": 19,
+                        "eng": "television",
+                        "kan": "テレビ",
+                        "rom": "terebi"
+                    },
+                    {
+                        "id:": 20,
+                        "eng": "furniture",
+                        "kan": "家具",
+                        "rom": "kagu"
+                    }
+                ]
+            }
+            ]
+        },
+        {
+            "pln-cards": [
+            {
+                "pln-cards-animals": [
+                    {
+                        "id": 1,
+                        "eng": "cat",
+                        "kan": "",
+                        "rom": "kot"
+                    },
+                    {
+                        "id": 2,
+                        "eng": "dog",
+                        "kan": "",
+                        "rom": "pies"
+                    },
+                    {
+                        "id": 3,
+                        "eng": "pig",
+                        "kan": "",
+                        "rom": "świnia"
+                    },
+                    {
+                        "id": 4,
+                        "eng": "tiger",
+                        "kan": "",
+                        "rom": "tygrys"
+                    },
+                    {
+                        "id": 5,
+                        "eng": "eagle",
+                        "kan": "",
+                        "rom": "orzeł"
+                    },
+                    {
+                        "id": 6,
+                        "eng": "shark",
+                        "kan": "",
+                        "rom": "rekin"
+                    },
+                    {
+                        "id": 7,
+                        "eng": "sheep",
+                        "kan": "",
+                        "rom": "owca"
+                    },
+                    {
+                        "id": 8,
+                        "eng": "sparrow",
+                        "kan": "",
+                        "rom": "wróbel"
+                    },
+                    {
+                        "id": 9,
+                        "eng": "monkey",
+                        "kan": "",
+                        "rom": "małpa"
+                    },
+                    {
+                        "id": 10,
+                        "eng": "elephant",
+                        "kan": "",
+                        "rom": "słoń"
+                    },
+                    {
+                        "id": 11,
+                        "eng": "giraffe",
+                        "kan": "",
+                        "rom": "żyrafa"
+                    },
+                    {
+                        "id": 12,
+                        "eng": "bird",
+                        "kan": "",
+                        "rom": "ptak"
+                    },
+                    {
+                        "id": 13,
+                        "eng": "animal",
+                        "kan": "",
+                        "rom": "zwierzę"
+                    },
+                    {
+                        "id": 14,
+                        "eng": "cow",
+                        "kan": "",
+                        "rom": "krowa"
+                    },
+                    {
+                        "id": 15,
+                        "eng": "hamster",
+                        "kan": "",
+                        "rom": "chomik"
+                    },
+                    {
+                        "id": 16,
+                        "eng": "fish",
+                        "kan": "",
+                        "rom": "ryba"
+                    },
+                    {
+                        "id": 17,
+                        "eng": "horse",
+                        "kan": "",
+                        "rom": "koń"
+                    },
+                    {
+                        "id": 18,
+                        "eng": "lion",
+                        "kan": "",
+                        "rom": "lew"
+                    },
+                    {
+                        "id": 19,
+                        "eng": "panda",
+                        "kan": "",
+                        "rom": "panda"
+                    },
+                    {
+                        "id": 20,
+                        "eng": "fox",
+                        "kan": "",
+                        "rom": "lis"
+                    }
+                ]
+            },
+            {
+                "pln-cards-people": [
+                    {
+                        "id": 1,
+                        "eng": "child",
+                        "kan": "",
+                        "rom": "dziecko"
+                    },
+                    {
+                        "id": 2,
+                        "eng": "mother",
+                        "kan": "",
+                        "rom": "matka"
+                    },
+                    {
+                        "id": 3,
+                        "eng": "person",
+                        "kan": "",
+                        "rom": "osoba"
+                    },
+                    {
+                        "id": 4,
+                        "eng": "woman",
+                        "kan": "",
+                        "rom": "kobieta"
+                    },
+                    {
+                        "id": 5,
+                        "eng": "man",
+                        "kan": "",
+                        "rom": "mężczyzna"
+                    },
+                    {
+                        "id": 6,
+                        "eng": "father",
+                        "kan": "",
+                        "rom": "ojciec"
+                    },
+                    {
+                        "id": 7,
+                        "eng": "wife",
+                        "kan": "",
+                        "rom": "żona"
+                    },
+                    {
+                        "id": 8,
+                        "eng": "boy",
+                        "kan": "",
+                        "rom": "chłopiec"
+                    },
+                    {
+                        "id": 9,
+                        "eng": "girl",
+                        "kan": "",
+                        "rom": "dziewczynka"
+                    },
+                    {
+                        "id": 10,
+                        "eng": "son",
+                        "kan": "",
+                        "rom": "syn"
+                    },
+                    {
+                        "id": 11,
+                        "eng": "friend",
+                        "kan": "",
+                        "rom": "przyjaciel"
+                    },
+                    {
+                        "id": 12,
+                        "eng": "children",
+                        "kan": "",
+                        "rom": "dzieci"
+                    },
+                    {
+                        "id": 13,
+                        "eng": "siblings",
+                        "kan": "",
+                        "rom": "rodzeństwo"
+                    },
+                    {
+                        "id": 14,
+                        "eng": "student",
+                        "kan": "",
+                        "rom": "uczeń"
+                    },
+                    {
+                        "id": 15,
+                        "eng": "people",
+                        "kan": "",
+                        "rom": "ludzie"
+                    },
+                    {
+                        "id": 16,
+                        "eng": "worker",
+                        "kan": "",
+                        "rom": "pracownik"
+                    },
+                    {
+                        "id": 17,
+                        "eng": "human",
+                        "kan": "",
+                        "rom": "człowiek"
+                    },
+                    {
+                        "id": 18,
+                        "eng": "aunt",
+                        "kan": "",
+                        "rom": "ciocia"
+                    },
+                    {
+                        "id": 19,
+                        "eng": "uncle",
+                        "kan": "",
+                        "rom": "wujek"
+                    },
+                    {
+                        "id": 20,
+                        "eng": "daughter",
+                        "kan": "",
+                        "rom": "córka"
+                    }
+                ]
+            },
+            {
+                "pln-cards-food": [
+                    {
+                        "id": 1,
+                        "eng": "peach",
+                        "kan": "",
+                        "rom": "brzoskwinia"
+                    },
+                    {
+                        "id": 2,
+                        "eng": "banan",
+                        "kan": "",
+                        "rom": "banan"
+                    },
+                    {
+                        "id": 3,
+                        "eng": "orange",
+                        "kan": "",
+                        "rom": "pomarańcza"
+                    },
+                    {
+                        "id:": 4,
+                        "eng": "apple",
+                        "kan": "",
+                        "rom": "jabłko"
+                    },
+                    {
+                        "id:": 5,
+                        "eng": "milk",
+                        "kan": "",
+                        "rom": "mleko"
+                    },
+                    {
+                        "id:": 6,
+                        "eng": "bread",
+                        "kan": "",
+                        "rom": "chleb"
+                    },
+                    {
+                        "id:": 7,
+                        "eng": "cheese",
+                        "kan": "",
+                        "rom": "ser"
+                    },
+                    {
+                        "id:": 8,
+                        "eng": "beef",
+                        "kan": "",
+                        "rom": "wołowina"
+                    },
+                    {
+                        "id:": 9,
+                        "eng": "sushi",
+                        "kan": "",
+                        "rom": "sushi"
+                    },
+                    {
+                        "id:": 10,
+                        "eng": "meal",
+                        "kan": "",
+                        "rom": "posiłek"
+                    },
+                    {
+                        "id": 11,
+                        "eng": "meat",
+                        "kan": "",
+                        "rom": "mięso"
+                    },
+                    {
+                        "id": 12,
+                        "eng": "chicken",
+                        "kan": "",
+                        "rom": "kurczak"
+                    },
+                    {
+                        "id": 13,
+                        "eng": "egg",
+                        "kan": "",
+                        "rom": "jajko"
+                    },
+                    {
+                        "id:": 14,
+                        "eng": "breakfast",
+                        "kan": "",
+                        "rom": "śniadanie"
+                    },
+                    {
+                        "id:": 15,
+                        "eng": "dinner",
+                        "kan": "",
+                        "rom": "obiad"
+                    },
+                    {
+                        "id:": 16,
+                        "eng": "tofu",
+                        "kan": "",
+                        "rom": "tofu"
+                    },
+                    {
+                        "id:": 17,
+                        "eng": "rice",
+                        "kan": "",
+                        "rom": "ryż"
+                    },
+                    {
+                        "id:": 18,
+                        "eng": "pork",
+                        "kan": "",
+                        "rom": "wieprzowina"
+                    },
+                    {
+                        "id:": 19,
+                        "eng": "tea",
+                        "kan": "",
+                        "rom": "herbata"
+                    },
+                    {
+                        "id:": 20,
+                        "eng": "coffee",
+                        "kan": "",
+                        "rom": "kawa"
+                    }
+                ]
+            },
+            {
+                "pln-cards-school": [
+                    {
+                        "id": 1,
+                        "eng": "teacher",
+                        "kan": "",
+                        "rom": "nauczyciel"
+                    },
+                    {
+                        "id": 2,
+                        "eng": "student",
+                        "kan": "",
+                        "rom": "uczeń"
+                    },
+                    {
+                        "id": 3,
+                        "eng": "university",
+                        "kan": "",
+                        "rom": "uniwersytet"
+                    },
+                    {
+                        "id:": 4,
+                        "eng": "school",
+                        "kan": "",
+                        "rom": "szkoła"
+                    },
+                    {
+                        "id:": 5,
+                        "eng": "notebook",
+                        "kan": "",
+                        "rom": "zeszyt"
+                    },
+                    {
+                        "id:": 6,
+                        "eng": "pen",
+                        "kan": "",
+                        "rom": "pióro"
+                    },
+                    {
+                        "id:": 7,
+                        "eng": "pencil",
+                        "kan": "",
+                        "rom": "ołówek"
+                    },
+                    {
+                        "id:": 8,
+                        "eng": "desk",
+                        "kan": "",
+                        "rom": "biurko"
+                    },
+                    {
+                        "id:": 9,
+                        "eng": "book",
+                        "kan": "",
+                        "rom": "książka"
+                    },
+                    {
+                        "id:": 10,
+                        "eng": "classroom",
+                        "kan": "",
+                        "rom": "klasa"
+                    },
+                    {
+                        "id": 11,
+                        "eng": "pencil case",
+                        "kan": "",
+                        "rom": "piórnik"
+                    },
+                    {
+                        "id": 12,
+                        "eng": "blackboard",
+                        "kan": "",
+                        "rom": "tablica"
+                    },
+                    {
+                        "id": 13,
+                        "eng": "chalk",
+                        "kan": "",
+                        "rom": "kreda"
+                    },
+                    {
+                        "id:": 14,
+                        "eng": "high school",
+                        "kan": "",
+                        "rom": "liceum"
+                    },
+                    {
+                        "id:": 15,
+                        "eng": "test",
+                        "kan": "",
+                        "rom": "test"
+                    },
+                    {
+                        "id:": 16,
+                        "eng": "exam",
+                        "kan": "",
+                        "rom": "egzamin"
+                    },
+                    {
+                        "id:": 17,
+                        "eng": "Maths",
+                        "kan": "",
+                        "rom": "matematyka"
+                    },
+                    {
+                        "id:": 18,
+                        "eng": "Physical Education",
+                        "kan": "",
+                        "rom": "wychowanie fizyczne"
+                    },
+                    {
+                        "id:": 19,
+                        "eng": "History",
+                        "kan": "",
+                        "rom": "historia"
+                    },
+                    {
+                        "id:": 20,
+                        "eng": "English",
+                        "kan": "",
+                        "rom": "język angielski"
+                    }
+                ]
+            },
+            {
+                "pln-cards-house": [
+                    {
+                        "id": 1,
+                        "eng": "house",
+                        "kan": "",
+                        "rom": "dom"
+                    },
+                    {
+                        "id": 2,
+                        "eng": "room",
+                        "kan": "",
+                        "rom": "pokój"
+                    },
+                    {
+                        "id": 3,
+                        "eng": "kitchen",
+                        "kan": "",
+                        "rom": "kuchnia"
+                    },
+                    {
+                        "id:": 4,
+                        "eng": "bathroom",
+                        "kan": "",
+                        "rom": "łazienka"
+                    },
+                    {
+                        "id:": 5,
+                        "eng": "bed",
+                        "kan": "",
+                        "rom": "łóżko"
+                    },
+                    {
+                        "id:": 6,
+                        "eng": "living room",
+                        "kan": "",
+                        "rom": "duży pokój"
+                    },
+                    {
+                        "id:": 7,
+                        "eng": "window",
+                        "kan": "",
+                        "rom": "okno"
+                    },
+                    {
+                        "id:": 8,
+                        "eng": "door",
+                        "kan": "",
+                        "rom": "drzwi"
+                    },
+                    {
+                        "id:": 9,
+                        "eng": "bedroom",
+                        "kan": "",
+                        "rom": "sypialnia"
+                    },
+                    {
+                        "id:": 10,
+                        "eng": "toilet",
+                        "kan": "",
+                        "rom": "toaleta"
+                    },
+                    {
+                        "id": 11,
+                        "eng": "towel",
+                        "kan": "",
+                        "rom": "ręcznik"
+                    },
+                    {
+                        "id": 12,
+                        "eng": "soap",
+                        "kan": "",
+                        "rom": "mydło"
+                    },
+                    {
+                        "id": 13,
+                        "eng": "plate",
+                        "kan": "",
+                        "rom": "talerz"
+                    },
+                    {
+                        "id": 14,
+                        "eng": "spoon",
+                        "kan": "",
+                        "rom": "łyżka"
+                    },
+                    {
+                        "id": 15,
+                        "eng": "fork",
+                        "kan": "",
+                        "rom": "widelec"
+                    },
+                    {
+                        "id": 16,
+                        "eng": "knife",
+                        "kan": "",
+                        "rom": "nóż"
+                    },
+                    {
+                        "id": 17,
+                        "eng": "chair",
+                        "kan": "",
+                        "rom": "krzesło"
+                    },
+                    {
+                        "id": 18,
+                        "eng": "sofa",
+                        "kan": "",
+                        "rom": "sofa"
+                    },
+                    {
+                        "id": 19,
+                        "eng": "television",
+                        "kan": " ",
+                        "rom": "telewizja"
+                    },
+                    {
+                        "id": 20,
+                        "eng": "furniture",
+                        "kan": " ",
+                        "rom": "meble"
                     }
                 ]
             }

@@ -92,6 +92,29 @@ class QuizCard extends Component {
       })
       //console.log(questionList.length);
 
+      this.database = firebase.app().database().ref().child("db/0/flashcards/1/jpn-cards/3/jpn-cards-school");
+
+      this.props.generatedQuiz();
+      await this.database.on('child_added', snap => {
+        questionList.push({
+          id: snap.key,
+          eng: snap.val().eng,
+          kan: snap.val().kan,
+          rom: snap.val().rom
+        })
+      })
+
+      this.database = firebase.app().database().ref().child("db/0/flashcards/1/jpn-cards/4/jpn-cards-house");
+
+      this.props.generatedQuiz();
+      await this.database.on('child_added', snap => {
+        questionList.push({
+          id: snap.key,
+          eng: snap.val().eng,
+          kan: snap.val().kan,
+          rom: snap.val().rom
+        })
+      })
 
     }
     else {
@@ -116,6 +139,19 @@ class QuizCard extends Component {
             console.log(this.props.category);
             this.database = firebase.app().database().ref().child("db/0/flashcards/1/jpn-cards/2/jpn-cards-food");
             break;
+
+          case 'School':
+
+            console.log(this.props.category);
+            this.database = firebase.app().database().ref().child("db/0/flashcards/1/jpn-cards/3/jpn-cards-school");
+            break;
+
+          case 'House':
+
+            console.log(this.props.category);
+            this.database = firebase.app().database().ref().child("db/0/flashcards/1/jpn-cards/4/jpn-cards-house");
+            break;
+
           default:
             break;
         }
