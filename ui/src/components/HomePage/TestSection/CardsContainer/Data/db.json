@@ -1879,16 +1879,62 @@
     {
         "users": [
             {
-                "id": "lala",
-                "language": "korean"
-            },
-            {
-                "id": "nana",
-                "language": "korean"
-            },
-            {
-                "id": "hito",
-                "language": "japanese"
+                "firebase-id": "lala",
+                "language": "korean",
+                "flashcards": [
+                    {
+                        "id": "1-2-1",
+                        "status": "learning"
+                    },
+                    {
+                        "id": "1-2-2",
+                        "status": "learnt"
+                    },
+                    {
+                        "id": "1-2-3",
+                        "status": "mastered"
+                    }
+                ],
+                "pet-items": [
+                    {
+                       "id": "play",
+                        "number": 3
+                    },
+                    {
+                       "id": "food",
+                        "number": 3
+                    },
+                    {
+                       "id": "wash",
+                        "number": 3
+                    },
+                    {
+                       "id": "music",
+                        "number": 3
+                    }
+                ],
+                "timers": [
+                    {
+                       "id": "play",
+                       "timestamp": "",
+                        "timer": "50:45"
+                    },
+                    {
+                       "id": "food",
+                       "timestamp": "",
+                        "timer": "50:45"
+                    },
+                    {
+                       "id": "wash",
+                       "timestamp": "",
+                        "timer": "50:45"
+                    },
+                    {
+                       "id": "music",
+                       "timestamp": "",
+                        "timer": "50:45"
+                    }
+                ]
             }
         ]
     }
