@@ -15,7 +15,7 @@ class FlashCard extends React.Component {
         let backClass = ["card back-class"];
 
         if (this.props.side === 'front') {
-            if (this.props.kan === ''){
+            if (this.props.kan === '' || this.props.kan === ' '){
                 frontClass.push('active');
                 return (
                     <div className="card-container">
@@ -49,7 +49,7 @@ class FlashCard extends React.Component {
             }
         }
         else {
-             if (this.props.kan === ''){
+             if (this.props.kan === '' || this.props.kan === ' '){
                 backClass.push('active');
                 return (
                     <div className="card-container">

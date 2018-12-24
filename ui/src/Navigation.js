@@ -3,7 +3,6 @@ import './nav-style.css';
 import { Link } from 'react-router-dom';
 import AuthUserContext from './AuthUserContext';
 import * as routes from './constants/routes.js';
-//import SignOutButton from './components/SingOutButton/SignOutButton.js';
 import TamagoBar from './components/StartPage/Title/Tamago-Bar.js';
 
 const Navigation = () => {
@@ -37,7 +36,7 @@ const NavigationAuth = () =>
 					<Link to={routes.SETTINGS}><p className="nav-link">Settings</p></Link>
 				</li>
 				<li className="nav-item">
-					<Link to={routes.LANDINGLOGOUT}><p className="nav-link">Logout</p></Link>
+					<Link to={routes.LANDINGLOGOUT}><p className="nav-link">Log out</p></Link>
 				</li>
 			</ul>
 		</nav>
