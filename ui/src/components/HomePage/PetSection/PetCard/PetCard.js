@@ -77,7 +77,8 @@ class PetCard extends React.Component {
 
 
   async getItemClick(itemType) {
-    if (this.state._isMounted === true) {
+    console.log('hello');
+    
       switch (itemType) {
 
         case 'play':
@@ -99,6 +100,7 @@ class PetCard extends React.Component {
               foodItems: this.state.foodItems - 1,
               restartFood: true,
             });
+            console.log('food');
           }
           else
             alert("You have 0 🍌!");
@@ -129,7 +131,7 @@ class PetCard extends React.Component {
         default:
           break;
       }
-    }
+    
   }
 
   restartPlayTimer() {
