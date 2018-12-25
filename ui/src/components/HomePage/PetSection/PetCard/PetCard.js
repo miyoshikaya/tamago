@@ -69,16 +69,16 @@ class PetCard extends React.Component {
     var newTimers = [];
 
     newTimers.push(
-      newTimerPlay - diffPlay
+      Math.max(newTimerPlay - diffPlay, 0)
     );
     newTimers.push(
-      newTimerFood - diffFood
+      Math.max(newTimerFood - diffFood, 0)
     );
     newTimers.push(
-      newTimerWash - diffWash
+      Math.max(newTimerWash - diffWash, 0)
     );
     newTimers.push(
-      newTimerMusic - diffMusic
+      Math.max(newTimerMusic - diffMusic, 0)
     );
 
     console.log(newTimers);
@@ -93,20 +93,27 @@ class PetCard extends React.Component {
       })
     });
     this.setNewTimers();
+
+    var user = db.onceGetUser(firebase.auth.currentUser.uid).then(snapshot => snapshot.val());
+    await user.then((value) => {
+      this.setState({
+        user: value
+      })
+    });
     console.log(this.state.user);
   }
 
   componentDidMount() {
+
     this.getUserData();
-
-
-
-
-
   }
 
   componentWillUnmount() {
-    this._isMounted = false;
+    this.setNewTimers();
+    this.setState({
+      user: null,
+    });
+
   }
 
   addItems(n, itemName) {

@@ -1,5 +1,8 @@
 import React from 'react';
 import './countdowntimers.css';
+import { firebase } from '../../../../../firebase';
+import { db } from '../../../../../firebase';
+
 
 
 class MusicTimer extends React.Component {
@@ -58,6 +61,11 @@ class MusicTimer extends React.Component {
     });
   }
 
+  async setMusicTimer(seconds) {
+    await db.setTimer(firebase.auth.currentUser.uid, seconds, 3, "music", Math.floor(Date.now() / 1000));
+
+  }
+
 
   countDown() {
     if (this.props.restart) {
@@ -93,7 +101,9 @@ class MusicTimer extends React.Component {
         time: this.secondsToTime(seconds),
         seconds: seconds,
       });
+      this.setMusicTimer(seconds);
     }
+
   }
 
   renderMinutesWithZero() {
