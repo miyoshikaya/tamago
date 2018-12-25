@@ -1,23 +1,23 @@
 import { db } from './firebase';
 
 // User API
-export const doCreateUser = (id, email) => { 
-	db.ref(`users/${id}`).set({ 
-		"id": email, 
+export const doCreateUser = (id, email) => {
+    db.ref(`users/${id}`).set({
+        "id": email,
         "language": "korean",
         "flashcards": [
-	        {
-	            "id": "0-0-0",
-	            "status": "learning"
-	        },
-	        {
-	        	"id": "0-0-1",
-	            "status": "learnt"
-	        },
-	        {
-	            "id": "0-0-2",
-	            "status": "mastered"
-	        }
+            {
+                "id": "0-0-0",
+                "status": "learning"
+            },
+            {
+                "id": "0-0-1",
+                "status": "learnt"
+            },
+            {
+                "id": "0-0-2",
+                "status": "mastered"
+            }
         ],
         "pet-items": [
             {
@@ -59,10 +59,41 @@ export const doCreateUser = (id, email) => {
                 "timer": "12:0"
             }
         ]
-	});
+    });
 }
 
-export const onceGetUsers = () => 
-	db.ref('users').once('value');
+export const onceGetUsers = () =>
+    db.ref('users').once('value');
+
+export const onceGetUser = (id) =>
+    db.ref('users/' + id).once('value');
+
+export const getTimer = (id, index) =>
+    db.ref('users/' + id + 'timers/' + index).once('value');
+
+export const setTimeStamps = (id, timers, timeStamp) => {
+    db.ref('users/' + id + '/timers').set([
+        {
+            "id": "play",
+            "timer": timers[0],
+            "timestamp": timeStamp,
+        },
+        {
+            "id": "food",
+            "timer": timers[1],
+            "timestamp": timeStamp,
+        },
+        {
+            "id": "wash",
+            "timer": timers[2],
+            "timestamp": timeStamp,
+        },
+        {
+            "id": "music",
+            "timer": timers[3],
+            "timestamp": timeStamp,
+        },
+    ]);
+}
 
 // Other Entity APIs ...

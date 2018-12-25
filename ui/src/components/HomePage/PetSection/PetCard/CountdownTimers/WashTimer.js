@@ -6,7 +6,7 @@ class WashTimer extends React.Component {
     super(props);
     this.state = {
       time: {},
-      seconds: 549,
+      seconds: this.props.seconds,
       restart: false,
     };
     this.timer = 0;
@@ -46,7 +46,7 @@ class WashTimer extends React.Component {
   startTimer() {
     if (this.timer === 0 && this.state.seconds > 0) {
       this.setState({
-        seconds: 549,
+        seconds: this.props.seconds,
       });
       this.timer = setInterval(this.countDown, 1000);
     }
