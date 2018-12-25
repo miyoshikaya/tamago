@@ -46,7 +46,7 @@ class PetCard extends React.Component {
   componentWillMount() {
     console.log(this.state.timeStamp);
 
-    this._isMounted = true;
+    
   }
 
   setNewTimers() {
@@ -101,6 +101,11 @@ class PetCard extends React.Component {
       })
     });
     console.log(this.state.user);
+
+    this.setState({
+      foodItems: 3,
+      playItems: 3,
+    });
   }
 
   componentDidMount() {
