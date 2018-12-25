@@ -115,4 +115,10 @@ export const setItem = (id, index, name, number) => {
     );
 }
 
+export const setLang = (id, lang) => {
+    db.ref('users/' + id + '/language').set(
+        lang
+    );
+}
+
 // Other Entity APIs ...

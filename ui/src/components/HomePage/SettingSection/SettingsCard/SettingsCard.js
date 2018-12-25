@@ -7,25 +7,25 @@ import PwdChangeForm from './PwdChange.js';
 class SettingsCard extends React.Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {
-      languageB: 'Jp',
-      languageS: 'Japanese',
+      languageB: this.props.languageB,
+      languageS: this.props.languageS,
     }
   }
 
   changeLanguage = (lang) => {
-    if(lang==='Japanese'){
+    if (lang === 'Japanese') {
       this.setState({
         languageB: 'Jp',
         languageS: lang
       });
-    } else if(lang==='Korean'){
+    } else if (lang === 'Korean') {
       this.setState({
         languageB: 'Kr',
         languageS: lang
       });
-    } else if(lang==='Polish'){
+    } else if (lang === 'Polish') {
       this.setState({
         languageB: 'Pl',
         languageS: lang
@@ -34,14 +34,15 @@ class SettingsCard extends React.Component {
     this.props.languageChange(lang);
   }
 
-  render () {
+  render() {
+    console.log(this.state);
     return (
       <div className="centered" id="mainWrapper">
         <div className="half purple">
           <div id="title">Tamago settings</div>
           <div id="preview">
-            <div id="previewText">{this.state.languageB}</div>
-            <div id="previewTitle"><span>{this.state.languageS}</span> Language</div>
+            <div id="previewText">{this.props.languageB}</div>
+            <div id="previewTitle"><span>{this.props.languageS}</span> Language</div>
           </div>
           <div id="switchWrapper">
             <div id="switchOuter">
@@ -50,11 +51,12 @@ class SettingsCard extends React.Component {
         </div>
         <div className="half">
           <div id="settingsWrapper">
-              <PwdChangeForm />
+            <PwdChangeForm />
             <div id="colorPicker">
               <div className="dropdownTitle">Language</div>
               <div id="colorsWrapper">
-                <Dropdown handleLanguageChange={this.changeLanguage}/>
+                <Dropdown handleLanguageChange={this.changeLanguage}
+                  currentLanguage={this.props.languageS} />
               </div>
             </div>
           </div>

@@ -3,6 +3,7 @@ import './settings.css'
 import SettingsCard from './SettingsCard/SettingsCard.js';
 
 import { firebase } from '../../../firebase';
+import { db } from '../../../firebase';
 import * as routes from '../../../constants/routes';
 
 
@@ -15,15 +16,67 @@ class Settings extends React.Component {
     super(props);
 
     this.state = {
-      language: 'Japanese',
+      user: null,
+      languageB: null,
+      languageS: null,
+    }
+
+    this.changeLang = this.changeLang.bind(this);
+  }
+
+  changeLang(lang) {
+    db.setLang(firebase.auth.currentUser.uid, lang);
+    if (lang === 'Japanese') {
+      this.setState({
+        languageB: 'Jp',
+        languageS: lang
+      });
+    } else if (lang === 'Korean') {
+      this.setState({
+        languageB: 'Kr',
+        languageS: lang
+      });
+    } else if (lang === 'Polish') {
+      this.setState({
+        languageB: 'Pl',
+        languageS: lang
+      });
     }
   }
 
-  passLang = (lang) => {
-    console.log(lang);
-    //this.props.passLangUp(lang);
-
-    //przesłać info o języku do jakiegoś komponenta nadrzędnego, żeby mogło trafić do STUDY i QUIZZES
+  async getUserData() {
+    if (firebase.auth.currentUser !== null) {
+      var user = db.onceGetUser(firebase.auth.currentUser.uid).then(snapshot => snapshot.val());
+      await user.then((value) => {
+        this.setState({
+          user: value
+        })
+      });
+      console.log(this.state.user);
+      switch (this.state.user.language) {
+        case 'Korean':
+          await this.setState({
+            languageB: 'Kr',
+            languageS: 'Korean',
+          });
+          break;
+        case 'Japanese':
+          await this.setState({
+            languageB: 'Jp',
+            languageS: 'Japanese',
+          });
+          break;
+        case 'Polish':
+          await this.setState({
+            languageB: 'Pl',
+            languageS: 'Polish',
+          });
+          break;
+      }
+    }
+  }
+  componentDidMount() {
+    this.getUserData();
   }
 
   render() {
@@ -34,12 +87,20 @@ class Settings extends React.Component {
         window.location = routes.SIGN_IN;
       }
     });
-    return (
-      <div>
-        <SettingsCard languageChange={this.passLang} />
-      </div>
+    if (this.state.user !== null && firebase.auth.currentUser !== null) {
+      console.log(this.state);
+      return (
+        <div>
+          <SettingsCard languageChange={this.changeLang}
+            languageB={this.state.languageB}
+            languageS={this.state.languageS} />
+        </div>
 
-    );
+      );
+    }
+    else {
+      return null;
+    }
   }
 }
 
