@@ -2,6 +2,7 @@ import { db } from './firebase';
 
 // User API
 export const doCreateUser = (id, email) => {
+    var timeStamp = Math.floor(Date.now() / 1000);
     db.ref(`users/${id}`).set({
         "id": email,
         "language": "korean",
@@ -40,22 +41,22 @@ export const doCreateUser = (id, email) => {
         "timers": [
             {
                 "id": "play",
-                "timestamp": "",
+                "timestamp": timeStamp,
                 "timer": 2501
             },
             {
                 "id": "food",
-                "timestamp": "",
+                "timestamp": timeStamp,
                 "timer": 2502
             },
             {
                 "id": "wash",
-                "timestamp": "",
+                "timestamp": timeStamp,
                 "timer": 2503
             },
             {
                 "id": "music",
-                "timestamp": "",
+                "timestamp": timeStamp,
                 "timer": 2504
             }
         ]
