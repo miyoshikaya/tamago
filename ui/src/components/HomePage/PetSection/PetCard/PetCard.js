@@ -20,7 +20,6 @@ class PetCard extends React.Component {
 
     this.state = {
       user: null,
-      timers: null,
       pet: '',
       playItems: 5,
       foodItems: 5,
@@ -81,7 +80,6 @@ class PetCard extends React.Component {
       Math.max(newTimerMusic - diffMusic, 0)
     );
 
-    console.log(newTimers);
     db.setTimeStamps(firebase.auth.currentUser.uid, newTimers, timeStamp);
   }
 
@@ -92,6 +90,7 @@ class PetCard extends React.Component {
         user: value
       })
     });
+    console.log(this.state.user);
     this.setNewTimers();
 
     var user = db.onceGetUser(firebase.auth.currentUser.uid).then(snapshot => snapshot.val());
@@ -105,14 +104,9 @@ class PetCard extends React.Component {
 
   componentDidMount() {
 
-    this.getUserData();
   }
 
   componentWillUnmount() {
-    this.setNewTimers();
-    this.setState({
-      user: null,
-    });
 
   }
 
@@ -236,81 +230,72 @@ class PetCard extends React.Component {
 
 
   render() {
-    if (this.state.user !== null) {
-      return (
-        <div className="centered-study" id="mainWrap">
-          <div className="half">
-            <div id="countersWrapperCard">
-              <div className="two-timers">
-                <div className="timer">
-                  <p>Time to next playtime:</p>
-                  <div className="countdown">
-                    <PlayTimer
-                      restart={this.state.restartPlay}
-                      pls={this.restartPlayTimer}
-                      petDied={this.deadPet}
-                      alive={this.state.alive}
-                      seconds={this.state.user.timers[0].timer} />
-                  </div>
-                </div>
-                <div className="timer">
-                  <p>Time to next feeding:</p>
-                  <div className="countdown">
-                    <FoodTimer
-                      restart={this.state.restartFood}
-                      pls={this.restartFoodTimer}
-                      petDied={this.deadPet}
-                      alive={this.state.alive}
-                      seconds={this.state.user.timers[1].timer} />
-                  </div>
+    return (
+      <div className="centered-study" id="mainWrap">
+        <div className="half">
+          <div id="countersWrapperCard">
+            <div className="two-timers">
+              <div className="timer">
+                <p>Time to next playtime:</p>
+                <div className="countdown">
+                  <PlayTimer
+                    restart={this.state.restartPlay}
+                    pls={this.restartPlayTimer}
+                    petDied={this.deadPet}
+                    alive={this.state.alive} />
                 </div>
               </div>
-              <div className="two-timers">
-                <div className="timer">
-                  <p>Time to next washing:</p>
-                  <div className="countdown">
-                    <WashTimer
-                      restart={this.state.restartWash}
-                      pls={this.restartWashTimer}
-                      petDied={this.deadPet}
-                      alive={this.state.alive}
-                      seconds={this.state.user.timers[2].timer} />
-                  </div>
-                </div>
-                <div className="timer">
-                  <p>Time to next music:</p>
-                  <div className="countdown">
-                    <MusicTimer
-                      restart={this.state.restartMusic}
-                      pls={this.restartMusicTimer}
-                      petDied={this.deadPet}
-                      alive={this.state.alive}
-                      seconds={this.state.user.timers[3].timer} />
-                  </div>
+              <div className="timer">
+                <p>Time to next feeding:</p>
+                <div className="countdown">
+                  <FoodTimer
+                    restart={this.state.restartFood}
+                    pls={this.restartFoodTimer}
+                    petDied={this.deadPet}
+                    alive={this.state.alive} />
                 </div>
               </div>
             </div>
-          </div>
-          <div className="half purple">
-            <div id="lang-title">
-              <PetItems
-                play={this.state.playItems}
-                food={this.state.foodItems}
-                wash={this.state.washItems}
-                music={this.state.musicItems} />
-              <hr />
-              <PetPic alive={this.state.alive} />
-              <hr />
-              <PlayButtons
-                sendItemClick={this.getItemClick} />
+            <div className="two-timers">
+              <div className="timer">
+                <p>Time to next washing:</p>
+                <div className="countdown">
+                  <WashTimer
+                    restart={this.state.restartWash}
+                    pls={this.restartWashTimer}
+                    petDied={this.deadPet}
+                    alive={this.state.alive} />
+                </div>
+              </div>
+              <div className="timer">
+                <p>Time to next music:</p>
+                <div className="countdown">
+                  <MusicTimer
+                    restart={this.state.restartMusic}
+                    pls={this.restartMusicTimer}
+                    petDied={this.deadPet}
+                    alive={this.state.alive} />
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      );
-    }
-    else {
-      return null;
-    }
+        <div className="half purple">
+          <div id="lang-title">
+            <PetItems
+              play={this.state.playItems}
+              food={this.state.foodItems}
+              wash={this.state.washItems}
+              music={this.state.musicItems} />
+            <hr />
+            <PetPic alive={this.state.alive} />
+            <hr />
+            <PlayButtons
+              sendItemClick={this.getItemClick} />
+          </div>
+        </div>
+      </div>
+    );
   }
 }
 

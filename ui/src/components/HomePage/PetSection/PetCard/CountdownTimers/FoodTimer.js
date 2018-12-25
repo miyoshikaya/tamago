@@ -7,8 +7,9 @@ class FoodTimer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      user: null,
       time: {},
-      seconds: this.props.seconds,
+      seconds: 91000,
       restart: false,
     };
     this.timer = 0;
@@ -39,14 +40,16 @@ class FoodTimer extends React.Component {
 
   componentDidMount() {
     let timeLeftVar = this.secondsToTime(this.state.seconds);
+    this.getUserData();
     this.setState({ time: timeLeftVar });
     this.startTimer();
   }
 
   startTimer() {
+
     if (this.timer === 0 && this.state.seconds > 0) {
       this.setState({
-        seconds: this.props.seconds,
+        seconds: this.state.seconds,
       });
       this.timer = setInterval(this.countDown, 1000);
     }
@@ -56,6 +59,39 @@ class FoodTimer extends React.Component {
     this.setState({
       restart: true,
     });
+  }
+
+  async getUserData() {
+    var user = db.onceGetUser(firebase.auth.currentUser.uid).then(snapshot => snapshot.val());
+    await user.then((value) => {
+      this.setState({
+        user: value
+      })
+    });
+    await this.setNewFoodTimer();
+
+    var userNew = db.onceGetUser(firebase.auth.currentUser.uid).then(snapshot => snapshot.val());
+    await userNew.then((value) => {
+      this.setState({
+        user: value
+      })
+    });
+    await this.setState({
+      seconds: this.state.user.timers[1].timer
+    })
+
+  }
+  async setNewFoodTimer() {
+    var timeStamp = Math.floor(Date.now() / 1000);
+    var newTimerFood = this.state.user.timers[1].timer;
+
+    var timestampFood = this.state.user.timers[1].timestamp;
+
+    var diffFood = timeStamp - timestampFood;
+
+    var newTimer = Math.max(newTimerFood - diffFood, 0);
+
+    await db.setTimer(firebase.auth.currentUser.uid, newTimer, 1, "food", Math.floor(Date.now() / 1000));
   }
 
   async setFoodTimer(seconds) {
@@ -171,15 +207,20 @@ class FoodTimer extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        {
-          (this.state.time.m < 10 && this.state.time.s < 10) ?
-            this.renderBothWithZero()
-            : this.renderOtherTimer()
-        }
-      </div>
-    );
+    if (this.state.time.h < 25) {
+      return (
+        <div>
+          {
+            (this.state.time.m < 10 && this.state.time.s < 10) ?
+              this.renderBothWithZero()
+              : this.renderOtherTimer()
+          }
+        </div>
+      );
+    }
+    else {
+      return null;
+    }
 
   }
 }

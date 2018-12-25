@@ -8,8 +8,9 @@ class WashTimer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      user: null,
       time: {},
-      seconds: this.props.seconds,
+      seconds: 91000,
       restart: false,
     };
     this.timer = 0;
@@ -42,6 +43,7 @@ class WashTimer extends React.Component {
 
   componentDidMount() {
     let timeLeftVar = this.secondsToTime(this.state.seconds);
+    this.getUserData();
     this.setState({ time: timeLeftVar });
     this.startTimer();
   }
@@ -59,6 +61,39 @@ class WashTimer extends React.Component {
     this.setState({
       restart: true,
     });
+  }
+
+  async getUserData() {
+    var user = db.onceGetUser(firebase.auth.currentUser.uid).then(snapshot => snapshot.val());
+    await user.then((value) => {
+      this.setState({
+        user: value
+      })
+    });
+    await this.setNewWashTimer();
+
+    var userNew = db.onceGetUser(firebase.auth.currentUser.uid).then(snapshot => snapshot.val());
+    await userNew.then((value) => {
+      this.setState({
+        user: value
+      })
+    });
+    await this.setState({
+      seconds: this.state.user.timers[2].timer
+    })
+
+  }
+  async setNewWashTimer() {
+    var timeStamp = Math.floor(Date.now() / 1000);
+    var newTimerWash = this.state.user.timers[2].timer;
+
+    var timestampWash = this.state.user.timers[2].timestamp;
+
+    var diffWash = timeStamp - timestampWash;
+
+    var newTimer = Math.max(newTimerWash - diffWash, 0);
+
+    await db.setTimer(firebase.auth.currentUser.uid, newTimer, 2, "wash", Math.floor(Date.now() / 1000));
   }
 
   async setWashTimer(seconds) {
@@ -176,15 +211,20 @@ class WashTimer extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        {
-          (this.state.time.m < 10 && this.state.time.s < 10) ?
-            this.renderBothWithZero()
-            : this.renderOtherTimer()
-        }
-      </div>
-    );
+    if (this.state.time.h < 25) {
+      return (
+        <div>
+          {
+            (this.state.time.m < 10 && this.state.time.s < 10) ?
+              this.renderBothWithZero()
+              : this.renderOtherTimer()
+          }
+        </div>
+      );
+    }
+    else {
+      return null;
+    }
 
   }
 }
