@@ -8,19 +8,19 @@ export const doCreateUser = (id, email) => {
         "language": "korean",
         "flashcards": [
             {
-                "id": "0-0-0",
+                "id": "0_0_0",
                 "status": "learning"
             },
             {
-                "id": "0-0-1",
+                "id": "0_0_1",
                 "status": "learnt"
             },
             {
-                "id": "0-0-2",
+                "id": "0_0_2",
                 "status": "mastered"
             }
         ],
-        "pet-items": [
+        "pet_items": [
             {
                 "id": "play",
                 "number": 3
@@ -102,6 +102,15 @@ export const setTimer = (id, timer, index, name, timeStamp) => {
             "id": name,
             "timer": timer,
             "timestamp": timeStamp,
+        },
+    );
+}
+
+export const setItem = (id, index, name, number) => {
+    db.ref('users/' + id + '/pet_items/' + index).set(
+        {
+            "id": name,
+            "number": number,
         },
     );
 }

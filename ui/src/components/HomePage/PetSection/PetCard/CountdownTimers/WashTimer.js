@@ -91,7 +91,7 @@ class WashTimer extends React.Component {
 
     var diffWash = timeStamp - timestampWash;
 
-    var newTimer = Math.max(newTimerWash - diffWash, 0);
+    var newTimer = Math.max(newTimerWash - diffWash, 1);
 
     await db.setTimer(firebase.auth.currentUser.uid, newTimer, 2, "wash", Math.floor(Date.now() / 1000));
   }

@@ -91,7 +91,7 @@ class MusicTimer extends React.Component {
 
     var diffMusic = timeStamp - timestampMusic;
 
-    var newTimer = Math.max(newTimerMusic - diffMusic, 0);
+    var newTimer = Math.max(newTimerMusic - diffMusic, 1);
 
     await db.setTimer(firebase.auth.currentUser.uid, newTimer, 3, "music", Math.floor(Date.now() / 1000));
   }

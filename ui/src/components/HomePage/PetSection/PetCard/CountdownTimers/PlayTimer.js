@@ -90,7 +90,7 @@ class PlayTimer extends React.Component {
 
     var diffPlay = timeStamp - timestampPlay;
 
-    var newTimer = Math.max(newTimerPlay - diffPlay, 0);
+    var newTimer = Math.max(newTimerPlay - diffPlay, 1);
 
     await db.setTimer(firebase.auth.currentUser.uid, newTimer, 0, "play", Math.floor(Date.now() / 1000));
   }

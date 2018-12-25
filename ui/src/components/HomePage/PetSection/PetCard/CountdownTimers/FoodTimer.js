@@ -89,7 +89,7 @@ class FoodTimer extends React.Component {
 
     var diffFood = timeStamp - timestampFood;
 
-    var newTimer = Math.max(newTimerFood - diffFood, 0);
+    var newTimer = Math.max(newTimerFood - diffFood, 1);
 
     await db.setTimer(firebase.auth.currentUser.uid, newTimer, 1, "food", Math.floor(Date.now() / 1000));
   }
