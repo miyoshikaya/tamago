@@ -96,5 +96,14 @@ export const setTimeStamps = (id, timers, timeStamp) => {
         },
     ]);
 }
+export const setTimer = (id, timer, index, name, timeStamp) => {
+    db.ref('users/' + id + '/timers/' + index).set(
+        {
+            "id": name,
+            "timer": timer,
+            "timestamp": timeStamp,
+        },
+    );
+}
 
 // Other Entity APIs ...

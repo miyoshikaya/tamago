@@ -1,5 +1,8 @@
 import React from 'react';
 import './countdowntimers.css';
+import { firebase } from '../../../../../firebase';
+import { db } from '../../../../../firebase';
+
 
 class WashTimer extends React.Component {
   constructor(props) {
@@ -58,6 +61,11 @@ class WashTimer extends React.Component {
     });
   }
 
+  async setWashTimer(seconds) {
+    await db.setTimer(firebase.auth.currentUser.uid, seconds, 2, "wash", Math.floor(Date.now() / 1000));
+
+  }
+
 
   countDown() {
     if (this.props.restart) {
@@ -93,6 +101,7 @@ class WashTimer extends React.Component {
         time: this.secondsToTime(seconds),
         seconds: seconds,
       });
+      this.setWashTimer(seconds);
     }
   }
 

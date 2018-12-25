@@ -1,5 +1,7 @@
 import React from 'react';
 import './countdowntimers.css';
+import { firebase } from '../../../../../firebase';
+import { db } from '../../../../../firebase';
 
 class FoodTimer extends React.Component {
   constructor(props) {
@@ -56,6 +58,10 @@ class FoodTimer extends React.Component {
     });
   }
 
+  async setFoodTimer(seconds) {
+    await db.setTimer(firebase.auth.currentUser.uid, seconds, 1, "food", Math.floor(Date.now() / 1000));
+
+  }
 
   countDown() {
     if (this.props.restart) {
@@ -91,6 +97,7 @@ class FoodTimer extends React.Component {
         time: this.secondsToTime(seconds),
         seconds: seconds,
       });
+      this.setFoodTimer(seconds);
     }
   }
 

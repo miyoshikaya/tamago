@@ -1,5 +1,8 @@
 import React from 'react';
 import './countdowntimers.css';
+import { firebase } from '../../../../../firebase';
+import { db } from '../../../../../firebase';
+
 
 class PlayTimer extends React.Component {
   constructor(props) {
@@ -58,6 +61,11 @@ class PlayTimer extends React.Component {
   }
 
 
+  async setPlayTimer(seconds) {
+    await db.setTimer(firebase.auth.currentUser.uid, seconds, 0, "play", Math.floor(Date.now() / 1000));
+
+  }
+
   countDown() {
     if (this.props.restart) {
       this.restartTimer();
@@ -93,6 +101,7 @@ class PlayTimer extends React.Component {
         time: this.secondsToTime(seconds),
         seconds: seconds,
       });
+      this.setPlayTimer(seconds);
     }
   }
 
