@@ -41,22 +41,22 @@ export const doCreateUser = (id, email) => {
             {
                 "id": "play",
                 "timestamp": "",
-                "timer": "12:0"
+                "timer": 2501
             },
             {
                 "id": "food",
                 "timestamp": "",
-                "timer": "12:45"
+                "timer": 2502
             },
             {
                 "id": "wash",
                 "timestamp": "",
-                "timer": "12:0"
+                "timer": 2503
             },
             {
                 "id": "music",
                 "timestamp": "",
-                "timer": "12:0"
+                "timer": 2504
             }
         ]
     });
