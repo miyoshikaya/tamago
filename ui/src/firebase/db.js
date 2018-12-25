@@ -5,7 +5,7 @@ export const doCreateUser = (id, email) => {
     var timeStamp = Math.floor(Date.now() / 1000);
     db.ref(`users/${id}`).set({
         "id": email,
-        "language": "korean",
+        "language": "Korean",
         "flashcards": [
             {
                 "id": "0_0_0",
