@@ -25,7 +25,6 @@ class Settings extends React.Component {
   }
 
   changeLang(lang) {
-    db.setLang(firebase.auth.currentUser.uid, lang);
     if (lang === 'Japanese') {
       this.setState({
         languageB: 'Jp',
@@ -44,39 +43,8 @@ class Settings extends React.Component {
     }
   }
 
-  async getUserData() {
-    if (firebase.auth.currentUser !== null) {
-      var user = db.onceGetUser(firebase.auth.currentUser.uid).then(snapshot => snapshot.val());
-      await user.then((value) => {
-        this.setState({
-          user: value
-        })
-      });
-      console.log(this.state.user);
-      switch (this.state.user.language) {
-        case 'Korean':
-          await this.setState({
-            languageB: 'Kr',
-            languageS: 'Korean',
-          });
-          break;
-        case 'Japanese':
-          await this.setState({
-            languageB: 'Jp',
-            languageS: 'Japanese',
-          });
-          break;
-        case 'Polish':
-          await this.setState({
-            languageB: 'Pl',
-            languageS: 'Polish',
-          });
-          break;
-      }
-    }
-  }
+
   componentDidMount() {
-    this.getUserData();
   }
 
   render() {
@@ -87,13 +55,14 @@ class Settings extends React.Component {
         window.location = routes.SIGN_IN;
       }
     });
-    if (this.state.user !== null && firebase.auth.currentUser !== null) {
-      console.log(this.state);
+    console.log(this.state);
+    if (firebase.auth.currentUser !== null) {
       return (
         <div>
           <SettingsCard languageChange={this.changeLang}
             languageB={this.state.languageB}
-            languageS={this.state.languageS} />
+            languageS={this.state.languageS}
+            userid={firebase.auth.currentUser.uid} />
         </div>
 
       );
