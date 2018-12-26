@@ -1,8 +1,8 @@
 .container{
     position:absolute;
     width: auto;
-    height:auto;
-    top: calc(50% - 240px);
+    height: auto;
+    top: calc(48% - 200px);
     left: calc(50% - 160px);
 }
 
