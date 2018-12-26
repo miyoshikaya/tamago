@@ -2,6 +2,7 @@
 	width: 200px;
 	height: 200px;
 	transition: all 200ms ease-in-out;
+	padding: 15px;
 }
 
 .pet-pic:hover {

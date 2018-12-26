@@ -2,8 +2,8 @@
     display: flex;
     justify-content: center;
     position: absolute;
-    left: 3%;
-    top: 20%;
+    margin-left: 2%;
+    top: 15%;
 }
 
 .begin-button {

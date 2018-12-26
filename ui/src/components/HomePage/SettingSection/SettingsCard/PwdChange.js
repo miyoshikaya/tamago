@@ -17,18 +17,25 @@ class PwdChangeForm extends Component {
 
 onSubmit = (event) => { 
 	const { 
-		passwordOne 
+		passwordOne,
+		passwordTwo 
 	} = this.state;
 
-	auth.doPasswordUpdate(passwordOne) 
-	.then(() => { 
-		this.setState({ ...INITIAL_STATE }); 
-	}) 
-	.catch(error => { 
-		this.setState(byPropKey('error', error)); 
-	});
+	if(passwordOne === passwordTwo){
 
-	event.preventDefault();
+		auth.doPasswordUpdate(passwordOne) 
+		.then(() => { 
+			this.setState({ ...INITIAL_STATE }); 
+		}) 
+		.catch(error => { 
+			this.setState(byPropKey('error', error)); 
+		});
+
+		event.preventDefault();
+		alert("Successfully managed to update the password.");
+	}
+	else if(passwordOne !== passwordTwo)
+		alert("Please provide identical passwords.");
 }
 
 render() {

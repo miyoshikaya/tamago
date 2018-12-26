@@ -7,6 +7,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css'
 
 import { firebase } from '../../../firebase';
 import * as routes from '../../../constants/routes';
+import { db } from '../../../firebase';
 
 
 const authCondition = (authUser) => !!authUser;

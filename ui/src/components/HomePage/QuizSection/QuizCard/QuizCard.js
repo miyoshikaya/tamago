@@ -6,6 +6,7 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/database';
 import { db } from '../../../../firebase';
+import { default as fire } from '../../../../firebase';
 
 class QuizCard extends Component {
   constructor(props) {
@@ -40,6 +41,11 @@ class QuizCard extends Component {
         playItems: 0,
         washItems: 0,
         musicItems: 0,
+
+        user: null,
+        databaseString: null,
+        addedString: null,
+        cardString: null,
       };
 
       this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
@@ -48,27 +54,26 @@ class QuizCard extends Component {
     }
   }
 
+  async getUserData() {
+    var user = db.onceGetUser(this.props.uid).then(snapshot => snapshot.val());
+    await user.then((value) => {
+      this.setState({
+        user: value
+      })
+    });
+    console.log(this.props.uid);
+    console.log(this.state.user);
+    //this.setData();
+  }
+
   async loadDatabase() {
     if (this.state.firstSetup === true) {
 
       this.setState({
         firstSetup: false
       })
-      
-      
-      if (firebase.auth.currentUser !== null) {
-        console.log(firebase.auth.currentUser);
-        var user = db.onceGetUser(firebase.auth.currentUser.uid).then(snapshot => snapshot.val());
-        await user.then((value) => {
-          this.setState({
-            user: value
-          })
-        });
-        console.log(this.state.user.language);
-      }
-      
-      //trzeba rozwiązać konflikt importów?
 
+      
       this.database = firebase.app().database().ref().child("db/0/flashcards/1/jpn-cards/0/jpn-cards-animals");
       const questionList = [];
 
@@ -282,8 +287,7 @@ class QuizCard extends Component {
   }
 
   componentWillMount() {
-
-
+    this.getUserData();
   }
 
   shuffleArray(array) {
