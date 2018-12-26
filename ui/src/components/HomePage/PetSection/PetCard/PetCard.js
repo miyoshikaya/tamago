@@ -43,8 +43,7 @@ class PetCard extends React.Component {
   }
 
   componentWillMount() {
-    console.log(this.state.timeStamp);
-
+    //console.log(this.state.timeStamp);
     
   }
 
@@ -60,13 +59,10 @@ class PetCard extends React.Component {
       foodItems: this.state.user.pet_items[1].number,
       washItems: this.state.user.pet_items[2].number,
       musicItems: this.state.user.pet_items[3].number,
+      alive: this.state.user.alive,
     });
     console.log(this.state.user);
-
-    this.setState({
-      foodItems: 3,
-      playItems: 3,
-    });
+    console.log('alive: ' + this.state.alive);
   }
 
   componentDidMount() {
@@ -107,60 +103,7 @@ class PetCard extends React.Component {
 
 
   async getItemClick(itemType) {
-      switch (itemType) {
-
-        case 'play':
-          if (this.state.playItems > 0) {
-            await this.setState({
-              playItems: this.state.playItems - 1,
-              restartPlay: true,
-            });
-            //here countdown timer reset (SEND DATA TO COMPONENT) 
-            console.log(this.state.restartPlay);
-          }
-          else
-            alert("You have 0 ⚾!");
-          break;
-
-        case 'food':
-          if (this.state.foodItems > 0) {
-            await this.setState({
-              foodItems: this.state.foodItems - 1,
-              restartFood: true,
-            });
-          }
-          else
-            alert("You have 0 🍌!");
-          break;
-
-        case 'wash':
-          if (this.state.washItems > 0) {
-            await this.setState({
-              washItems: this.state.washItems - 1,
-              restartWash: true,
-            });
-          }
-          else
-            alert("You have 0 💦!");
-          break;
-
-        case 'music':
-          if (this.state.musicItems > 0) {
-            await this.setState({
-              musicItems: this.state.musicItems - 1,
-              restartMusic: true,
-            });
-          }
-          else
-            alert("You have 0 🎹!");
-          break;
-
-        default:
-          break;
-      }
     
-    console.log('hello');
-
     switch (itemType) {
 
       case 'play':
@@ -183,7 +126,7 @@ class PetCard extends React.Component {
 
       case 'food':
         if (this.state.foodItems > 0) {
-          var user = this.state.user;
+          user = this.state.user;
           user.pet_items[1].number = user.pet_items[1].number - 1;
           await this.setState({
             foodItems: this.state.foodItems - 1,
@@ -200,7 +143,7 @@ class PetCard extends React.Component {
 
       case 'wash':
         if (this.state.washItems > 0) {
-          var user = this.state.user;
+          user = this.state.user;
           user.pet_items[2].number = user.pet_items[2].number - 1;
           await this.setState({
             washItems: this.state.washItems - 1,
@@ -216,7 +159,7 @@ class PetCard extends React.Component {
 
       case 'music':
         if (this.state.musicItems > 0) {
-          var user = this.state.user;
+          user = this.state.user;
           user.pet_items[3].number = user.pet_items[3].number - 1;
           await this.setState({
             musicItems: this.state.musicItems - 1,
@@ -261,9 +204,10 @@ class PetCard extends React.Component {
     this.setState(
       {
         alive: false,
+        reason: reason,
       },
-    )
-    alert('Your pet is dead :( It died because of ' + reason + '.');
+    );
+    alert('Your pet is dead :( It died because of ' + reason + '.')
   }
 
 

@@ -42,24 +42,25 @@ export const doCreateUser = (id, email) => {
             {
                 "id": "play",
                 "timestamp": timeStamp,
-                "timer": 2501
+                "timer": 3600
             },
             {
                 "id": "food",
                 "timestamp": timeStamp,
-                "timer": 2502
+                "timer": 3600
             },
             {
                 "id": "wash",
                 "timestamp": timeStamp,
-                "timer": 2503
+                "timer": 3600
             },
             {
                 "id": "music",
                 "timestamp": timeStamp,
-                "timer": 2504
+                "timer": 3600
             }
-        ]
+        ],
+        "alive": true,
     });
 }
 
@@ -118,6 +119,12 @@ export const setItem = (id, index, name, number) => {
 export const setLang = (id, lang) => {
     db.ref('users/' + id + '/language').set(
         lang
+    );
+}
+
+export const setAlive = (id, alive) => {
+    db.ref('users/' + id + '/alive').set(
+        alive
     );
 }
 

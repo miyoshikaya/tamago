@@ -5,6 +5,7 @@ import Result from './../components/Result.js';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/database';
+import { db } from '../../../../firebase';
 
 class QuizCard extends Component {
   constructor(props) {
@@ -48,12 +49,26 @@ class QuizCard extends Component {
   }
 
   async loadDatabase() {
-
     if (this.state.firstSetup === true) {
 
       this.setState({
         firstSetup: false
       })
+      
+      
+      if (firebase.auth.currentUser !== null) {
+        console.log(firebase.auth.currentUser);
+        var user = db.onceGetUser(firebase.auth.currentUser.uid).then(snapshot => snapshot.val());
+        await user.then((value) => {
+          this.setState({
+            user: value
+          })
+        });
+        console.log(this.state.user.language);
+      }
+      
+      //trzeba rozwiązać konflikt importów?
+
       this.database = firebase.app().database().ref().child("db/0/flashcards/1/jpn-cards/0/jpn-cards-animals");
       const questionList = [];
 

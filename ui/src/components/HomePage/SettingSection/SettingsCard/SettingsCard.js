@@ -43,6 +43,8 @@ class SettingsCard extends React.Component {
             languageS: 'Polish',
           });
           break;
+        default:
+          break;
       }
     }
   }

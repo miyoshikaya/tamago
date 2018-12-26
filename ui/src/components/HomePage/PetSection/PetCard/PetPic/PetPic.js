@@ -8,6 +8,7 @@ class PetPic extends React.Component {
     this.state = {
       pet: '',
       alive: this.props.alive,
+      reason: this.props.reason,
     }
   }
  
@@ -23,10 +24,12 @@ class PetPic extends React.Component {
   );
  }
 
+//https://image.flaticon.com/icons/svg/1089/1089376.svg
  renderDeadPet(){
   return (
     <div>
-      <img className="pet-pic" src="https://image.flaticon.com/icons/svg/1089/1089376.svg" onClick={this.animate} alt="" />
+      <img className="pet-pic" src="https://imgur.com/DejIcwJ.png" onClick={this.animate} alt="" />
+      {/*alert('Your pet is dead :( It died because of ' + this.props.reason + '.')*/}
     </div>
   );
  }

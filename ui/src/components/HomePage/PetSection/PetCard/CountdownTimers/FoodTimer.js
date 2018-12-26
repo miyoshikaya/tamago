@@ -102,12 +102,10 @@ class FoodTimer extends React.Component {
   countDown() {
     if (this.props.restart) {
       this.restartTimer();
-      //boom info back, zeby zmienic restart na false <---
       this.props.pls();
     }
 
     if (!this.props.alive) {
-      console.log('pet died babe');
       clearInterval(this.timer);
       //this.props.petDied('hunger');
     }

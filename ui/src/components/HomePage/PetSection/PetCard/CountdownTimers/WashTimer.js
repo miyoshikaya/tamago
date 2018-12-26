@@ -110,7 +110,6 @@ class WashTimer extends React.Component {
     }
 
     if (!this.props.alive) {
-      console.log('pet died babe');
       clearInterval(this.timer);
       //this.props.petDied('hunger');
     }

@@ -2,7 +2,7 @@ import React from 'react';
 import PetCard from './PetCard/PetCard.js';
 import { firebase } from '../../../firebase';
 import * as routes from '../../../constants/routes';
-import { db } from '../../../firebase';
+//import { db } from '../../../firebase';
 
 
 
