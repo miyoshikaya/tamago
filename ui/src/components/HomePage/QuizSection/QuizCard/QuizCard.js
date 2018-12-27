@@ -342,7 +342,7 @@ class QuizCard extends Component {
     this.setState({
       counter: counter,
       questionId: questionId,
-      currQuestion: 'Which word means ' + this.state.questions[counter].eng + ' in Japanese?',
+      currQuestion: 'Which word means ' + this.state.questions[counter].eng + ' in ' + this.state.user.language + '?',
       currentAnswers: this.state.ansOpt[counter].answers,
       answer: ''
     });
