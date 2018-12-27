@@ -44,7 +44,7 @@ class PetCard extends React.Component {
 
   componentWillMount() {
     //console.log(this.state.timeStamp);
-    
+
   }
 
   async getUserData() {
@@ -103,7 +103,7 @@ class PetCard extends React.Component {
 
 
   async getItemClick(itemType) {
-    
+
     switch (itemType) {
 
       case 'play':
@@ -201,13 +201,15 @@ class PetCard extends React.Component {
   }
 
   deadPet = (reason) => {
-    this.setState(
-      {
-        alive: false,
-        reason: reason,
-      },
-    );
-    alert('Your pet is dead :( It died because of ' + reason + '.')
+    if (this.state.alive === true) {
+      this.setState(
+        {
+          alive: false,
+          reason: reason,
+        },
+      );
+      alert('Your pet is dead :( It died because of ' + reason + '.')
+    }
   }
 
 
