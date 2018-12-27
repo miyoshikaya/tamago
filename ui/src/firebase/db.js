@@ -6,7 +6,12 @@ export const doCreateUser = (id, email) => {
     db.ref(`users/${id}`).set({
         "id": email,
         "language": "Korean",
-        "flashcards": [],
+        "flashcards": [
+            {
+                "id": "000",
+                Status: "Learning"
+            }
+        ],
         "pet_items": [
             {
                 "id": "play",
@@ -123,6 +128,9 @@ export const setCards = (id, cards) => {
 
 export const getCards = (languageIndex, addedString, categoryIndex, categoryString) =>
     db.ref('db/0/flashcards/' + languageIndex + '/' + addedString + '/' + categoryIndex + '/' + categoryString).once('value');
+
+export const getUserCards = (id) =>
+    db.ref('users/' + id + '/flashcards').once('value');
 
 export const setCard = (id, cardId, cardIndex, status) =>
     db.ref('users/' + id + '/flashcards/' + cardIndex).set(
