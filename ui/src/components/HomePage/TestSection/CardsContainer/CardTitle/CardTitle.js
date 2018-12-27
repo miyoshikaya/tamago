@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './cardtitle.css';
 
 class CardTitle extends Component {
 
@@ -13,7 +14,7 @@ class CardTitle extends Component {
 
   render() {
     return (
-      <div id="preview-Title">
+      <div id="card-Title">
         <span>{this.props.language}</span>{' ' + this.props.category}
         <div id="preview-Title">
           {this.props.status}

@@ -270,9 +270,7 @@ class PetCard extends React.Component {
                 food={this.state.foodItems}
                 wash={this.state.washItems}
                 music={this.state.musicItems} />
-              <hr />
               <PetPic alive={this.state.alive} />
-              <hr />
               <PlayButtons
                 sendItemClick={this.getItemClick} />
             </div>

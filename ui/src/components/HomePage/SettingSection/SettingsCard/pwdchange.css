@@ -10,14 +10,14 @@
   overflow: hidden;
   position: relative;
   color: #fff;
-  font-weight: 400;
-  font-size: 10px;
+  font-weight: 200;
+  font-size: 8px;
   background-color: #222;
-  padding: 10px 30px;
+  padding: 8px 30px;
   margin: 0 auto;
   box-shadow: 0 5px 15px rgba(0,0,0,0.20);
   margin-top: 0px;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
 
 .btn-reset span {
@@ -30,7 +30,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  height: 600%;
+  height: 700%;
   width: 140%;
   background: rgb(203, 155, 242);
   -webkit-transition: all .5s ease-in-out;
@@ -44,3 +44,6 @@
   transform: translateX(-9%) translateY(-25%) rotate(45deg);
 }
 
+.dropdownTitle{
+  margin-top: -10px;
+}

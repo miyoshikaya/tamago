@@ -1,5 +1,4 @@
 import React from 'react';
-import './settings.css'
 import SettingsCard from './SettingsCard/SettingsCard.js';
 
 import { firebase } from '../../../firebase';
