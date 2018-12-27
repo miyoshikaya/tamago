@@ -196,9 +196,16 @@ class CardsContainer extends Component {
         foundIndex: foundIndex
       })
       await this.props.setCard(queryString, foundIndex);
+      await this.props.setStatus(this.state.user.flashcards[foundIndex].status);
     }
     else {
       foundIndex = this.state.user.flashcards.length;
+      var user = db.onceGetUser(this.props.uid).then(snapshot => snapshot.val());
+      await user.then((value) => {
+        this.setState({
+          user: value
+        })
+      });
       var newCards = this.state.user.flashcards;
       newCards.push({
         "id": queryString,
@@ -209,6 +216,7 @@ class CardsContainer extends Component {
         foundIndex: foundIndex
       })
       await this.props.setCard(queryString, foundIndex);
+      await this.props.setStatus('Learning');
     }
   }
 
