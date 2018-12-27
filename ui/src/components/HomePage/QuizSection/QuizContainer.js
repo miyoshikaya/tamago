@@ -83,21 +83,27 @@ class QuizContainer extends Component {
 				window.location = routes.SIGN_IN;
 			}
 		});
-		return (
-			<div className="centered" id="main-Container">
-				<div className="half purple">
-					<QuizSettings changeCat={this.receiveCategory} />
+		if (firebase.auth.currentUser !== null) {
+			return (
+				<div className="centered" id="main-Container">
+					<div className="half purple">
+						<QuizSettings changeCat={this.receiveCategory} />
+					</div>
+					<div className="other-half">
+						<hr />
+						<QuizCard category={this.state.category}
+							quizComplete={this.getQuizComplete}
+							generateNew={this.state.generateNew}
+							generatedQuiz={this.generatedQuiz}
+							quizCompleted={this.quizComplete}
+							uid={firebase.auth.currentUser.uid} />
+					</div>
 				</div>
-				<div className="other-half">
-					<hr />
-					<QuizCard category={this.state.category}
-						quizComplete={this.getQuizComplete}
-						generateNew={this.state.generateNew}
-						generatedQuiz={this.generatedQuiz}
-						quizCompleted={this.quizComplete} />
-				</div>
-			</div>
-		);
+			);
+		}
+		else {
+			return null;
+		}
 	}
 }
 

@@ -43,9 +43,8 @@ class QuizCard extends Component {
         musicItems: 0,
 
         user: null,
-        databaseString: null,
+        languageIndex: null,
         addedString: null,
-        cardString: null,
       };
 
       this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
@@ -61,166 +60,166 @@ class QuizCard extends Component {
         user: value
       })
     });
-    console.log(this.props.uid);
-    console.log(this.state.user);
-    //this.setData();
   }
 
+  async truncCards(cards) {
+    var comparedCards = null;
+    var userDBCards = db.getUserCards(this.props.uid);
+    await userDBCards.then((value) => {
+      comparedCards = value;
+    });
+
+    var queryString = "";
+
+    switch (this.state.user.language) {
+      case 'Korean':
+        queryString = "0_";
+        break;
+      case 'Japanese':
+        queryString = "1_";
+        break;
+      case 'Polish':
+        queryString = "1_";
+        break;
+    }
+
+    switch (this.props.category) {
+      case 'Animals':
+        console.log(this.props.category);
+        queryString += "0_";
+        break;
+      case 'People':
+        console.log(this.props.category);
+        queryString += "1_";
+        break;
+      case 'Food':
+        console.log(this.props.category);
+        queryString += "2_";
+        break;
+      case 'School':
+        console.log(this.props.category);
+        queryString += "3_";
+        break;
+      case 'House':
+        console.log(this.props.category);
+        queryString += "4_";
+        break;
+      default:
+        console.log("null");
+        break;
+    }
+
+    var newList = [];
+    for (var i = 0; i < cards.length; ++i) {
+      for (var j = 0; j < comparedCards.length; ++j) {
+        if (comparedCards[j].id === (queryString + i)) {
+          newList.push(cards[i]);
+        }
+      }
+    }
+    return newList;
+  }
+
+
   async loadDatabase() {
-    if (this.state.firstSetup === true) {
+
+
+    //console.log(this.props.generateNew);
+    if (this.props.generateNew === true) {
+
+
+      var addedString = "";
+      var languageIndex = 0;
+      switch (this.state.user.language) {
+        case 'Korean':
+          languageIndex = 0;
+          addedString = "krn-cards";
+          break;
+        case 'Japanese':
+          languageIndex = 1;
+          addedString = "jpn-cards";
+          break;
+        case 'Polish':
+          languageIndex = 2;
+          addedString = "pln-cards";
+          break;
+      }
+      await this.setState({
+        languageIndex: languageIndex,
+        addedString: addedString,
+      });
+
+      var categoryIndex = 0;
+      var categoryString = null;
+      switch (this.props.category) {
+        case 'Animals':
+          console.log(this.props.category);
+          categoryIndex = 0;
+          categoryString = addedString + "-animals";
+          break;
+        case 'People':
+          console.log(this.props.category);
+          categoryIndex = 1;
+          categoryString = addedString + "-people";
+          break;
+        case 'Food':
+          console.log(this.props.category);
+          categoryIndex = 2;
+          categoryString = addedString + "-food";
+          break;
+        case 'School':
+          console.log(this.props.category);
+          categoryIndex = 3;
+          categoryString = addedString + "-school";
+          break;
+        case 'House':
+          console.log(this.props.category);
+          categoryIndex = 4;
+          categoryString = addedString + "-house";
+          break;
+        default:
+          console.log("null");
+          break;
+      }
+      var allCards = null;
+
+      var data = db.getCards(languageIndex, addedString, categoryIndex, categoryString).then(snapshot => snapshot.val());
+      await data.then((value) => {
+        allCards = value;
+      });
+
+      var userCards = this.truncCards(allCards);
+      console.log(userCards);
+      this.shuffleArray(userCards);
+      this.setState({
+        questions: userCards,
+
+      })
 
       this.setState({
-        firstSetup: false
+        counter: 0,
+        questionId: 1,
+        questions: [],
+        ansOpt: [],
+        currentAnswers: [],
+        currQuestion: '',
+        question: '',
+        questionTotal: 10,
+        answerOptions: [],
+        answer: '',
+        answersCount: {
+          correct: 0,
+          incorrect: 0,
+        },
+        result: '',
+        category: '',
+        quizDone: false,
+
       })
-
-      
-      this.database = firebase.app().database().ref().child("db/0/flashcards/1/jpn-cards/0/jpn-cards-animals");
-      const questionList = [];
-
       this.props.generatedQuiz();
-      await this.database.on('child_added', snap => {
-        questionList.push({
-          id: snap.key,
-          eng: snap.val().eng,
-          kan: snap.val().kan,
-          rom: snap.val().rom
-        })
-      })
-      //console.log(questionList.length);
-      this.database = firebase.app().database().ref().child("db/0/flashcards/1/jpn-cards/1/jpn-cards-people");
 
-      this.props.generatedQuiz();
-      await this.database.on('child_added', snap => {
-        questionList.push({
-          id: snap.key,
-          eng: snap.val().eng,
-          kan: snap.val().kan,
-          rom: snap.val().rom
-        })
-      })
-      //console.log(questionList.length);
-      this.database = firebase.app().database().ref().child("db/0/flashcards/1/jpn-cards/2/jpn-cards-food");
+      this.fillQuestions();
 
-      this.props.generatedQuiz();
-      await this.database.on('child_added', snap => {
-        questionList.push({
-          id: snap.key,
-          eng: snap.val().eng,
-          kan: snap.val().kan,
-          rom: snap.val().rom
-        })
-      })
-      //console.log(questionList.length);
-
-      this.database = firebase.app().database().ref().child("db/0/flashcards/1/jpn-cards/3/jpn-cards-school");
-
-      this.props.generatedQuiz();
-      await this.database.on('child_added', snap => {
-        questionList.push({
-          id: snap.key,
-          eng: snap.val().eng,
-          kan: snap.val().kan,
-          rom: snap.val().rom
-        })
-      })
-
-      this.database = firebase.app().database().ref().child("db/0/flashcards/1/jpn-cards/4/jpn-cards-house");
-
-      this.props.generatedQuiz();
-      await this.database.on('child_added', snap => {
-        questionList.push({
-          id: snap.key,
-          eng: snap.val().eng,
-          kan: snap.val().kan,
-          rom: snap.val().rom
-        })
-      })
-
-    }
-    else {
-
-      //console.log(this.props.generateNew);
-      if (this.props.generateNew === true) {
-        this.app = firebase.app().firestore();
-
-        switch (this.props.category) {
-          case 'Animals':
-
-            console.log(this.props.category);
-            this.database = firebase.app().database().ref().child("db/0/flashcards/1/jpn-cards/0/jpn-cards-animals");
-            break;
-          case 'People':
-
-            console.log(this.props.category);
-            this.database = firebase.app().database().ref().child("db/0/flashcards/1/jpn-cards/1/jpn-cards-people");
-            break;
-          case 'Food':
-
-            console.log(this.props.category);
-            this.database = firebase.app().database().ref().child("db/0/flashcards/1/jpn-cards/2/jpn-cards-food");
-            break;
-
-          case 'School':
-
-            console.log(this.props.category);
-            this.database = firebase.app().database().ref().child("db/0/flashcards/1/jpn-cards/3/jpn-cards-school");
-            break;
-
-          case 'House':
-
-            console.log(this.props.category);
-            this.database = firebase.app().database().ref().child("db/0/flashcards/1/jpn-cards/4/jpn-cards-house");
-            break;
-
-          default:
-            break;
-        }
-        const questionList = [];
-
-        console.log('1');
-        this.setState({
-          counter: 0,
-          questionId: 1,
-          questions: [],
-          ansOpt: [],
-          currentAnswers: [],
-          currQuestion: '',
-          question: '',
-          questionTotal: 10,
-          answerOptions: [],
-          answer: '',
-          answersCount: {
-            correct: 0,
-            incorrect: 0,
-          },
-          result: '',
-          category: '',
-          quizDone: false,
-
-        })
-        console.log('2');
-        this.props.generatedQuiz();
-        await this.database.on('child_added', snap => {
-          questionList.push({
-            id: snap.key,
-            eng: snap.val().eng,
-            kan: snap.val().kan,
-            rom: snap.val().rom
-          })
-        })
-        console.log('3');
-        console.log(questionList.length);
-        if (questionList.length > 0) {
-
-          this.shuffleArray(questionList);
-          console.log(questionList[0].eng);
-          this.setState({
-            questions: questionList,
-
-          })
-        }
-        this.fillQuestions();
-      }
     }
   }
 

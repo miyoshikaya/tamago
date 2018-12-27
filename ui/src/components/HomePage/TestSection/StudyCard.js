@@ -5,7 +5,7 @@ import SettingsContainer from './SettingsContainer/SettingsContainer.js';
 import CardTitle from './CardsContainer/CardTitle/CardTitle.js';
 import { firebase } from '../../../firebase';
 import * as routes from '../../../constants/routes';
-//import { db } from '../../../firebase';
+import { db } from '../../../firebase';
 
 
 const authCondition = (authUser) => !!authUser;
