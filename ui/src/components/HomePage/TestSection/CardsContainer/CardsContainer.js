@@ -20,17 +20,30 @@ class CardsContainer extends Component {
 
 
     this.state = {
-      cards: [],
-      currentCard: {},
-      category: '',
+      cards: null,
+      currentCard: null,
+      category: null,
       currentSide: 'front',
       user: null,
-      databaseString: null,
+      languageIndex: null,
       addedString: null,
-      cardString: null
+      categoryIndex: null,
+      categoryString: null,
+      cardString: null,
+      foundIndex: null,
     }
 
+    this.updateCard = this.updateCard.bind(this);
     this.turnCard = this.turnCard.bind(this);
+  }
+
+  async setCardData(Cards) {
+
+
+    var card = await this.getRandomCard(Cards);
+    await this.setState({
+      currentCard: card,
+    })
   }
 
   async getUserData() {
@@ -40,170 +53,242 @@ class CardsContainer extends Component {
         user: value
       })
     });
-    console.log(this.props.uid);
     console.log(this.state.user);
-    this.setData();
+    if (this.state.cards === null) {
+      await this.setData();
+    }
   }
 
+
   async setData() {
-    if (firebase.apps.length) {
-      var databaseString = "db/0/flashcards";
-      var addedString = "";
-      switch (this.state.user.language) {
-        case 'Korean':
-          databaseString += "/0/krn-cards";
-          addedString = "krn-cards";
-          break;
-        case 'Japanese':
-          databaseString += "/1/jpn-cards";
-          addedString = "jpn-cards";
-          break;
-        case 'Polish':
-          databaseString += "/2/pln-cards";
-          addedString = "pln-cards";
-          break;
+    var addedString = "";
+    var languageIndex = 0;
+    switch (this.state.user.language) {
+      case 'Korean':
+        languageIndex = 0;
+        addedString = "krn-cards";
+        break;
+      case 'Japanese':
+        languageIndex = 1;
+        addedString = "jpn-cards";
+        break;
+      case 'Polish':
+        languageIndex = 2;
+        addedString = "pln-cards";
+        break;
+    }
+
+    await this.setState({
+      languageIndex: languageIndex,
+      addedString: addedString,
+    });
+
+    var categoryIndex = 0;
+    var categoryString = null;
+    switch (this.props.cardsCategory) {
+      case 'Animals':
+        console.log(this.props.cardsCategory);
+        categoryIndex = 0;
+        categoryString = addedString + "-animals";
+        break;
+      case 'People':
+        console.log(this.props.cardsCategory);
+        categoryIndex = 1;
+        categoryString = addedString + "-people";
+        break;
+      case 'Food':
+        console.log(this.props.cardsCategory);
+        categoryIndex = 2;
+        categoryString = addedString + "-food";
+        break;
+      case 'School':
+        console.log(this.props.cardsCategory);
+        categoryIndex = 3;
+        categoryString = addedString + "-school";
+        break;
+      case 'House':
+        console.log(this.props.cardsCategory);
+        categoryIndex = 4;
+        categoryString = addedString + "-house";
+        break;
+      default:
+        console.log("null");
+        break;
+    }
+
+    await this.setState({
+      categoryIndex: categoryIndex,
+      categoryString: categoryString,
+    });
+
+    var currentCards = null;
+
+    var data = db.getCards(languageIndex, addedString, categoryIndex, categoryString).then(snapshot => snapshot.val());
+    await data.then((value) => {
+      currentCards = value;
+    });
+
+    console.log(currentCards);
+    await this.setState({
+      cards: currentCards,
+      category: this.props.cardsCategory,
+      currentCard: await this.getRandomCard(currentCards)
+    });
+    await this.props.sendLanguage(this.state.user.language);
+
+  }
+
+  componentDidMount() {
+    this.getUserData();
+
+  }
+
+  async findCard(index) {
+    var queryString = null;
+    switch (this.state.user.language) {
+      case 'Korean':
+        queryString = "0";
+        break;
+      case 'Japanese':
+        queryString = "1";
+        break;
+      case 'Polish':
+        queryString = "2";
+        break;
+    }
+    switch (this.props.cardsCategory) {
+      case 'Animals':
+        console.log(this.props.cardsCategory);
+        queryString += "_0";
+
+        break;
+      case 'People':
+        console.log(this.props.cardsCategory);
+
+        queryString += "_1";
+
+        break;
+      case 'Food':
+        console.log(this.props.cardsCategory);
+        queryString += "_2";
+        break;
+      case 'School':
+        console.log(this.props.cardsCategory);
+        queryString += "_3";
+        break;
+      case 'House':
+        console.log(this.props.cardsCategory);
+        queryString += "_4";
+        break;
+    }
+    queryString += "_" + index;
+    var found = false;
+    var foundIndex = null;
+
+    for (var i = 0; i < this.state.user.flashcards.length; ++i) {
+      if (this.state.user.flashcards[i].id === queryString) {
+        found = true;
+        foundIndex = i;
       }
-
+    }
+    if (found) {
       await this.setState({
-        databaseString: databaseString,
-        addedString: addedString,
+        foundIndex: foundIndex
       })
+      await this.props.setCard(queryString, foundIndex);
+    }
+    else {
+      foundIndex = this.state.user.flashcards.length;
+      var newCards = this.state.user.flashcards;
+      newCards.push({
+        "id": queryString,
+        "status": "Learning",
+      })
+      db.setCards(this.props.uid, newCards);
+      await this.setState({
+        foundIndex: foundIndex
+      })
+      await this.props.setCard(queryString, foundIndex);
+    }
+  }
 
-      var cardString = null;
-      this.app = firebase.app().firestore();
+  async getRandomCard(currentCards) {
+
+    var randomIndex = Math.floor(Math.random() * currentCards.length);
+    var card = currentCards[randomIndex];
+
+    while (card === this.state.currentCard) {
+      randomIndex = Math.floor(Math.random() * currentCards.length);
+      card = currentCards[randomIndex];
+    }
+
+    this.findCard(randomIndex);
+
+    console.log(card);
+    return (card);
+  }
+
+  async updateCard() {
+    var currentCards = this.state.cards;
+    var newCards = [];
+    if (this.state.category === this.props.category) {
+      var card = await this.getRandomCard(currentCards);
+      await this.setState({
+        cards: currentCards,
+      })
+    }
+    else {
+
+      var categoryIndex = 0;
+      var categoryString = null;
       switch (this.props.cardsCategory) {
         case 'Animals':
           console.log(this.props.cardsCategory);
-          cardString = "/0/" + addedString + "-animals";
+          categoryIndex = 0;
+          categoryString = this.state.addedString + "-animals";
           break;
         case 'People':
           console.log(this.props.cardsCategory);
-          cardString = "/1/" + addedString + "-people";
+          categoryIndex = 1;
+          categoryString = this.state.addedString + "-people";
           break;
         case 'Food':
           console.log(this.props.cardsCategory);
-          cardString = "/2/" + addedString + "-food";
+          categoryIndex = 2;
+          categoryString = this.state.addedString + "-food";
           break;
         case 'School':
           console.log(this.props.cardsCategory);
-          cardString = "/3/" + addedString + "-school";
+          categoryIndex = 3;
+          categoryString = this.state.addedString + "-school";
           break;
         case 'House':
           console.log(this.props.cardsCategory);
-          cardString = "/4/" + addedString + "-house";
+          categoryIndex = 4;
+          categoryString = this.state.addedString + "-house";
           break;
         default:
           console.log("null");
           break;
       }
+
       await this.setState({
-        cardString: cardString,
-      })
+        categoryIndex: categoryIndex,
+        categoryString: categoryString,
+      });
 
-      this.database = firebase.app().database().ref().child(databaseString + cardString);
-      this.updateCard = this.updateCard.bind(this);
-      const currentCards = this.state.cards;
-      if (firebase.apps.length) {
-        this.database.on('child_added', snap => {
-          currentCards.push({
-            id: snap.key,
-            eng: snap.val().eng,
-            kan: snap.val().kan,
-            rom: snap.val().rom
-          })
+      var data = db.getCards(this.state.languageIndex, this.state.addedString, categoryIndex, categoryString).then(snapshot => snapshot.val());
+      await data.then((value) => {
+        newCards = value;
+      });
 
-          this.setState({
-            cards: currentCards,
-            currentCard: this.getRandomCard(currentCards),
-            category: this.props.cardsCategory
-          })
-        })
-      }
-      this.props.sendLanguage(this.state.user.language);
-    }
+      var card = await this.getRandomCard(newCards);
 
-  }
-
-  componentWillMount() {
-    this.getUserData();
-
-  }
-
-
-  getRandomCard(currentCards) {
-    var randomIndex = Math.floor(Math.random() * currentCards.length);
-    var card = currentCards[randomIndex];
-    if (card === this.state.currentCard) {
-      this.getRandomCard(currentCards)
-    }
-
-    return (card);
-  }
-
-  async updateCard() {
-    const currentCards = this.state.cards;
-    const newCards = [];
-    if (this.state.category === this.props.category) {
       await this.setState({
-        cards: currentCards,
-        currentCard: this.getRandomCard(currentCards)
-      })
-    }
-    else {
-
-      if (firebase.apps.length) {
-        var cardString = null;
-        switch (this.props.cardsCategory) {
-          case 'Animals':
-            console.log(this.props.cardsCategory);
-            cardString = "/0/" + this.state.addedString + "-animals";
-
-            break;
-          case 'People':
-            console.log(this.props.cardsCategory);
-
-            cardString = "/1/" + this.state.addedString + "-people";
-
-            break;
-          case 'Food':
-            console.log(this.props.cardsCategory);
-            cardString = "/2/" + this.state.addedString + "-food";
-            break;
-          case 'School':
-            console.log(this.props.cardsCategory);
-            cardString = "/3/" + this.state.addedString + "-school";
-            break;
-          case 'House':
-            console.log(this.props.cardsCategory);
-            cardString = "/4/" + this.state.addedString + "-house";
-            break;
-          default:
-            console.log("null");
-            break;
-        }
-
-        await this.setState({
-          cardString: cardString,
-        })
-
-        this.database = firebase.app().database().ref().child(this.state.databaseString + cardString);
-        this.database.on('child_added', snap => {
-          newCards.push({
-            id: snap.key,
-            eng: snap.val().eng,
-            kan: snap.val().kan,
-            rom: snap.val().rom
-          })
-
-          this.setState({
-            cards: newCards,
-            currentCard: this.getRandomCard(newCards),
-            category: this.props.cardsCategory
-          })
-
-        })
-        this.updateCard = this.updateCard.bind(this);
-      }
+        cards: newCards,
+        category: this.props.cardsCategory,
+        currentCard: card,
+      });
     }
     console.log(this.state.currentSide);
   }
@@ -223,23 +308,28 @@ class CardsContainer extends Component {
   }
 
   render() {
-    return (
-      <div className="card-container">
-        <div className="cardCol">
-          <div className="cardRow">
-            <FlashCard eng={this.state.currentCard.eng}
-              kan={this.state.currentCard.kan}
-              rom={this.state.currentCard.rom}
-              side={this.state.currentSide} />
-          </div>
-          <div className="buttonRow">
-            <DrawButton drawCard={this.updateCard} />
-            <FlipButton flipCard={this.turnCard} />
+    if (this.state.currentCard !== null) {
+      return (
+        <div className="card-container">
+          <div className="cardCol">
+            <div className="cardRow">
+              <FlashCard eng={this.state.currentCard.eng}
+                kan={this.state.currentCard.kan}
+                rom={this.state.currentCard.rom}
+                side={this.state.currentSide} />
+            </div>
+            <div className="buttonRow">
+              <DrawButton drawCard={this.updateCard} />
+              <FlipButton flipCard={this.turnCard} />
+            </div>
           </div>
         </div>
-      </div>
 
-    );
+      );
+    }
+    else {
+      return null;
+    }
   }
 
 }

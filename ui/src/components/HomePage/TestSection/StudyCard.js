@@ -18,12 +18,15 @@ class StudyCard extends React.Component {
       user: null,
       cardCategory: 'People',
       cardLanguage: '',
-      cardStatus: 'Learning'
+      cardStatus: 'Learning',
+      cardIndex: null,
+      cardId: null,
     };
 
     this.getCategory = this.getCategory.bind(this);
     this.getLanguage = this.getLanguage.bind(this);
     this.getStatus = this.getStatus.bind(this);
+    this.getCard = this.getCard.bind(this);
   }
 
 
@@ -31,6 +34,13 @@ class StudyCard extends React.Component {
     await this.setState({
       cardCategory: val
     })
+  }
+
+  async getCard(id, val) {
+    await this.setState({
+      cardId: id,
+      cardIndex: val
+    });
   }
 
   async getLanguage(val) {
@@ -43,6 +53,7 @@ class StudyCard extends React.Component {
     await this.setState({
       cardStatus: val
     })
+    db.setCard(firebase.auth.currentUser.uid, this.state.cardId, this.state.cardIndex, val);
   }
 
 
@@ -67,6 +78,7 @@ class StudyCard extends React.Component {
               <CardsContainer cardsCategory={this.state.cardCategory}
                 uid={firebase.auth.currentUser.uid}
                 sendLanguage={this.getLanguage}
+                setCard={this.getCard}
               />
             </div>
 

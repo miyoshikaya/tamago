@@ -6,20 +6,7 @@ export const doCreateUser = (id, email) => {
     db.ref(`users/${id}`).set({
         "id": email,
         "language": "Korean",
-        "flashcards": [
-            {
-                "id": "0_0_0",
-                "status": "learning"
-            },
-            {
-                "id": "0_0_1",
-                "status": "learnt"
-            },
-            {
-                "id": "0_0_2",
-                "status": "mastered"
-            }
-        ],
+        "flashcards": [],
         "pet_items": [
             {
                 "id": "play",
@@ -128,4 +115,20 @@ export const setAlive = (id, alive) => {
     );
 }
 
+export const setCards = (id, cards) => {
+    db.ref('users/' + id + '/flashcards').set(
+        cards
+    );
+}
+
+export const getCards = (languageIndex, addedString, categoryIndex, categoryString) =>
+    db.ref('db/0/flashcards/' + languageIndex + '/' + addedString + '/' + categoryIndex + '/' + categoryString).once('value');
+
+export const setCard = (id, cardId, cardIndex, status) =>
+    db.ref('users/' + id + '/flashcards/' + cardIndex).set(
+        {
+            "id": cardId,
+            "status": status
+        }
+    );
 // Other Entity APIs ...
