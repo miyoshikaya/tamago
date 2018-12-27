@@ -383,8 +383,8 @@ class QuizCard extends Component {
               playItems: 3,
             });
 
-            db.setItem(this.props.uid, 0, 'play', this.state.user.pet_items[0].number + this.state.playItems);
           }
+          db.setItem(this.props.uid, 0, 'play', this.state.user.pet_items[0].number + this.state.playItems);
           break;
         case 2:
           if (resultPercentage > 0.49 && resultPercentage < 0.71) {
@@ -404,8 +404,8 @@ class QuizCard extends Component {
             this.setState({
               foodItems: 3,
             });
-            db.setItem(this.props.uid, 1, 'food', this.state.user.pet_items[1].number + this.state.foodItems);
           }
+          db.setItem(this.props.uid, 1, 'food', this.state.user.pet_items[1].number + this.state.foodItems);
           break;
         case 3:
           if (resultPercentage > 0.49 && resultPercentage < 0.71) {
@@ -425,8 +425,8 @@ class QuizCard extends Component {
             this.setState({
               washItems: 3,
             });
-            db.setItem(this.props.uid, 2, 'wash', this.state.user.pet_items[2].number + this.state.washItems);
           }
+          db.setItem(this.props.uid, 2, 'wash', this.state.user.pet_items[2].number + this.state.washItems);
           break;
         case 4:
           if (resultPercentage > 0.49 && resultPercentage < 0.71) {
@@ -446,8 +446,8 @@ class QuizCard extends Component {
             this.setState({
               musicItems: 3,
             });
-            db.setItem(this.props.uid, 3, 'music', this.state.user.pet_items[3].number + this.state.musicItems);
           }
+          db.setItem(this.props.uid, 3, 'music', this.state.user.pet_items[3].number + this.state.musicItems);
           break;
         default:
           break;
