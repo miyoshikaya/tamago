@@ -56,7 +56,8 @@ function Quiz(props) {
         transitionAppearTimeout={500}
       >
         <div key={props.questionId}>
-          <Question content={"Not enough words to quiz from!"} />
+          <p>Not enough words to form a quiz!</p>
+          <Question content={"Not enough words to form a quiz!"} />
         </div>
       </CSSTransitionGroup>
     );
