@@ -27,8 +27,8 @@ class QuizContainer extends Component {
 		this.generatedQuiz = this.generatedQuiz.bind(this);
 	}
 
-	generatedQuiz() {
-		this.setState({
+	async generatedQuiz() {
+		await this.setState({
 			generateNew: false
 		})
 	}

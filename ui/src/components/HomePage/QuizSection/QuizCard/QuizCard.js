@@ -15,8 +15,6 @@ class QuizCard extends Component {
 
     if (firebase.apps.length) {
 
-      this.app = firebase.app().firestore();
-
       this.state = {
         counter: 0,
         questionId: 1,
@@ -63,8 +61,9 @@ class QuizCard extends Component {
   }
 
   async truncCards(cards) {
-    var comparedCards = null;
-    var userDBCards = db.getUserCards(this.props.uid);
+    var comparedCards = [];
+    var userDBCards = db.getUserCards(this.props.uid).then(snapshot => snapshot.val());
+    console.log(this.props.uid);
     await userDBCards.then((value) => {
       comparedCards = value;
     });
@@ -79,7 +78,7 @@ class QuizCard extends Component {
         queryString = "1_";
         break;
       case 'Polish':
-        queryString = "1_";
+        queryString = "2_";
         break;
     }
 
@@ -110,9 +109,12 @@ class QuizCard extends Component {
     }
 
     var newList = [];
+    console.log(queryString);
+    console.log(cards);
+    console.log(comparedCards);
     for (var i = 0; i < cards.length; ++i) {
       for (var j = 0; j < comparedCards.length; ++j) {
-        if (comparedCards[j].id === (queryString + i)) {
+        if (comparedCards[j].id === (queryString + i) && comparedCards[j].status !== 'Mastered') {
           newList.push(cards[i]);
         }
       }
@@ -123,10 +125,33 @@ class QuizCard extends Component {
 
   async loadDatabase() {
 
-
     //console.log(this.props.generateNew);
     if (this.props.generateNew === true) {
 
+      await this.props.generatedQuiz();
+
+      await this.setState({
+        counter: 0,
+        questionId: 1,
+        ansOpt: [],
+        questions: [],
+        currentAnswers: [],
+        currQuestion: '',
+        question: '',
+        questionTotal: 10,
+        answerOptions: [],
+        answer: '',
+        answersCount: {
+          correct: 0,
+          incorrect: 0,
+        },
+        result: '',
+        category: '',
+        quizDone: false,
+
+      })
+
+      console.log("lel");
 
       var addedString = "";
       var languageIndex = 0;
@@ -183,52 +208,31 @@ class QuizCard extends Component {
       }
       var allCards = null;
 
+
       var data = db.getCards(languageIndex, addedString, categoryIndex, categoryString).then(snapshot => snapshot.val());
       await data.then((value) => {
         allCards = value;
       });
 
-      var userCards = this.truncCards(allCards);
-      console.log(userCards);
-      this.shuffleArray(userCards);
-      this.setState({
+      console.log(allCards);
+      var userCards = await this.truncCards(allCards);
+      await this.shuffleArray(userCards);
+      await this.setState({
         questions: userCards,
 
       })
+      console.log(userCards);
 
-      this.setState({
-        counter: 0,
-        questionId: 1,
-        questions: [],
-        ansOpt: [],
-        currentAnswers: [],
-        currQuestion: '',
-        question: '',
-        questionTotal: 10,
-        answerOptions: [],
-        answer: '',
-        answersCount: {
-          correct: 0,
-          incorrect: 0,
-        },
-        result: '',
-        category: '',
-        quizDone: false,
-
-      })
-      this.props.generatedQuiz();
-
-      this.fillQuestions();
+      await this.fillQuestions();
 
     }
   }
 
-  fillQuestions() {
+  async fillQuestions() {
 
-    if (firebase.apps.length) {
-
-      const questionList = this.state.questions;
-      const optionList = [];
+    const questionList = this.state.questions;
+    const optionList = [];
+    if (questionList.length > 2) {
 
       for (var index = 0; index < questionList.length; ++index) {
 
@@ -240,7 +244,7 @@ class QuizCard extends Component {
         const options = [];
         options.push({
           type: "incorrect",
-          content: questionList[firstIndex].kan,
+          content: (questionList[firstIndex].kan !== '') ? questionList[firstIndex].kan : questionList[firstIndex].rom,
         })
 
         var secondIndex = Math.floor(Math.random() * questionList.length);
@@ -250,7 +254,7 @@ class QuizCard extends Component {
         }
         options.push({
           type: "incorrect",
-          content: questionList[secondIndex].kan,
+          content: (questionList[secondIndex].kan !== '') ? questionList[secondIndex].kan : questionList[secondIndex].rom,
         })
 
         var thirdIndex = Math.floor(Math.random() * questionList.length);
@@ -260,13 +264,13 @@ class QuizCard extends Component {
         }
         options.push({
           type: "incorrect",
-          content: questionList[thirdIndex].kan,
+          content: (questionList[thirdIndex].kan !== '') ? questionList[thirdIndex].kan : questionList[thirdIndex].rom,
         })
 
         var rightIndex = Math.floor(Math.random() * options.length);
         //console.log(rightIndex);
         options[rightIndex].type = "correct";
-        options[rightIndex].content = questionList[index].kan;
+        options[rightIndex].content = (questionList[index].kan !== '') ? questionList[index].kan : questionList[index].rom;
 
         optionList.push({
           answers: options,
@@ -278,7 +282,7 @@ class QuizCard extends Component {
 
           ansOpt: optionList,
           currentAnswers: optionList[0].answers,
-          currQuestion: 'Which word means ' + this.state.questions[0].eng + ' in Japanese ? ',
+          currQuestion: 'Which word means ' + this.state.questions[0].eng + ' in ' + this.state.user.language + ' ? ',
 
         });
       }
@@ -378,6 +382,8 @@ class QuizCard extends Component {
             this.setState({
               playItems: 3,
             });
+
+            db.setItem(this.props.uid, 0, 'play', this.state.user.pet_items[0].number + this.state.playItems);
           }
           break;
         case 2:
@@ -398,6 +404,7 @@ class QuizCard extends Component {
             this.setState({
               foodItems: 3,
             });
+            db.setItem(this.props.uid, 1, 'food', this.state.user.pet_items[1].number + this.state.foodItems);
           }
           break;
         case 3:
@@ -418,6 +425,7 @@ class QuizCard extends Component {
             this.setState({
               washItems: 3,
             });
+            db.setItem(this.props.uid, 2, 'wash', this.state.user.pet_items[2].number + this.state.washItems);
           }
           break;
         case 4:
@@ -438,6 +446,7 @@ class QuizCard extends Component {
             this.setState({
               musicItems: 3,
             });
+            db.setItem(this.props.uid, 3, 'music', this.state.user.pet_items[3].number + this.state.musicItems);
           }
           break;
         default:
@@ -475,24 +484,29 @@ class QuizCard extends Component {
   }
 
   renderQuiz() {
-    return (
-      <div>
-        <Quiz
-          answer={this.state.answer}
-          currentAnswers={this.state.currentAnswers}
-          answerOptions={this.state.answerOptions}
-          questionId={this.state.questionId}
-          question={this.state.question}
-          questionTotal={this.state.questionTotal}
-          onAnswerSelected={this.handleAnswerSelected}
-          loadDatabase={this.loadDatabase}
-          questions={this.state.questions}
-          ansOpt={this.state.ansOpt}
-          currQuestion={this.state.currQuestion}
-          generateNew={this.props.generateNew}
-        />
-      </div >
-    );
+    if (this.state.user !== null) {
+      return (
+        <div>
+          <Quiz
+            answer={this.state.answer}
+            currentAnswers={this.state.currentAnswers}
+            answerOptions={this.state.answerOptions}
+            questionId={this.state.questionId}
+            question={this.state.question}
+            questionTotal={this.state.questionTotal}
+            onAnswerSelected={this.handleAnswerSelected}
+            loadDatabase={this.loadDatabase}
+            questions={this.state.questions}
+            ansOpt={this.state.ansOpt}
+            currQuestion={this.state.currQuestion}
+            generateNew={this.props.generateNew}
+          />
+        </div >
+      );
+    }
+    else {
+      return null;
+    }
   }
 
   renderResult() {
