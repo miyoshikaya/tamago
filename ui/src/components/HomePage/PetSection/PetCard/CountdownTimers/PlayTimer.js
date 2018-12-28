@@ -145,7 +145,7 @@ class PlayTimer extends React.Component {
     return (
       <div>
         <h3 className="timer play-timer">
-          0{this.state.time.m}:{this.state.time.s}
+          {this.state.time.h}:0{this.state.time.m}:{this.state.time.s}
           {this.props.restart}
         </h3>
       </div>
@@ -156,7 +156,7 @@ class PlayTimer extends React.Component {
     return (
       <div>
         <h3 className="timer play-timer">
-          {this.state.time.m}:0{this.state.time.s}
+          {this.state.time.h}:{this.state.time.m}:0{this.state.time.s}
           {this.props.restart}
         </h3>
       </div>
@@ -167,7 +167,7 @@ class PlayTimer extends React.Component {
     return (
       <div>
         <h3 className="timer play-timer">
-          0{this.state.time.m}:0{this.state.time.s}
+          {this.state.time.h}:0{this.state.time.m}:0{this.state.time.s}
           {this.props.restart}
         </h3>
       </div>
@@ -179,7 +179,7 @@ class PlayTimer extends React.Component {
       <div>
         {/*<button onClick={this.restartTimer}>Restart</button>*/}
         <h3 className="timer play-timer">
-          {this.state.time.m}:{this.state.time.s}
+          {this.state.time.h}:{this.state.time.m}:{this.state.time.s}
           {this.props.restart}
         </h3>
       </div>

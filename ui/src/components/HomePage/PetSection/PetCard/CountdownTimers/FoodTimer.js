@@ -138,8 +138,8 @@ class FoodTimer extends React.Component {
   renderMinutesWithZero() {
     return (
       <div>
-        <h3 className="timer wash-timer">
-          0{this.state.time.m}:{this.state.time.s}
+        <h3 className="timer food-timer">
+          {this.state.time.h}:0{this.state.time.m}:{this.state.time.s}
           {this.props.restart}
         </h3>
       </div>
@@ -150,7 +150,7 @@ class FoodTimer extends React.Component {
     return (
       <div>
         <h3 className="timer food-timer">
-          {this.state.time.m}:0{this.state.time.s}
+          {this.state.time.h}:{this.state.time.m}:0{this.state.time.s}
           {this.props.restart}
         </h3>
       </div>
@@ -161,7 +161,7 @@ class FoodTimer extends React.Component {
     return (
       <div>
         <h3 className="timer food-timer">
-          0{this.state.time.m}:0{this.state.time.s}
+          {this.state.time.h}:0{this.state.time.m}:0{this.state.time.s}
           {this.props.restart}
         </h3>
       </div>
@@ -173,7 +173,7 @@ class FoodTimer extends React.Component {
       <div>
         {/*<button onClick={this.restartTimer}>Restart</button>*/}
         <h3 className="timer food-timer">
-          {this.state.time.m}:{this.state.time.s}
+          {this.state.time.h}:{this.state.time.m}:{this.state.time.s}
           {this.props.restart}
         </h3>
       </div>
