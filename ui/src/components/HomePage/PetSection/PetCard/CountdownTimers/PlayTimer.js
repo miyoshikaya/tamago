@@ -131,7 +131,7 @@ class PlayTimer extends React.Component {
       }
     }
     else {
-      let seconds = 3599;
+      let seconds = 43200;
       this.setState({
         restart: false,
         time: this.secondsToTime(seconds),

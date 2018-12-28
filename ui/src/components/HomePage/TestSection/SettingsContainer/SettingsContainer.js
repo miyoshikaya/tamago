@@ -62,6 +62,8 @@ class SettingsContainer extends React.Component {
       case 'Mastered':
         boxClass3.push('active');
         break;
+      default:
+        break;
     }
     return (
       <div id="cardSettingsWrapper">

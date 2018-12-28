@@ -10,6 +10,7 @@ function Quiz(props) {
     props.loadDatabase();
   }
   function renderAnswerOptions(key) {
+    //console.log(props);
     return (
       <AnswerOption
         key={key.content}

@@ -129,7 +129,7 @@ class WashTimer extends React.Component {
       }
     }
     else {
-      let seconds = 549;
+      let seconds = 43200;
       this.setState({
         restart: false,
         time: this.secondsToTime(seconds),

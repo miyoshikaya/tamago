@@ -1861,13 +1861,13 @@
                     {
                         "id": 19,
                         "eng": "television",
-                        "kan": " ",
+                        "kan": "",
                         "rom": "telewizja"
                     },
                     {
                         "id": 20,
                         "eng": "furniture",
-                        "kan": " ",
+                        "kan": "",
                         "rom": "meble"
                     }
                 ]

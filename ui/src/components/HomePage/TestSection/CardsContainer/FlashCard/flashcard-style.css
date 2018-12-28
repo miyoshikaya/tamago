@@ -3,7 +3,7 @@
 }
 
 .card-container {
-  cursor: pointer;
+  /*cursor: pointer;*/
   height: 200px;
   width: 400px;
   perspective: 800px;
@@ -22,10 +22,10 @@
   box-shadow: 5px 5px 8px #888888;
 }
 
-.card:hover {
+/*.card:hover {
   transform: rotateY(180deg);
   transition: all 0.4s ease-in-out;
-}
+}*/
 
 .back-class {
   transform: rotateY(180deg);

@@ -6,7 +6,7 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/database';
 import { db } from '../../../../firebase';
-import { default as fire } from '../../../../firebase';
+//import { default as fire } from '../../../../firebase';
 
 class QuizCard extends Component {
   constructor(props) {
@@ -79,6 +79,8 @@ class QuizCard extends Component {
         break;
       case 'Polish':
         queryString = "2_";
+        break;
+      default:
         break;
     }
 
@@ -167,6 +169,8 @@ class QuizCard extends Component {
         case 'Polish':
           languageIndex = 2;
           addedString = "pln-cards";
+          break;
+        default:
           break;
       }
       await this.setState({
@@ -346,6 +350,7 @@ class QuizCard extends Component {
       currentAnswers: this.state.ansOpt[counter].answers,
       answer: ''
     });
+    console.log(this.state.answer);
   }
 
   getResults() {
@@ -355,7 +360,7 @@ class QuizCard extends Component {
     var resultString = resultPercentage * 100.0 + '%';
 
     if (resultPercentage * 100.0 < 50) {
-      resultString = resultString + '. Score 70% an above to get stuff for your pet.';
+      resultString = resultString + '. Score 70% an above to receive items for your pet.';
     }
     else {
       //losowanie itemków

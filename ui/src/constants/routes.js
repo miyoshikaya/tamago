@@ -7,7 +7,7 @@ export const PET = '/pet';
 export const STUDY = '/study';
 export const QUIZ = '/quiz';
 export const SETTINGS = '/settings';
-export const PROGRESS = '/progress';
+//export const PROGRESS = '/progress';
 
 export const HOME = '/home';
 export const ACCOUNT = '/account';

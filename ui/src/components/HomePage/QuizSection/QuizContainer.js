@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import QuizCard from './QuizCard.js';
 import QuizCard from './QuizCard/QuizCard.js';
 import QuizSettings from './settings/QuizSettings.js';
 import { confirmAlert } from 'react-confirm-alert'; // Import
@@ -7,7 +6,6 @@ import 'react-confirm-alert/src/react-confirm-alert.css'
 
 import { firebase } from '../../../firebase';
 import * as routes from '../../../constants/routes';
-import { db } from '../../../firebase';
 
 
 const authCondition = (authUser) => !!authUser;

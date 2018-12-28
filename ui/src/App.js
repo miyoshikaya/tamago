@@ -13,7 +13,6 @@ import Navigation from './Navigation.js';
 import Pet from './components/HomePage/PetSection/Pet.js'
 import Tests from './components/HomePage/TestSection/Tests.js';
 import Quizzes from './components/HomePage/QuizSection/Quizzes.js';
-import Progress from './components/HomePage/ProgressSection/Progress.js';
 import Settings from './components/HomePage/SettingSection/Settings.js';
 
 const App = () =>
@@ -30,7 +29,7 @@ const App = () =>
 			<Route exact path={routes.PET} component={Pet} />
 			<Route exact path={routes.STUDY} component={Tests} />
 			<Route exact path={routes.QUIZ} component={Quizzes} />
-			<Route exact path={routes.PROGRESS} component={Progress} />
+			{/*<Route exact path={routes.PROGRESS} component={Progress} />*/}
 			<Route exact path={routes.SETTINGS} component={Settings} />
 		</div>
 	</Router>

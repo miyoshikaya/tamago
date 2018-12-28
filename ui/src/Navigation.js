@@ -29,9 +29,9 @@ const NavigationAuth = () =>
 				<li className="nav-item">
 					<Link to={routes.QUIZ}><p className="nav-link">Quizzes</p></Link>
 				</li>
-				<li className="nav-item">
+				{/*<li className="nav-item">
 					<Link to={routes.PROGRESS}><p className="nav-link">Progress</p></Link>
-				</li>
+				</li>*/}
 				<li className="nav-item">
 					<Link to={routes.SETTINGS}><p className="nav-link">Settings</p></Link>
 				</li>

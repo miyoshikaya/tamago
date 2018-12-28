@@ -3,10 +3,10 @@ import './cardscontainer.css';
 import FlashCard from './FlashCard/FlashCard.js';
 import DrawButton from './DrawButton/DrawButton.js';
 import FlipButton from './FlipButton/FlipButton.js';
-import firebase from 'firebase/app';
+//import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/database';
-import { default as fire } from '../../../../firebase';
+//import { default as fire } from '../../../../firebase';
 import { db } from '../../../../firebase';
 
 
@@ -75,6 +75,8 @@ class CardsContainer extends Component {
       case 'Polish':
         languageIndex = 2;
         addedString = "pln-cards";
+        break;
+      default:
         break;
     }
 
@@ -155,6 +157,8 @@ class CardsContainer extends Component {
       case 'Polish':
         queryString = "2";
         break;
+      default:
+        break;
     }
     switch (this.props.cardsCategory) {
       case 'Animals':
@@ -179,6 +183,8 @@ class CardsContainer extends Component {
       case 'House':
         console.log(this.props.cardsCategory);
         queryString += "_4";
+        break;
+      default:
         break;
     }
     queryString += "_" + index;
@@ -290,7 +296,7 @@ class CardsContainer extends Component {
         newCards = value;
       });
 
-      var card = await this.getRandomCard(newCards);
+      card = await this.getRandomCard(newCards);
 
       await this.setState({
         cards: newCards,
