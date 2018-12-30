@@ -116,7 +116,6 @@ class PetCard extends React.Component {
             restartPlay: true,
           });
           db.setItem(firebase.auth.currentUser.uid, 0, "play", user.pet_items[0].number);
-          //here countdown timer reset (SEND DATA TO COMPONENT) 
 
           console.log(this.state.restartPlay);
         }
@@ -208,6 +207,7 @@ class PetCard extends React.Component {
           reason: reason,
         },
       );
+      db.setAlive(firebase.auth.currentUser.uid, false);
       alert('Your pet is dead :( It died because of ' + reason + '.')
     }
   }

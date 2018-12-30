@@ -16,9 +16,6 @@ class CardsContainer extends Component {
   constructor(props) {
     super(props);
 
-
-
-
     this.state = {
       cards: null,
       currentCard: null,
