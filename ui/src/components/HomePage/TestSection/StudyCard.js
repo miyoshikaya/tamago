@@ -81,7 +81,7 @@ class StudyCard extends React.Component {
           <div className="half">
             <div id="lang-title">
               <CardTitle category={this.state.cardCategory} language={this.state.cardLanguage} status={this.state.cardStatus} />
-              <hr className="hr-class" />
+              <hr />
               <CardsContainer cardsCategory={this.state.cardCategory}
                 uid={firebase.auth.currentUser.uid}
                 sendLanguage={this.getLanguage}
