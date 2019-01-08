@@ -29,7 +29,6 @@ const App = () =>
 			<Route exact path={routes.PET} component={Pet} />
 			<Route exact path={routes.STUDY} component={Tests} />
 			<Route exact path={routes.QUIZ} component={Quizzes} />
-			{/*<Route exact path={routes.PROGRESS} component={Progress} />*/}
 			<Route exact path={routes.SETTINGS} component={Settings} />
 		</div>
 	</Router>

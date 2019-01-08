@@ -350,7 +350,6 @@ class QuizCard extends Component {
       currentAnswers: this.state.ansOpt[counter].answers,
       answer: ''
     });
-    console.log(this.state.answer);
   }
 
   getResults() {
