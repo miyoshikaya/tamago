@@ -9,6 +9,7 @@ class CardTitle extends Component {
     this.state = {
       lala: ''
     }
+    console.log('lala');
     
   }
 
